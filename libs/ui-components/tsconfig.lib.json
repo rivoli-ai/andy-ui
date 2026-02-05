@@ -1,0 +1,20 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "../../dist/ui-components/src",
+    "rootDir": "src",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "inlineSources": false,
+    "types": []
+  },
+  "include": [
+    "src/lib/shared/**/*.ts",
+    "src/public-api.ts"
+  ],
+  "exclude": [
+    "**/*.spec.ts",
+    "**/*.tsx"
+  ]
+}

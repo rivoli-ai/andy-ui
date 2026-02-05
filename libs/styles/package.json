@@ -1,0 +1,37 @@
+{
+  "name": "@omnifex/styles",
+  "version": "0.0.1",
+  "private": false,
+  "type": "module",
+  "main": "./src/public-api.js",
+  "types": "./src/public-api.d.ts",
+  "exports": {
+    ".": {
+      "types": "./src/public-api.d.ts",
+      "import": "./src/public-api.js"
+    },
+    "./lib/theme.css": {
+      "default": "./lib/theme.css"
+    }
+  },
+  "files": [
+    "src/**/*.css",
+    "src/**/*.js",
+    "src/**/*.d.ts",
+    "lib/**/*.css",
+    "README.md"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rivoli-ai/omnifex-ui.git",
+    "directory": "libs/styles"
+  },
+  "sideEffects": ["**/*.css"],
+  "dependencies": {
+    "tslib": "^2.3.0"
+  }
+}

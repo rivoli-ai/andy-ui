@@ -1,0 +1,24 @@
+<div class="min-h-screen flex flex-col bg-theme-bg-secondary font-sans transition-colors">
+  <!-- Header -->
+  <omnifex-header
+    [isLoading]="isLoading()"
+    [isAuthenticated]="isAuthenticated()"
+    [userName]="userName()"
+    [isDark]="isDark()"
+    [roles]="authService.roles()"
+    (login-click)="login()"
+    (logout-click)="logout()"
+    (theme-toggle)="toggleTheme()"
+  ></omnifex-header>
+
+  <!-- Router Outlet for page content -->
+  <div class="flex-1">
+    <router-outlet />
+  </div>
+
+  <!-- Footer -->
+  <omnifex-footer
+    text="Built with ❤️"
+    framework="Angular"
+  ></omnifex-footer>
+</div>

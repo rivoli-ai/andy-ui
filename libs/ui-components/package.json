@@ -1,0 +1,63 @@
+{
+  "name": "@omnifex/ui-components",
+  "version": "0.0.1",
+  "description": "UI Components library built with StencilJS",
+  "type": "module",
+
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.js",
+  "types": "./dist/src/public-api.d.ts",
+
+  "collection": "./dist/collection/collection-manifest.json",
+  "collection:main": "./dist/collection/index.js",
+
+  "exports": {
+    ".": {
+      "types": "./dist/src/public-api.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs.js"
+    },
+    "./loader": {
+      "import": "./loader/index.js",
+      "require": "./loader/index.cjs.js",
+      "default": "./loader/index.js"
+    }
+  },
+
+  "files": [
+    "dist/",
+    "loader/",
+    "README.md"
+  ],
+
+  "sideEffects": [
+    "dist/**",
+    "loader/**"
+  ],
+
+  "scripts": {
+    "build": "stencil build",
+    "start": "stencil build --dev --watch --serve",
+    "test": "stencil test --spec --passWithNoTests",
+    "test.e2e": "stencil test --e2e",
+    "test.watch": "stencil test --spec --watch"
+  },
+
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+
+  "devDependencies": {
+    "@stencil/core": "^4.40.0"
+  },
+
+  "publishConfig": {
+    "access": "public"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rivoli-ai/omnifex-ui.git",
+    "directory": "libs/ui-components"
+  }
+}

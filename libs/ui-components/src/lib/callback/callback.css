@@ -1,0 +1,25 @@
+:host {
+  display: block;
+}
+
+.callback-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.loading {
+  text-align: center;
+  color: var(--theme-text-secondary);
+}
+
+.error {
+  text-align: center;
+  color: var(--theme-status-error);
+}
+
+.error p {
+  margin: 0 0 1rem 0;
+}

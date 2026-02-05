@@ -1,0 +1,88 @@
+/**
+ * Theme Color Overrides
+ * 
+ * This file contains custom theme color overrides.
+ * These values override the default theme.css values.
+ * 
+ * Current theme: BNP Paribas brand colors
+ * Primary: #009639 (BNP Green)
+ * Secondary: #004B87 (BNP Blue)
+ */
+
+:root {
+  /* BNP Light Theme Colors */
+  // Accent colors (BNP Green)
+  --theme-accent-primary: #009639;        // BNP Green
+  --theme-accent-secondary: #00A651;      // Lighter BNP Green
+  --theme-accent-hover: #007A2F;          // Darker BNP Green for hover
+  --theme-accent-light: #E6F5ED;          // Light green tint
+  --theme-border-accent: #009639;         // BNP Green for borders
+
+  // Status colors (keeping BNP green for success)
+  --theme-status-success: #009639;        // BNP Green for success
+  --theme-status-info: #004B87;           // BNP Blue for info
+  --theme-status-warning: #F59E0B;        // Keep amber for warnings
+  --theme-status-error: #EF4444;          // Keep red for errors
+
+  // Background colors (light, clean backgrounds)
+  --theme-bg-primary: #FFFFFF;
+  --theme-bg-secondary: #F8FAFC;
+  --theme-bg-tertiary: #F1F5F9;
+  --theme-bg-inverse: #004B87;            // BNP Blue for inverse backgrounds
+
+  // Text colors
+  --theme-text-primary: #0F172A;
+  --theme-text-secondary: #475569;
+  --theme-text-tertiary: #64748B;
+  --theme-text-inverse: #FFFFFF;
+  --theme-text-muted: #94A3B8;
+
+  // Border colors
+  --theme-border-primary: #E2E8F0;
+  --theme-border-secondary: #CBD5E1;
+
+  // Surface colors (cards, modals)
+  --theme-surface-primary: #FFFFFF;
+  --theme-surface-secondary: #F8FAFC;
+  --theme-surface-elevated: #FFFFFF;
+  --theme-surface-hover: #F1F5F9;
+}
+
+.dark {
+  /* BNP Dark Theme Colors */
+  // Accent colors (BNP Green - slightly lighter for dark mode)
+  --theme-accent-primary: #00A651;        // Lighter BNP Green for dark mode
+  --theme-accent-secondary: #00C864;      // Even lighter for secondary
+  --theme-accent-hover: #009639;          // Standard BNP Green
+  --theme-accent-light: #1A3D2E;          // Dark green tint
+  --theme-border-accent: #00A651;         // Lighter green for borders
+
+  // Status colors
+  --theme-status-success: #00A651;         // Lighter BNP Green
+  --theme-status-info: #0066CC;           // Lighter blue for dark mode
+  --theme-status-warning: #F59E0B;
+  --theme-status-error: #EF4444;
+
+  // Background colors (dark backgrounds)
+  --theme-bg-primary: #0F172A;
+  --theme-bg-secondary: #1E293B;
+  --theme-bg-tertiary: #334155;
+  --theme-bg-inverse: #00A651;            // BNP Green for inverse in dark mode
+
+  // Text colors
+  --theme-text-primary: #F1F5F9;
+  --theme-text-secondary: #CBD5E1;
+  --theme-text-tertiary: #94A3B8;
+  --theme-text-inverse: #0F172A;
+  --theme-text-muted: #64748B;
+
+  // Border colors
+  --theme-border-primary: #334155;
+  --theme-border-secondary: #475569;
+
+  // Surface colors
+  --theme-surface-primary: #1E293B;
+  --theme-surface-secondary: #334155;
+  --theme-surface-elevated: #475569;
+  --theme-surface-hover: #334155;
+}

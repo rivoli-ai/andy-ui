@@ -1,0 +1,50 @@
+{
+  "name": "@omnifex/styles-react",
+  "version": "0.0.1",
+  "private": false,
+  "type": "module",
+  "main": "./src/public-api.js",
+  "types": "./src/public-api.d.ts",
+  "exports": {
+    ".": {
+      "types": "./src/public-api.d.ts",
+      "import": "./src/public-api.js"
+    },
+    "./theme.css": {
+      "style": "./src/theme.css",
+      "default": "./src/theme.css"
+    },
+    "./src/theme.css": {
+      "style": "./src/theme.css",
+      "default": "./src/theme.css"
+    }
+  },
+  "files": [
+    "src/**/*.css",
+    "src/**/*.js",
+    "src/**/*.d.ts",
+    "README.md"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rivoli-ai/omnifex-ui.git",
+    "directory": "libs/styles-react"
+  },
+  "dependencies": {
+    "@omnifex/styles": "workspace:*",
+    "tslib": "^2.3.0"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0"
+  },
+  "sideEffects": false
+}

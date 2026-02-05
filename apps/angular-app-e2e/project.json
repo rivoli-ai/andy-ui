@@ -1,0 +1,28 @@
+{
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "name": "angular-app-e2e",
+  "projectType": "application",
+  "sourceRoot": "apps/angular-app-e2e",
+  "targets": {
+    "e2e": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "playwright test",
+        "cwd": "apps/angular-app-e2e"
+      },
+      "outputs": ["{workspaceRoot}/playwright-report"]
+    },
+    "e2e:ui": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "playwright test --ui",
+        "cwd": "apps/angular-app-e2e"
+      }
+    }
+  },
+  "tags": ["type:e2e"],
+  "implicitDependencies": ["angular-app"]
+}
+
+
+

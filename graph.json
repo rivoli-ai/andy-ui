@@ -1,0 +1,593 @@
+{
+  "graph": {
+    "nodes": {
+      "@omnifex-ui/ui-components": {
+        "name": "@omnifex-ui/ui-components",
+        "type": "lib",
+        "data": {
+          "root": "libs/ui-components",
+          "projectType": "library",
+          "sourceRoot": "libs/ui-components/src",
+          "prefix": "lib",
+          "name": "@omnifex-ui/ui-components",
+          "targets": {
+            "build": {
+              "executor": "nx:run-commands",
+              "options": {
+                "commands": [
+                  "../../node_modules/.bin/pnpm run build",
+                  "npx tsc -p tsconfig.lib.prod.json"
+                ],
+                "cwd": "libs/ui-components",
+                "parallel": false
+              },
+              "outputs": [
+                "{workspaceRoot}/dist/ui-components",
+                "{workspaceRoot}/libs/ui-components/dist"
+              ],
+              "configurations": {},
+              "parallelism": true,
+              "dependsOn": [
+                "^build"
+              ],
+              "inputs": [
+                "production",
+                "^production"
+              ],
+              "cache": true
+            },
+            "test": {
+              "executor": "nx:run-commands",
+              "options": {
+                "command": "../../node_modules/.bin/pnpm run test -- --watch=false",
+                "cwd": "libs/ui-components"
+              },
+              "configurations": {},
+              "parallelism": true,
+              "inputs": [
+                "default",
+                "^production",
+                "{workspaceRoot}/karma.conf.js"
+              ],
+              "cache": true
+            },
+            "start": {
+              "executor": "nx:run-script",
+              "options": {
+                "script": "start"
+              },
+              "metadata": {
+                "scriptContent": "stencil build --dev --watch --serve",
+                "runCommand": "pnpm run start"
+              },
+              "configurations": {},
+              "parallelism": true
+            },
+            "test.watch": {
+              "executor": "nx:run-script",
+              "options": {
+                "script": "test.watch"
+              },
+              "metadata": {
+                "scriptContent": "stencil test --spec --e2e --watch",
+                "runCommand": "pnpm run test.watch"
+              },
+              "configurations": {},
+              "parallelism": true
+            },
+            "nx-release-publish": {
+              "executor": "@nx/js:release-publish",
+              "dependsOn": [
+                "^nx-release-publish"
+              ],
+              "options": {},
+              "configurations": {},
+              "parallelism": true
+            },
+            "lint": {
+              "executor": "@nx/eslint:lint",
+              "options": {
+                "lintFilePatterns": [
+                  "libs/ui-components/**/*.{ts,tsx}"
+                ]
+              },
+              "configurations": {},
+              "parallelism": true
+            }
+          },
+          "tags": [
+            "npm:public",
+            "type:ui"
+          ],
+          "metadata": {
+            "targetGroups": {
+              "NPM Scripts": [
+                "start",
+                "test.watch"
+              ]
+            },
+            "description": "UI Components library built with StencilJS",
+            "js": {
+              "packageName": "@omnifex-ui/ui-components",
+              "packageVersion": "0.0.1",
+              "packageMain": "./dist/index.cjs.js",
+              "isInPackageManagerWorkspaces": true
+            }
+          },
+          "$schema": "../../node_modules/nx/schemas/project-schema.json",
+          "implicitDependencies": []
+        }
+      },
+      "angular-app": {
+        "name": "angular-app",
+        "type": "app",
+        "data": {
+          "root": "apps/angular-app",
+          "projectType": "application",
+          "sourceRoot": "apps/angular-app/src",
+          "prefix": "app",
+          "name": "angular-app",
+          "generators": {
+            "@schematics/angular:component": {
+              "style": "scss"
+            }
+          },
+          "targets": {
+            "build": {
+              "executor": "@nx/angular:application",
+              "options": {
+                "outputPath": "dist/apps/angular-app",
+                "browser": "apps/angular-app/src/main.ts",
+                "tsConfig": "apps/angular-app/tsconfig.app.json",
+                "inlineStyleLanguage": "scss",
+                "stylePreprocessorOptions": {
+                  "includePaths": [
+                    "apps/angular-app/src",
+                    "libs/styles/src/lib",
+                    "libs"
+                  ]
+                },
+                "assets": [
+                  {
+                    "glob": "**/*",
+                    "input": "apps/angular-app/public"
+                  }
+                ],
+                "styles": [
+                  "apps/angular-app/src/styles.scss"
+                ]
+              },
+              "configurations": {
+                "production": {
+                  "budgets": [
+                    {
+                      "type": "initial",
+                      "maximumWarning": "500kB",
+                      "maximumError": "1MB"
+                    },
+                    {
+                      "type": "anyComponentStyle",
+                      "maximumWarning": "4kB",
+                      "maximumError": "8kB"
+                    }
+                  ],
+                  "outputHashing": "all"
+                },
+                "development": {
+                  "optimization": false,
+                  "extractLicenses": false,
+                  "sourceMap": true
+                }
+              },
+              "defaultConfiguration": "production",
+              "parallelism": true,
+              "dependsOn": [
+                "^build"
+              ],
+              "inputs": [
+                "production",
+                "^production"
+              ],
+              "cache": true
+            },
+            "serve": {
+              "executor": "@nx/angular:dev-server",
+              "options": {
+                "buildTarget": "angular-app:build:development",
+                "port": 4200,
+                "host": "localhost"
+              },
+              "configurations": {
+                "production": {
+                  "buildTarget": "angular-app:build:production"
+                },
+                "development": {
+                  "buildTarget": "angular-app:build:development"
+                }
+              },
+              "defaultConfiguration": "development",
+              "parallelism": true,
+              "continuous": true
+            },
+            "test": {
+              "executor": "@angular-devkit/build-angular:karma",
+              "options": {
+                "tsConfig": "apps/angular-app/tsconfig.spec.json"
+              },
+              "configurations": {},
+              "parallelism": true,
+              "inputs": [
+                "default",
+                "^production",
+                "{workspaceRoot}/karma.conf.js"
+              ],
+              "cache": true
+            },
+            "lint": {
+              "executor": "@nx/eslint:lint",
+              "options": {
+                "lintFilePatterns": [
+                  "apps/angular-app/**/*.ts"
+                ]
+              },
+              "configurations": {},
+              "parallelism": true
+            }
+          },
+          "$schema": "../../node_modules/nx/schemas/project-schema.json",
+          "tags": [
+            "type:app"
+          ],
+          "implicitDependencies": [
+            "@omnifex-ui/styles",
+            "@omnifex-ui/identity",
+            "@omnifex-ui/ui-components"
+          ]
+        }
+      },
+      "react-app": {
+        "name": "react-app",
+        "type": "app",
+        "data": {
+          "root": "apps/react-app",
+          "name": "react-app",
+          "projectType": "application",
+          "tags": [
+            "npm:private",
+            "type:app"
+          ],
+          "metadata": {
+            "targetGroups": {
+              "NPM Scripts": [
+                "start",
+                "eject"
+              ]
+            },
+            "js": {
+              "packageName": "react-app",
+              "packageVersion": "0.1.0",
+              "isInPackageManagerWorkspaces": true
+            }
+          },
+          "targets": {
+            "start": {
+              "executor": "nx:run-script",
+              "options": {
+                "script": "start"
+              },
+              "metadata": {
+                "scriptContent": "DISABLE_ESLINT_PLUGIN=true react-scripts start",
+                "runCommand": "pnpm run start"
+              },
+              "configurations": {},
+              "parallelism": true
+            },
+            "eject": {
+              "executor": "nx:run-script",
+              "options": {
+                "script": "eject"
+              },
+              "metadata": {
+                "scriptContent": "react-scripts eject",
+                "runCommand": "pnpm run eject"
+              },
+              "configurations": {},
+              "parallelism": true
+            },
+            "serve": {
+              "executor": "nx:run-commands",
+              "options": {
+                "command": "../../node_modules/.bin/pnpm --filter react-app run start",
+                "cwd": "apps/react-app"
+              },
+              "configurations": {},
+              "parallelism": true
+            },
+            "build": {
+              "executor": "nx:run-commands",
+              "options": {
+                "command": "../../node_modules/.bin/pnpm --filter react-app run build",
+                "cwd": "apps/react-app"
+              },
+              "outputs": [
+                "{projectRoot}/build"
+              ],
+              "configurations": {},
+              "parallelism": true,
+              "dependsOn": [
+                "^build"
+              ],
+              "inputs": [
+                "production",
+                "^production"
+              ],
+              "cache": true
+            },
+            "test": {
+              "executor": "nx:run-commands",
+              "options": {
+                "command": "../../node_modules/.bin/pnpm --filter react-app run test -- --watch=false",
+                "cwd": "apps/react-app"
+              },
+              "configurations": {},
+              "parallelism": true,
+              "inputs": [
+                "default",
+                "^production",
+                "{workspaceRoot}/karma.conf.js"
+              ],
+              "cache": true
+            },
+            "lint": {
+              "executor": "nx:run-commands",
+              "options": {
+                "command": "../../node_modules/.bin/pnpm --filter react-app exec eslint src --ext .ts,.tsx --max-warnings=0",
+                "cwd": "apps/react-app"
+              },
+              "configurations": {},
+              "parallelism": true
+            }
+          },
+          "$schema": "../../node_modules/nx/schemas/project-schema.json",
+          "sourceRoot": "apps/react-app/src",
+          "implicitDependencies": [
+            "@omnifex-ui/styles",
+            "@omnifex-ui/identity",
+            "@omnifex-ui/ui-components"
+          ]
+        }
+      },
+      "@omnifex-ui/identity": {
+        "name": "@omnifex-ui/identity",
+        "type": "lib",
+        "data": {
+          "root": "libs/identity",
+          "projectType": "library",
+          "sourceRoot": "libs/identity/src",
+          "prefix": "lib",
+          "name": "@omnifex-ui/identity",
+          "targets": {
+            "build": {
+              "executor": "@nx/js:tsc",
+              "outputs": [
+                "{options.outputPath}"
+              ],
+              "options": {
+                "outputPath": "dist/identity",
+                "main": "libs/identity/src/public-api.ts",
+                "tsConfig": "libs/identity/tsconfig.lib.prod.json"
+              },
+              "configurations": {
+                "production": {
+                  "tsConfig": "libs/identity/tsconfig.lib.prod.json"
+                },
+                "development": {
+                  "tsConfig": "libs/identity/tsconfig.lib.json"
+                }
+              },
+              "defaultConfiguration": "production",
+              "parallelism": true,
+              "dependsOn": [
+                "^build"
+              ],
+              "inputs": [
+                "production",
+                "^production"
+              ],
+              "cache": true
+            },
+            "test": {
+              "executor": "@angular/build:unit-test",
+              "options": {
+                "tsConfig": "libs/identity/tsconfig.spec.json"
+              },
+              "configurations": {},
+              "parallelism": true,
+              "inputs": [
+                "default",
+                "^production",
+                "{workspaceRoot}/karma.conf.js"
+              ],
+              "cache": true
+            },
+            "nx-release-publish": {
+              "executor": "@nx/js:release-publish",
+              "dependsOn": [
+                "^nx-release-publish"
+              ],
+              "options": {},
+              "configurations": {},
+              "parallelism": true
+            },
+            "lint": {
+              "executor": "@nx/eslint:lint",
+              "options": {
+                "lintFilePatterns": [
+                  "libs/identity/**/*.ts"
+                ]
+              },
+              "configurations": {},
+              "parallelism": true
+            }
+          },
+          "tags": [
+            "npm:public",
+            "type:identity"
+          ],
+          "metadata": {
+            "targetGroups": {},
+            "js": {
+              "packageName": "@omnifex-ui/identity",
+              "packageVersion": "0.0.1",
+              "packageMain": "./src/public-api.js",
+              "isInPackageManagerWorkspaces": true
+            }
+          },
+          "$schema": "../../node_modules/nx/schemas/project-schema.json",
+          "implicitDependencies": []
+        }
+      },
+      "@omnifex-ui/styles": {
+        "name": "@omnifex-ui/styles",
+        "type": "lib",
+        "data": {
+          "root": "libs/styles",
+          "projectType": "library",
+          "sourceRoot": "libs/styles/src",
+          "prefix": "lib",
+          "name": "@omnifex-ui/styles",
+          "targets": {
+            "build": {
+              "executor": "@nx/js:tsc",
+              "outputs": [
+                "{options.outputPath}"
+              ],
+              "options": {
+                "outputPath": "dist/styles",
+                "main": "libs/styles/src/public-api.ts",
+                "tsConfig": "libs/styles/tsconfig.lib.prod.json",
+                "assets": [
+                  {
+                    "input": "libs/styles/src",
+                    "glob": "**/*.css",
+                    "output": "."
+                  }
+                ]
+              },
+              "configurations": {
+                "production": {
+                  "tsConfig": "libs/styles/tsconfig.lib.prod.json"
+                },
+                "development": {
+                  "tsConfig": "libs/styles/tsconfig.lib.json"
+                }
+              },
+              "defaultConfiguration": "production",
+              "parallelism": true,
+              "dependsOn": [
+                "^build"
+              ],
+              "inputs": [
+                "production",
+                "^production"
+              ],
+              "cache": true
+            },
+            "test": {
+              "executor": "@angular/build:unit-test",
+              "options": {
+                "tsConfig": "libs/styles/tsconfig.spec.json"
+              },
+              "configurations": {},
+              "parallelism": true,
+              "inputs": [
+                "default",
+                "^production",
+                "{workspaceRoot}/karma.conf.js"
+              ],
+              "cache": true
+            },
+            "nx-release-publish": {
+              "executor": "@nx/js:release-publish",
+              "dependsOn": [
+                "^nx-release-publish"
+              ],
+              "options": {},
+              "configurations": {},
+              "parallelism": true
+            },
+            "lint": {
+              "executor": "@nx/eslint:lint",
+              "options": {
+                "lintFilePatterns": [
+                  "libs/styles/**/*.ts"
+                ]
+              },
+              "configurations": {},
+              "parallelism": true
+            }
+          },
+          "tags": [
+            "npm:public",
+            "type:styles"
+          ],
+          "metadata": {
+            "targetGroups": {},
+            "js": {
+              "packageName": "@omnifex-ui/styles",
+              "packageVersion": "0.0.1",
+              "packageMain": "./src/public-api.js",
+              "isInPackageManagerWorkspaces": true
+            }
+          },
+          "$schema": "../../node_modules/nx/schemas/project-schema.json",
+          "implicitDependencies": []
+        }
+      }
+    },
+    "dependencies": {
+      "@omnifex-ui/ui-components": [],
+      "angular-app": [
+        {
+          "source": "angular-app",
+          "target": "@omnifex-ui/styles",
+          "type": "implicit"
+        },
+        {
+          "source": "angular-app",
+          "target": "@omnifex-ui/identity",
+          "type": "implicit"
+        },
+        {
+          "source": "angular-app",
+          "target": "@omnifex-ui/ui-components",
+          "type": "implicit"
+        },
+        {
+          "source": "angular-app",
+          "target": "@omnifex-ui/ui-components",
+          "type": "static"
+        }
+      ],
+      "react-app": [
+        {
+          "source": "react-app",
+          "target": "@omnifex-ui/styles",
+          "type": "implicit"
+        },
+        {
+          "source": "react-app",
+          "target": "@omnifex-ui/identity",
+          "type": "implicit"
+        },
+        {
+          "source": "react-app",
+          "target": "@omnifex-ui/ui-components",
+          "type": "implicit"
+        }
+      ],
+      "@omnifex-ui/identity": [],
+      "@omnifex-ui/styles": []
+    }
+  }
+}

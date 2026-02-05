@@ -1,0 +1,18 @@
+:host {
+  display: block;
+}
+
+.footer {
+  background-color: var(--theme-surface-primary);
+  border-top: 1px solid var(--theme-border-primary);
+  padding: 1.5rem 2rem;
+  text-align: center;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.footer-text {
+  margin: 0;
+  color: var(--theme-text-secondary);
+  font-size: 0.875rem;
+  transition: color 0.2s ease;
+}

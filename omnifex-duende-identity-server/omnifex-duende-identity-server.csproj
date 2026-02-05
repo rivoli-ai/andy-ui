@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<RootNamespace>omnifex_duende_identity_server</RootNamespace>
+		<AssemblyName>omnifex-duende-identity-server</AssemblyName>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Duende.IdentityServer.AspNetIdentity" Version="7.0.4" />
+
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="10.0.0-preview.4.25258.110" />
+		<PackageReference Include="Serilog.AspNetCore" Version="8.0.0" />
+
+		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="10.0.0-preview.4.25258.110" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="10.0.0-preview.4.25258.110" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="10.0.0-preview.4.25258.110" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.0-preview.4.25258.110" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.0-preview.4.25258.110" />
+	</ItemGroup>
+</Project>

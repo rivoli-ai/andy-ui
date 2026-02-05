@@ -1,0 +1,84 @@
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--theme-bg-secondary);
+  font-family: system-ui, -apple-system, sans-serif;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.layout-header {
+  background-color: var(--theme-surface-primary);
+  border-bottom: 1px solid var(--theme-border-primary);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.layout-header-content {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.layout-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--theme-text-primary);
+}
+
+.logo-icon {
+  font-size: 1.875rem;
+}
+
+.logo-text {
+  background: linear-gradient(
+    to right,
+    var(--theme-accent-primary),
+    var(--theme-accent-secondary)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.layout-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.roles-badge-container {
+  display: flex;
+  gap: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.layout-main {
+  flex: 1;
+  padding: 2rem;
+}
+
+.layout-footer {
+  background-color: var(--theme-surface-primary);
+  border-top: 1px solid var(--theme-border-primary);
+  padding: 1.5rem 2rem;
+  text-align: center;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.layout-footer p {
+  margin: 0;
+  color: var(--theme-text-secondary);
+  font-size: 0.875rem;
+  transition: color 0.2s ease;
+}

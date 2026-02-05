@@ -1,0 +1,71 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "strict": true,
+    "paths": {
+      "@omnifex/identity": ["./libs/identity/src/public-api"],
+      "@omnifex/identity-angular": ["./libs/identity-angular/src/public-api"],
+      "@omnifex/identity-react": ["./libs/identity-react/src/public-api"],
+      "@omnifex/styles": ["./libs/styles/src/public-api"],
+      "@omnifex/styles-angular": ["./libs/styles-angular/src/public-api"],
+      "@omnifex/styles-react": ["./libs/styles-react/src/public-api"],
+      "@omnifex/ui-components": ["./libs/ui-components/src/public-api"],
+      "@omnifex/ui-components/loader": ["./libs/ui-components/dist/esm/loader"]
+    },
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "preserve",
+    "baseUrl": ".",
+    "rootDir": "."
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  },
+  "files": [],
+  "references": [
+    {
+      "path": "./apps/angular-app/tsconfig.app.json"
+    },
+    {
+      "path": "./apps/angular-app/tsconfig.spec.json"
+    },
+      {
+        "path": "./libs/identity/tsconfig.lib.json"
+      },
+      {
+        "path": "./libs/identity-angular/tsconfig.lib.json"
+      },
+      {
+        "path": "./libs/identity-react/tsconfig.lib.json"
+      },
+      {
+        "path": "./libs/styles/tsconfig.lib.json"
+      },
+      {
+        "path": "./libs/styles-angular/tsconfig.lib.json"
+      },
+      {
+        "path": "./libs/styles-react/tsconfig.lib.json"
+      },
+    {
+      "path": "./libs/ui-components/tsconfig.lib.json"
+    },
+    {
+      "path": "./libs/ui-components/tsconfig.spec.json"
+    }
+  ],
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
+}
