@@ -1,0 +1,26 @@
+:host {
+  display: inline-block;
+}
+
+.theme-toggle-button {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: var(--theme-surface-secondary, #f3f4f6);
+  color: var(--theme-text-primary, #111827);
+  border: 1px solid var(--theme-border-primary, #e5e7eb);
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle-button:hover {
+  background-color: var(--theme-surface-hover, #e5e7eb);
+}
+
+.icon {
+  font-size: 1.25rem;
+  line-height: 1;
+  display: inline-block;
+}

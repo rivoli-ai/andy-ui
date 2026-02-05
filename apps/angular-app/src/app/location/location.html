@@ -1,0 +1,50 @@
+@if (authService.isAuthenticated()) {
+  <omnifex-card
+    [appearance]="Appearance.FILLED"
+    [variant]="Variant.PRIMARY"
+    icon="📍"
+    card-title="Your Location"
+    description=""
+    [items]="[]">
+    
+    @if (loading()) {
+      <div class="loading">
+        <span class="spinner"></span>
+        <span>Detecting location...</span>
+      </div>
+    } @else if (error()) {
+      <div class="error">
+        <p>{{ error() }}</p>
+        <omnifex-button variant="outline" (click)="refresh()">Try Again</omnifex-button>
+      </div>
+    } @else if (location()) {
+      <div class="location-info">
+        <div class="location-main">
+          <span class="city">{{ location()!.city }}</span>
+          <span class="region">{{ location()!.regionName }}, {{ location()!.country }}</span>
+        </div>
+        
+        <div class="location-details">
+          <div class="detail">
+            <span class="label">IP Address</span>
+            <span class="value">{{ location()!.query }}</span>
+          </div>
+          <div class="detail">
+            <span class="label">Coordinates</span>
+            <span class="value">{{ location()!.lat }}, {{ location()!.lon }}</span>
+          </div>
+          <div class="detail">
+            <span class="label">Timezone</span>
+            <span class="value">{{ location()!.timezone }}</span>
+          </div>
+          <div class="detail">
+            <span class="label">ISP</span>
+            <span class="value">{{ location()!.isp }}</span>
+          </div>
+        </div>
+        
+        <omnifex-button variant="outline" (click)="refresh()">🔄 Refresh</omnifex-button>
+      </div>
+    }
+  </omnifex-card>
+}

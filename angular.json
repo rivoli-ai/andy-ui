@@ -2,35 +2,43 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "cli": {
-    "packageManager": "npm"
+    "packageManager": "pnpm",
+    "analytics": false
   },
-  "newProjectRoot": "projects",
+  "newProjectRoot": "apps",
   "projects": {
-    "andy-ui": {
+    "omnifex-ui": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
         }
       },
-      "root": "",
-      "sourceRoot": "src",
+      "root": "apps/angular-app",
+      "sourceRoot": "apps/angular-app/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "browser": "src/main.ts",
-            "tsConfig": "tsconfig.app.json",
+            "browser": "apps/angular-app/src/main.ts",
+            "tsConfig": "apps/angular-app/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "apps/angular-app/src",
+                "libs/styles/src/lib",
+                "libs"
+              ]
+            },
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "apps/angular-app/public"
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "apps/angular-app/src/styles.scss"
             ]
           },
           "configurations": {
@@ -61,16 +69,94 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "andy-ui:build:production"
+              "buildTarget": "omnifex-ui:build:production"
             },
             "development": {
-              "buildTarget": "andy-ui:build:development"
+              "buildTarget": "omnifex-ui:build:development"
             }
           },
           "defaultConfiguration": "development"
         },
         "test": {
           "builder": "@angular/build:unit-test"
+        }
+      }
+    },
+    "identity": {
+      "projectType": "library",
+      "root": "libs/identity",
+      "sourceRoot": "libs/identity/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/identity/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/identity/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "libs/identity/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "styles": {
+      "projectType": "library",
+      "root": "libs/styles",
+      "sourceRoot": "libs/styles/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/styles/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/styles/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "libs/styles/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "ui-components": {
+      "projectType": "library",
+      "root": "libs/ui-components",
+      "sourceRoot": "libs/ui-components/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/ui-components/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/ui-components/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "libs/ui-components/tsconfig.spec.json"
+          }
         }
       }
     }

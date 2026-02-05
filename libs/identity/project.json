@@ -1,0 +1,42 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "@omnifex/identity",
+  "projectType": "library",
+  "sourceRoot": "libs/identity/src",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/identity",
+        "main": "libs/identity/src/public-api.ts",
+        "tsConfig": "libs/identity/tsconfig.lib.prod.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/identity/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/identity/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": ["libs/identity/**/*.ts"],
+        "maxWarnings": 0
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/libs/identity"],
+      "options": {
+        "jestConfig": "libs/identity/jest.config.cjs",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": ["type:identity"]
+}

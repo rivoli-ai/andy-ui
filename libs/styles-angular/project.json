@@ -1,0 +1,59 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "@omnifex/styles-angular",
+  "projectType": "library",
+  "sourceRoot": "libs/styles-angular/src",
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "outputs": ["{workspaceRoot}/dist/styles-angular"],
+      "options": {
+        "commands": [
+          "nx run @omnifex/styles-angular:build:ng-packagr",
+          "node tools/scripts/copy-file.mjs libs/styles-angular/src/theme.css dist/styles-angular/src"
+        ],
+        "parallel": false
+      },
+      "configurations": {
+        "production": {},
+        "development": {}
+      },
+      "defaultConfiguration": "production"
+    },
+    "build:ng-packagr": {
+      "executor": "@nx/angular:ng-packagr-lite",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "dependsOn": ["@omnifex/styles:build"],
+      "options": {
+        "project": "libs/styles-angular/ng-package.json",
+        "tsConfig": "libs/styles-angular/tsconfig.lib.prod.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/styles-angular/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/styles-angular/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": ["libs/styles-angular/**/*.ts"],
+        "maxWarnings": 0
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/libs/styles-angular"],
+      "options": {
+        "jestConfig": "libs/styles-angular/jest.config.cjs",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": ["type:styles", "framework:angular"],
+  "implicitDependencies": ["@omnifex/styles"]
+}

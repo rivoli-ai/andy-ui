@@ -1,0 +1,10 @@
+dist
+coverage
+tmp
+.angular
+.vite
+.storybook
+storybook-static
+**/*.tsbuildinfo
+**/.turbo
+**/.cache

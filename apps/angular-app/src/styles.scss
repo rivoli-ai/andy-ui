@@ -1,0 +1,68 @@
+/* Global Styles */
+
+// @use rules must come before any @import rules
+// SCSS files should use @use (with * to make CSS variables globally available like @import)
+@use './theme-overrides.scss' as *;
+
+// External URL imports must use @import (not supported by @use)
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+// CSS file imports must use @import (not supported by @use)
+// Import Theme CSS Variables (must be before Tailwind so variables are available)
+@import '../../../libs/styles/src/lib/theme.css';
+
+// Import Tailwind CSS (this generates @layer rules, so it must come after other imports)
+@import './tailwind.css';
+
+// Base styles (minimal, most handled by Tailwind)
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.625;
+  color: var(--theme-text-primary);
+  background-color: var(--theme-bg-secondary);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+// Focus styles
+:focus-visible {
+  outline: 2px solid var(--theme-accent-primary);
+  outline-offset: 2px;
+}
+
+// Selection color
+::selection {
+  background-color: var(--theme-accent-primary);
+  color: var(--theme-text-inverse);
+}
+
+// Links
+a {
+  color: var(--theme-accent-primary);
+  text-decoration: none;
+  
+  &:hover {
+    text-decoration: underline;
+    color: var(--theme-accent-hover);
+  }
+}
+
+// Buttons base
+button {
+  font-family: inherit;
+  cursor: pointer;
+}

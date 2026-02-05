@@ -7,7 +7,7 @@
 /bazel-out
 
 # Node
-/node_modules
+**/node_modules/
 npm-debug.log
 yarn-error.log
 
@@ -29,6 +29,9 @@ yarn-error.log
 .history/*
 
 # Miscellaneous
+.angular
+.vite
+.nx
 /.angular/cache
 .sass-cache/
 /connect.lock
@@ -41,3 +44,63 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+
+# .NET (omnifex-duende-identity-server)
+**/bin/
+**/obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.db
+*.db-shm
+*.db-wal
+
+# IdentityServer signing keys (sensitive!)
+**/keys/
+
+# .NET build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# NuGet
+*.nupkg
+*.snupkg
+.nuget/
+nuget.exe
+
+# Rider
+.idea/
+*.sln.iml
+
+.pnpm-store/*
+
+.nx/cache
+.nx/workspace-data
+
+# Test coverage
+coverage/
+*.lcov
+
+# Playwright
+playwright-report/
+test-results/
+playwright/.cache/

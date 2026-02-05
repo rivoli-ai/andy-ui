@@ -1,0 +1,32 @@
+{
+  "name": "@omnifex/identity",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "./src/public-api.js",
+  "types": "./src/public-api.d.ts",
+  "exports": {
+    ".": {
+      "types": "./src/public-api.d.ts",
+      "import": "./src/public-api.js"
+    }
+  },
+  "files": [
+    "src/**/*.js",
+    "src/**/*.d.ts",
+    "README.md"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rivoli-ai/omnifex-ui.git",
+    "directory": "libs/identity"
+  },
+  "dependencies": {
+    "oidc-client-ts": "^3.4.1",
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}

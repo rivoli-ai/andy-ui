@@ -1,0 +1,96 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "angular-app",
+  "projectType": "application",
+  "sourceRoot": "apps/angular-app/src",
+  "targets": {
+      "build": {
+      "executor": "@nx/angular:application",
+      "dependsOn": [
+        "@omnifex/identity-angular:build",
+        "@omnifex/styles-angular:build"
+      ],
+      "options": {
+        "outputPath": "dist/apps/angular-app",
+        "browser": "apps/angular-app/src/main.ts",
+        "tsConfig": "apps/angular-app/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "stylePreprocessorOptions": {
+          "includePaths": [
+            "apps/angular-app/src"
+          ]
+        },
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "apps/angular-app/public"
+          }
+        ],
+        "styles": [
+          "apps/angular-app/src/styles.scss"
+        ],
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kB",
+              "maximumError": "1MB"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "4kB",
+              "maximumError": "8kB"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@nx/angular:dev-server",
+      "options": {
+        "buildTarget": "angular-app:build:development",
+        "port": 4200,
+        "host": "localhost"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "angular-app:build:production"
+        },
+        "development": {
+          "buildTarget": "angular-app:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/apps/angular-app"],
+      "options": {
+        "jestConfig": "apps/angular-app/jest.config.cjs",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": ["apps/angular-app/**/*.ts"],
+        "maxWarnings": 0
+      }
+    }
+  },
+  "implicitDependencies": [
+    "@omnifex/styles-angular",
+    "@omnifex/identity-angular",
+    "@omnifex/ui-components"
+  ],
+  "tags": ["type:app"]
+}

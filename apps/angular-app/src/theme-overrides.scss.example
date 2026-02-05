@@ -1,0 +1,90 @@
+/**
+ * Theme Overrides Example
+ * 
+ * Copy this file to theme-overrides.scss and customize your theme colors.
+ * Then import it in styles.scss after theme.css
+ * 
+ * Usage in styles.scss:
+ *   @import '../projects/styles/src/lib/theme.css';
+ *   @import './theme-overrides.scss';  // Add this line
+ */
+
+:root {
+  /* Light Theme Overrides */
+  
+  // Background colors
+  // --theme-bg-primary: #ffffff;
+  // --theme-bg-secondary: #f8fafc;
+  // --theme-bg-tertiary: #f1f5f9;
+  // --theme-bg-inverse: #0f172a;
+
+  // Text colors
+  // --theme-text-primary: #0f172a;
+  // --theme-text-secondary: #475569;
+  // --theme-text-tertiary: #64748b;
+  // --theme-text-inverse: #ffffff;
+  // --theme-text-muted: #94a3b8;
+
+  // Border colors
+  // --theme-border-primary: #e2e8f0;
+  // --theme-border-secondary: #cbd5e1;
+  // --theme-border-accent: #4f46e5;
+
+  // Accent colors
+  // --theme-accent-primary: #4f46e5;
+  // --theme-accent-secondary: #6366f1;
+  // --theme-accent-hover: #4338ca;
+  // --theme-accent-light: #e0e7ff;
+
+  // Status colors
+  // --theme-status-success: #10b981;
+  // --theme-status-warning: #f59e0b;
+  // --theme-status-error: #ef4444;
+  // --theme-status-info: #3b82f6;
+
+  // Surface colors (cards, modals, etc.)
+  // --theme-surface-primary: #ffffff;
+  // --theme-surface-secondary: #f8fafc;
+  // --theme-surface-elevated: #ffffff;
+  // --theme-surface-hover: #f1f5f9;
+}
+
+.dark {
+  /* Dark Theme Overrides */
+  
+  // Background colors
+  // --theme-bg-primary: #0f172a;
+  // --theme-bg-secondary: #1e293b;
+  // --theme-bg-tertiary: #334155;
+  // --theme-bg-inverse: #ffffff;
+
+  // Text colors
+  // --theme-text-primary: #f1f5f9;
+  // --theme-text-secondary: #cbd5e1;
+  // --theme-text-tertiary: #94a3b8;
+  // --theme-text-inverse: #0f172a;
+  // --theme-text-muted: #64748b;
+
+  // Border colors
+  // --theme-border-primary: #334155;
+  // --theme-border-secondary: #475569;
+  // --theme-border-accent: #6366f1;
+
+  // Accent colors
+  // --theme-accent-primary: #6366f1;
+  // --theme-accent-secondary: #818cf8;
+  // --theme-accent-hover: #818cf8;
+  // --theme-accent-light: #312e81;
+
+  // Status colors
+  // --theme-status-success: #10b981;
+  // --theme-status-warning: #f59e0b;
+  // --theme-status-error: #ef4444;
+  // --theme-status-info: #3b82f6;
+
+  // Surface colors
+  // --theme-surface-primary: #1e293b;
+  // --theme-surface-secondary: #334155;
+  // --theme-surface-elevated: #475569;
+  // --theme-surface-hover: #334155;
+}

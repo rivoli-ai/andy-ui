@@ -1,0 +1,107 @@
+<!-- Main Content -->
+<main class="flex-1 max-w-7xl mx-auto px-8 py-12 w-full box-border">
+  <div class="text-center mb-12">
+    <h1 class="text-5xl font-extrabold text-theme-text-primary mb-4 leading-tight sm:text-3xl transition-colors">
+      Welcome to <span class="theme-gradient-text">Omnifex</span>
+    </h1>
+    <p class="text-xl text-theme-text-secondary max-w-lg mx-auto sm:text-base transition-colors mb-6">
+      Your modern Angular application with secure authentication
+    </p>
+    <div class="flex gap-4 justify-center items-center flex-wrap">
+      <omnifex-button [variant]="Variant.PRIMARY">Primary Button</omnifex-button>
+      <omnifex-button [variant]="Variant.SECONDARY">Secondary Button</omnifex-button>
+      <omnifex-button [variant]="Variant.PRIMARY" [appearance]="Appearance.OUTLINED">Outline Button</omnifex-button>
+    </div>
+    <div class="flex gap-2 justify-center items-center flex-wrap mt-4">
+      <omnifex-badge [variant]="Variant.PRIMARY">Primary</omnifex-badge>
+      <omnifex-badge [variant]="Variant.SECONDARY">Secondary</omnifex-badge>
+      <omnifex-badge [variant]="Variant.TERTIARY">Tertiary</omnifex-badge>
+      <omnifex-badge [variant]="Variant.INVERSE">Inverse</omnifex-badge>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <app-location />
+
+    <!-- Admin-only card -->
+    <omnifex-card
+      *hasRole="'admin'"
+      [appearance]="Appearance.OUTLINED"
+      [variant]="Variant.PRIMARY"
+      icon="👑"
+      card-title="Admin Panel"
+      description="This content is only visible to administrators."
+      [items]="['User management', 'System configuration', 'Audit logs', 'Full access control']"
+    ></omnifex-card>
+
+    <!-- Manager-only card -->
+    <omnifex-card
+      *hasRole="'manager'"
+      [appearance]="Appearance.OUTLINED"
+      [variant]="Variant.SECONDARY"
+      icon="📊"
+      card-title="Manager Dashboard"
+      description="This content is only visible to managers."
+      [items]="['Team oversight', 'Reports & analytics', 'Approval workflows']"
+    ></omnifex-card>
+
+    <!-- Card visible to both admin and manager -->
+    <omnifex-card
+      *hasRole="['admin', 'manager']"
+      [appearance]="Appearance.OUTLINED"
+      [variant]="Variant.TERTIARY"
+      icon="📈"
+      card-title="Leadership Insights"
+      description="Visible to admins and managers."
+      [items]="['Performance metrics', 'Strategic planning', 'Resource allocation']"
+    ></omnifex-card>
+
+    <!-- User-only card (all authenticated users have this role) -->
+    <omnifex-card
+      *hasRole="'user'"
+      [appearance]="Appearance.FILLED"
+      [variant]="Variant.PRIMARY"
+      icon="👤"
+      card-title="User Content"
+      description="This content is visible to all authenticated users."
+      [items]="['Personal dashboard', 'Profile settings', 'Activity history']"
+    ></omnifex-card>
+
+    <!-- Example cards using Variant enum -->
+    <omnifex-card
+      [appearance]="Appearance.FILLED"
+      [variant]="Variant.PRIMARY"
+      icon="⭐"
+      card-title="Primary Variant Card"
+      description="This card uses the PRIMARY variant from the Variant enum."
+      [items]="['Primary styling', 'Accent colors', 'Light background']"
+    ></omnifex-card>
+
+    <omnifex-card
+      [appearance]="Appearance.FILLED"
+      [variant]="Variant.SECONDARY"
+      icon="✨"
+      card-title="Secondary Variant Card"
+      description="This card uses the SECONDARY variant from the Variant enum."
+      [items]="['Secondary styling', 'Surface colors', 'Subtle background']"
+    ></omnifex-card>
+
+    <omnifex-card
+      [appearance]="Appearance.FILLED"
+      [variant]="Variant.TERTIARY"
+      icon="🎨"
+      card-title="Tertiary Variant Card"
+      description="This card uses the TERTIARY variant from the Variant enum."
+      [items]="['Tertiary styling', 'Muted colors', 'Background tertiary']"
+    ></omnifex-card>
+
+    <omnifex-card
+      [appearance]="Appearance.FILLED"
+      [variant]="Variant.INVERSE"
+      icon="🌙"
+      card-title="Inverse Variant Card"
+      description="This card uses the INVERSE variant from the Variant enum."
+      [items]="['Inverse styling', 'Dark background', 'Light text']"
+    ></omnifex-card>
+  </div>
+</main>

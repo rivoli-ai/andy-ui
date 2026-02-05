@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@omnifex/identity": ["../../libs/identity/src/public-api.ts"],
+      "@omnifex/identity-react": ["../../libs/identity-react/src/public-api.ts"],
+      "@omnifex/styles": ["../../libs/styles/src/public-api.ts"],
+      "@omnifex/styles-react": ["../../libs/styles-react/src/public-api.ts"],
+      "@omnifex/ui-components": ["../../libs/ui-components/src/public-api.ts"],
+      "@omnifex/ui-components/loader": ["../../libs/ui-components/loader"]
+    }
+  },
+  "include": [
+    "src",
+    "src/types/**/*",
+    "../../libs/**/*.ts",
+    "../../libs/**/*.tsx"
+  ]
+}

@@ -1,0 +1,18 @@
+// Minimal component-specific styles
+// Most styles are now handled by Tailwind CSS and theme variables
+
+// Theme gradient text using accent colors
+.theme-gradient-text {
+  background: linear-gradient(
+    to right,
+    var(--theme-accent-primary),
+    var(--theme-accent-secondary)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+// Card component handles its own styling
+// Role badges are handled in layout component

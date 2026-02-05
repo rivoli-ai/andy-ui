@@ -1,0 +1,12 @@
+/**
+ * Theme CSS Variables
+ * 
+ * This file imports theme variables from the styles library.
+ * These variables are used by all ui-components.
+ * 
+ * Note: CSS custom properties (CSS variables) can pierce through shadow DOM,
+ * so these variables will be available to all web components as long as
+ * this file or the styles library theme.css is loaded in the main application.
+ */
+
+@import '../../../styles/src/lib/theme.css';

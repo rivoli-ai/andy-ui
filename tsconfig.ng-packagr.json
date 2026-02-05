@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "paths": {
+      "@omnifex/identity": ["./dist/identity/src/public-api"],
+      "@omnifex/identity-angular": ["./dist/identity-angular"],
+      "@omnifex/identity-react": ["./dist/identity-react/src/public-api"],
+      "@omnifex/styles": ["./dist/styles/src/public-api"],
+      "@omnifex/styles-angular": ["./dist/styles-angular"],
+      "@omnifex/styles-react": ["./dist/styles-react/src/public-api"],
+      "@omnifex/ui-components": ["./dist/ui-components/src/public-api"],
+      "@omnifex/ui-components/loader": ["./dist/ui-components/dist/esm/loader"]
+    }
+  }
+}
+

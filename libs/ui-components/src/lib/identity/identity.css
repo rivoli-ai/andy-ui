@@ -1,0 +1,43 @@
+:host {
+  display: inline-flex;
+  align-items: center;
+  min-width: fit-content;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.identity-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.user-name {
+  font-weight: 500;
+  color: var(--theme-text-primary);
+  transition: color 0.2s ease;
+}
+
+.loading {
+  color: var(--theme-text-secondary);
+}
+
+/* Ensure omnifex-button is visible and properly styled */
+omnifex-button {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  min-width: fit-content;
+}
+
+/* Ensure button content is visible */
+omnifex-button::part(button) {
+  display: inline-block !important;
+}

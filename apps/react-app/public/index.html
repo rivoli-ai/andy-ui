@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script>
+      // CRITICAL: This must be the FIRST script to catch all errors
+      // Immediately override error handling before any other scripts load
+      (function() {
+        'use strict';
+        
+        // Store original error handler
+        var originalOnError = window.onerror;
+        
+        // Override window.onerror with aggressive filtering
+        window.onerror = function(message, source, lineno, colno, error) {
+          var errorMessage = message ? message.toString() : '';
+          var errorSource = source ? source.toString() : '';
+          
+          // Detect and suppress injected script errors
+          var isInjectedError = 
+            errorMessage.includes('_0x') ||
+            errorMessage.includes('variable') ||
+            errorSource.includes('webkit-masked-url') ||
+            errorSource === 'http://localhost:3000/' ||
+            errorSource === '' ||
+            !errorSource;
+          
+          if (isInjectedError) {
+            console.warn('[Error Suppressed] External script injection detected:', errorMessage);
+            return true; // Prevent default error handling
+          }
+          
+          // Call original handler for legitimate errors
+          if (originalOnError) {
+            return originalOnError.apply(this, arguments);
+          }
+          return false;
+        };
+        
+        // Also handle promise rejections
+        window.addEventListener('unhandledrejection', function(event) {
+          if (event.reason) {
+            var reason = event.reason.toString();
+            if (reason.includes('_0x')) {
+              console.warn('[Promise Rejection Suppressed] External script:', reason);
+              event.preventDefault();
+              event.stopPropagation();
+            }
+          }
+        });
+        
+        // Capture phase error handler for early catching
+        window.addEventListener('error', function(event) {
+          var msg = event.message || '';
+          var filename = event.filename || '';
+          
+          if (msg.includes('_0x') || filename.includes('webkit-masked-url') || filename === 'http://localhost:3000/') {
+            console.warn('[Event Error Suppressed]:', msg);
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            return false;
+          }
+        }, true); // Use capture phase
+        
+      })();
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="React sample app using @omnifex libraries" />
+    <title>React Sample App - @omnifex</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+</html>

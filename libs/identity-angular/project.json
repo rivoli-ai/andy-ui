@@ -1,0 +1,43 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "@omnifex/identity-angular",
+  "projectType": "library",
+  "sourceRoot": "libs/identity-angular/src",
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:ng-packagr-lite",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "dependsOn": ["@omnifex/identity:build"],
+      "options": {
+        "project": "libs/identity-angular/ng-package.json",
+        "tsConfig": "libs/identity-angular/tsconfig.lib.prod.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/identity-angular/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/identity-angular/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": ["libs/identity-angular/**/*.ts"],
+        "maxWarnings": 0
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/libs/identity-angular"],
+      "options": {
+        "jestConfig": "libs/identity-angular/jest.config.cjs",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": ["type:identity", "framework:angular"],
+  "implicitDependencies": ["@omnifex/identity"]
+}

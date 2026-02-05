@@ -1,0 +1,31 @@
+{
+  "name": "@omnifex/identity-angular",
+  "version": "0.0.1",
+  "private": false,
+  "type": "module",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rivoli-ai/omnifex-ui.git",
+    "directory": "libs/identity-angular"
+  },
+  "dependencies": {
+    "@omnifex/identity": "workspace:*",
+    "@angular/common": "^21.0.6",
+    "tslib": "^2.3.0"
+  },
+  "peerDependencies": {
+    "@angular/core": "^17.0.0 || ^18.0.0 || ^19.0.0 || ^20.0.0 || ^21.0.0",
+    "@angular/common": "^17.0.0 || ^18.0.0 || ^19.0.0 || ^20.0.0 || ^21.0.0",
+    "@angular/router": "^17.0.0 || ^18.0.0 || ^19.0.0 || ^20.0.0 || ^21.0.0"
+  },
+  "devDependencies": {
+    "@angular/common": "^21.0.6",
+    "@angular/core": "^21.0.6",
+    "@angular/router": "^21.0.6"
+  },
+  "sideEffects": false
+}

@@ -1,0 +1,45 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "react-app",
+  "projectType": "application",
+  "sourceRoot": "apps/react-app/src",
+  "targets": {
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "../../node_modules/.bin/pnpm --filter react-app run start",
+        "cwd": "apps/react-app"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["@omnifex/ui-components:build"],
+      "options": {
+        "command": "../../node_modules/.bin/pnpm --filter react-app run build",
+        "cwd": "apps/react-app"
+      },
+      "outputs": ["{projectRoot}/build"]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/apps/react-app"],
+      "options": {
+        "jestConfig": "apps/react-app/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "../../node_modules/.bin/pnpm --filter react-app exec eslint src --ext .ts,.tsx --max-warnings=0",
+        "cwd": "apps/react-app"
+      }
+    }
+  },
+  "implicitDependencies": [
+    "@omnifex/styles-react",
+    "@omnifex/identity-react",
+    "@omnifex/ui-components"
+  ],
+  "tags": ["type:app"]
+}

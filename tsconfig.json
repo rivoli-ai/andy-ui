@@ -4,6 +4,28 @@
   "compileOnSave": false,
   "compilerOptions": {
     "strict": true,
+    "paths": {
+      "@omnifex/identity-angular": [
+        "./dist/identity-angular/public-api",
+        "./dist/identity-angular/esm2022/rivoli-ai-identity-angular"
+      ],
+      "@omnifex/identity-react": [
+        "./dist/identity-react/src/public-api"
+      ],
+      "@omnifex/styles": [
+        "./dist/styles/src/public-api"
+      ],
+      "@omnifex/styles-angular": [
+        "./dist/styles-angular/public-api",
+        "./dist/styles-angular/esm2022/rivoli-ai-styles-angular"
+      ],
+      "@omnifex/ui-components": [
+        "./dist/ui-components/src/public-api"
+      ],
+      "@omnifex/ui-components/loader": [
+        "./dist/ui-components/esm/loader"
+      ]
+    },
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
@@ -24,10 +46,37 @@
   "files": [],
   "references": [
     {
-      "path": "./tsconfig.app.json"
+      "path": "./apps/angular-app/tsconfig.app.json"
     },
     {
-      "path": "./tsconfig.spec.json"
+      "path": "./apps/angular-app/tsconfig.spec.json"
+    },
+      {
+        "path": "./libs/identity/tsconfig.lib.json"
+      },
+      {
+        "path": "./libs/identity/tsconfig.spec.json"
+      },
+      {
+        "path": "./libs/identity-angular/tsconfig.lib.json"
+      },
+      {
+        "path": "./libs/identity-react/tsconfig.lib.json"
+      },
+      {
+        "path": "./libs/styles/tsconfig.lib.json"
+      },
+      {
+        "path": "./libs/styles/tsconfig.spec.json"
+      },
+      {
+        "path": "./libs/styles-angular/tsconfig.lib.json"
+      },
+    {
+      "path": "./libs/ui-components/tsconfig.lib.json"
+    },
+    {
+      "path": "./libs/ui-components/tsconfig.spec.json"
     }
   ]
 }
