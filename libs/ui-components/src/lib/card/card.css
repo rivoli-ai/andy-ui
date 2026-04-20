@@ -6,7 +6,7 @@
 .card-default {
   background-color: var(--theme-surface-primary);
   border: 1px solid var(--theme-border-primary);
-  border-radius: 0.75rem;
+  border-radius: var(--radius-lg);
   padding: 1.5rem;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   transition: all 0.2s ease;
@@ -20,7 +20,7 @@
 
 /* Card title */
 .card-title {
-  font-size: 1.25rem;
+  font-size: var(--font-size-lg);
   font-weight: 600;
   margin-bottom: 0.75rem;
   transition: color 0.2s ease;
@@ -69,38 +69,42 @@
 
 /* Variant enum styles */
 .card-variant-primary {
-  background-color: var(--theme-accent-light, #e0e7ff);
+  background-color: var(--theme-accent-light);
 }
 
 .card-variant-secondary {
-  background-color: var(--theme-surface-secondary, #f8fafc);
+  background-color: var(--theme-surface-secondary);
 }
 
 .card-variant-tertiary {
-  background-color: var(--theme-bg-tertiary, #f1f5f9);
+  background-color: var(--theme-bg-tertiary);
 }
 
 .card-variant-inverse {
-  background-color: var(--theme-bg-inverse, #0f172a) !important;
-  color: var(--theme-text-inverse, #ffffff) !important;
+  background-color: var(--theme-bg-inverse) !important;
+  color: var(--theme-text-on-inverse-primary) !important;
 }
 
 /* Inverse variant text colors - ensure all text is visible on dark background */
 .card-variant-inverse .card-title {
-  color: var(--theme-text-inverse, #ffffff) !important;
+  color: var(--theme-text-on-inverse-primary) !important;
 }
 
 .card-variant-inverse .card-description {
-  color: var(--theme-text-inverse, #e2e8f0) !important;
+  color: var(--theme-text-on-inverse-secondary) !important;
 }
 
 .card-variant-inverse .card-item {
-  color: var(--theme-text-inverse, #e2e8f0) !important;
-  border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+  color: var(--theme-text-on-inverse-secondary) !important;
+  border-bottom-color: color-mix(
+    in srgb,
+    var(--theme-text-on-inverse-primary) 10%,
+    transparent
+  ) !important;
 }
 
 .card-variant-inverse .card-item-check {
-  color: var(--theme-accent-primary, #818cf8) !important;
+  color: var(--theme-accent-primary) !important;
 }
 
 /* Border-left only for outlined appearance */

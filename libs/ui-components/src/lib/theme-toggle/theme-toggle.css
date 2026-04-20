@@ -4,10 +4,10 @@
 
 .theme-toggle-button {
   padding: 0.5rem;
-  border-radius: 0.5rem;
-  background-color: var(--theme-surface-secondary, #f3f4f6);
-  color: var(--theme-text-primary, #111827);
-  border: 1px solid var(--theme-border-primary, #e5e7eb);
+  border-radius: var(--radius-md);
+  background-color: var(--theme-surface-secondary);
+  color: var(--theme-text-primary);
+  border: 1px solid var(--theme-border-primary);
   cursor: pointer;
   transition: background-color 0.2s, color 0.2s, border-color 0.2s;
   display: inline-flex;
@@ -16,11 +16,11 @@
 }
 
 .theme-toggle-button:hover {
-  background-color: var(--theme-surface-hover, #e5e7eb);
+  background-color: var(--theme-surface-hover);
 }
 
 .icon {
-  font-size: 1.25rem;
+  font-size: var(--font-size-lg);
   line-height: 1;
   display: inline-block;
 }

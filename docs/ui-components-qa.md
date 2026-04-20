@@ -52,15 +52,15 @@ corepack pnpm nx run angular-app-e2e:e2e:touch
 
 ## Current baseline (from `nx run @omnifex/ui-components:stylelint`)
 
-- **0 errors** (no hard violations).
-- **31 warnings**:
-  - 18 hex literals inside `var(--token, #fallback)` expressions — tolerated by
-    default (`allowFallback: true`), tracked for removal in Phase 1.5.
-  - 13 non-token raw values on `font-size`, `border-radius`, `z-index`,
-    `border-*color`. Tracked for replacement in Phase 1.5 against the
-    forthcoming `@omnifex/styles` token set (UI-0).
+- **0 errors, 0 warnings** — all `libs/ui-components/**/*.css` files pass the
+  four omnifex stylelint rules.
+- **Token source:** `libs/styles/src/lib/theme.css` (imported by
+  `libs/ui-components/src/global/theme.css`) now includes the structural scale
+  (`--font-size-*`, `--radius-*`, `--z-sticky`) and inverse-surface text tokens
+  (`--theme-text-on-inverse-primary` / `--theme-text-on-inverse-secondary`).
 
-See `docs/UI_AUDIT_REPORT.md` for the full per-file breakdown.
+See `docs/UI_AUDIT_REPORT.md` for the per-file dependency-free audit (should
+show 0 hard errors and 0 non-token warnings).
 
 ## How to fix the common violations
 

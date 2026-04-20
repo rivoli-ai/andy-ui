@@ -39,6 +39,26 @@
   --theme-surface-secondary: #f8fafc;
   --theme-surface-elevated: #ffffff;
   --theme-surface-hover: #f1f5f9;
+
+  /* Typography scale (rem — same in light/dark) */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 1.875rem;
+
+  /* Border radii */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-full: 9999px;
+
+  /* Stacking contexts */
+  --z-sticky: 50;
+
+  /* Text on inverse surfaces (--theme-bg-inverse): dark bg in light theme */
+  --theme-text-on-inverse-primary: #ffffff;
+  --theme-text-on-inverse-secondary: #e2e8f0;
 }
 
 .dark {
@@ -72,4 +92,8 @@
   --theme-surface-secondary: #334155;
   --theme-surface-elevated: #475569;
   --theme-surface-hover: #334155;
+
+  /* Text on inverse surfaces: light bg in dark theme */
+  --theme-text-on-inverse-primary: #0f172a;
+  --theme-text-on-inverse-secondary: #475569;
 }
