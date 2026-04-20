@@ -1,0 +1,22 @@
+{
+  "plugins": ["./tools/stylelint-plugin-omnifex"],
+  "rules": {},
+  "overrides": [
+    {
+      "files": ["libs/ui-components/**/*.css"],
+      "rules": {
+        "omnifex/no-hex-in-components": [true, { "allowFallback": true }],
+        "omnifex/tokens-only": [true],
+        "omnifex/mobile-first-media": [true],
+        "omnifex/no-hover-only-affordance": [true]
+      }
+    }
+  ],
+  "ignoreFiles": [
+    "**/dist/**",
+    "**/node_modules/**",
+    "**/.nx/**",
+    "**/storybook-static/**",
+    "**/coverage/**"
+  ]
+}

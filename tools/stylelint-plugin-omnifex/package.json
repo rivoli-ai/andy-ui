@@ -1,0 +1,14 @@
+{
+  "name": "stylelint-plugin-omnifex",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Internal stylelint rules enforcing Omnifex UI regression-prevention rules (no hex literals, tokens only, mobile-first media queries, no hover-only affordances).",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "rules"
+  ],
+  "peerDependencies": {
+    "stylelint": ">=15 <17"
+  }
+}

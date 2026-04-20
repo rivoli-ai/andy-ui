@@ -1,0 +1,7 @@
+dist
+node_modules
+.nx
+storybook-static
+coverage
+tmp
+.angular
