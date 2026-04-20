@@ -26,6 +26,22 @@
       }
     },
 
+    "stylelint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{workspaceRoot}",
+        "command": "stylelint \"libs/ui-components/**/*.css\""
+      }
+    },
+
+    "audit": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{workspaceRoot}",
+        "command": "node tools/scripts/audit-ui-components.mjs"
+      }
+    },
+
     "test": {
       "executor": "nx:run-commands",
       "options": {
