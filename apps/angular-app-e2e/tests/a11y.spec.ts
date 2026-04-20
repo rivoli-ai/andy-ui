@@ -15,13 +15,27 @@ import AxeBuilder from '@axe-core/playwright';
 const ROUTES = ['/', '/callback'];
 const BLOCKING_IMPACTS = new Set(['serious', 'critical']);
 
+/** Analyze only the Angular bootstrap host — excludes OIDC silent-renew iframes and other body-level siblings (extensions, overlays) that axe would otherwise crawl. */
+const ROOT_SELECTOR = 'app-root';
+
 async function scan(page: Page, url: string) {
-  await page.goto(url, { waitUntil: 'domcontentloaded' });
-  // Wait for the Omnifex shell to render at least one shadow root before scanning.
-  await page.waitForSelector('app-root, omnifex-callback, omnifex-header', {
-    timeout: 5_000,
-  });
+  await page.goto(url, { waitUntil: 'load' });
+  await page.waitForSelector(ROOT_SELECTOR, { state: 'attached', timeout: 15_000 });
+  // `/callback` uses AppCallbackComponent outside Layout (no header); `/` goes through Layout.
+  // Web components may not satisfy Playwright's visibility heuristic until hydrated — use `attached`.
+  if (url.includes('callback')) {
+    await page.waitForSelector(`${ROOT_SELECTOR} omnifex-callback`, {
+      state: 'attached',
+      timeout: 15_000,
+    });
+  } else {
+    await page.waitForSelector(`${ROOT_SELECTOR} omnifex-header`, {
+      state: 'attached',
+      timeout: 15_000,
+    });
+  }
   return new AxeBuilder({ page })
+    .include(ROOT_SELECTOR)
     .withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'])
     .analyze();
 }

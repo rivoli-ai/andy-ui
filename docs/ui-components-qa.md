@@ -41,7 +41,7 @@ corepack pnpm nx run @omnifex/ui-components:audit
 # Stylelint plugin self-tests (run against real stylelint)
 node tools/stylelint-plugin-omnifex/__tests__/rules.spec.js
 
-# Accessibility gate (requires a running identity server + app)
+# Accessibility gate (Playwright starts `angular-app:serve-e2e` on http://localhost:4321 automatically)
 corepack pnpm nx run angular-app-e2e:e2e:a11y
 corepack pnpm nx run react-app-e2e:e2e:a11y
 

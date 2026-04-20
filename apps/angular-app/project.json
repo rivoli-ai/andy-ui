@@ -71,6 +71,23 @@
       },
       "defaultConfiguration": "development"
     },
+    "serve-e2e": {
+      "executor": "@nx/angular:dev-server",
+      "options": {
+        "buildTarget": "angular-app:build:development",
+        "port": 4321,
+        "host": "localhost"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "angular-app:build:production"
+        },
+        "development": {
+          "buildTarget": "angular-app:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/apps/angular-app"],

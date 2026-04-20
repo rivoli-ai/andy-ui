@@ -25,7 +25,11 @@ internal static class HostingExtensions
         {
             options.AddDefaultPolicy(policy =>
             {
-                policy.WithOrigins("http://localhost:4200", "http://localhost:3000")
+                policy.WithOrigins(
+                        "http://localhost:4200",
+                        "http://localhost:4201",
+                        "http://localhost:4321",
+                        "http://localhost:3000")
                       .AllowAnyHeader()
                       .AllowAnyMethod()
                       .AllowCredentials();
@@ -55,7 +59,7 @@ internal static class HostingExtensions
 
                 // register your IdentityServer with Google at https://console.developers.google.com
                 // enable the Google+ API
-                // set the redirect URI to https://localhost:5001/signin-google
+                // set the redirect URI to https://localhost:5002/signin-google
                 options.ClientId = "copy client ID from Google here";
                 options.ClientSecret = "copy client secret from Google here";
             });

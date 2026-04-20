@@ -55,24 +55,32 @@ public static class Config
                 RequirePkce = true,
                 
                 // Where to redirect after login
-                RedirectUris = 
-                { 
+                RedirectUris =
+                {
                     "http://localhost:4200/callback",
                     "http://localhost:4200/silent-refresh.html",
+                    "http://localhost:4201/callback",
+                    "http://localhost:4201/silent-refresh.html",
+                    "http://localhost:4321/callback",
+                    "http://localhost:4321/silent-refresh.html",
                     "http://localhost:3000/callback"
                 },
                 
                 // Where to redirect after logout
-                PostLogoutRedirectUris = 
-                { 
+                PostLogoutRedirectUris =
+                {
                     "http://localhost:4200",
+                    "http://localhost:4201",
+                    "http://localhost:4321",
                     "http://localhost:3000"
                 },
                 
                 // Allowed CORS origins for token requests
-                AllowedCorsOrigins = 
-                { 
+                AllowedCorsOrigins =
+                {
                     "http://localhost:4200",
+                    "http://localhost:4201",
+                    "http://localhost:4321",
                     "http://localhost:3000"
                 },
                 

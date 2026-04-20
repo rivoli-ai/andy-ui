@@ -10,12 +10,18 @@ import AxeBuilder from '@axe-core/playwright';
 const ROUTES = ['/', '/callback'];
 const BLOCKING_IMPACTS = new Set(['serious', 'critical']);
 
+/** Scope to React mount node only — matches Angular e2e strategy (see angular-app-e2e/tests/a11y.spec.ts). */
+const ROOT_SELECTOR = '#root';
+
 async function scan(page: Page, url: string) {
-  await page.goto(url, { waitUntil: 'domcontentloaded' });
-  await page.waitForSelector('#root, omnifex-callback, omnifex-header', {
-    timeout: 5_000,
+  await page.goto(url, { waitUntil: 'load' });
+  await page.waitForSelector(ROOT_SELECTOR, { state: 'attached', timeout: 15_000 });
+  await page.waitForSelector(`${ROOT_SELECTOR} omnifex-header`, {
+    state: 'attached',
+    timeout: 15_000,
   });
   return new AxeBuilder({ page })
+    .include(ROOT_SELECTOR)
     .withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'])
     .analyze();
 }
