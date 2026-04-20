@@ -18,6 +18,27 @@
         "command": "playwright test --ui",
         "cwd": "apps/angular-app-e2e"
       }
+    },
+    "e2e:a11y": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "playwright test --grep=@a11y",
+        "cwd": "apps/angular-app-e2e"
+      }
+    },
+    "e2e:responsive": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "playwright test --grep=@responsive",
+        "cwd": "apps/angular-app-e2e"
+      }
+    },
+    "e2e:touch": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "playwright test --grep=@touch",
+        "cwd": "apps/angular-app-e2e"
+      }
     }
   },
   "tags": ["type:e2e"],
