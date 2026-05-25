@@ -3,24 +3,24 @@
   display: flex;
   flex-direction: column;
   background-color: var(--theme-bg-secondary);
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: var(--font-family-sans);
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .layout-header {
   background-color: var(--theme-surface-primary);
-  border-bottom: 1px solid var(--theme-border-primary);
+  border-bottom: var(--stroke-border) solid var(--theme-border-primary);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
-  z-index: 50;
+  z-index: var(--z-sticky);
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .layout-header-content {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 1rem 2rem;
+  padding: var(--space-4) var(--space-7);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -29,14 +29,16 @@
 .layout-logo {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 1.5rem;
-  font-weight: bold;
+  gap: var(--space-2);
+  font-size: var(--font-h7-size);
+  line-height: var(--font-h7-line-height);
+  font-weight: var(--font-h7-weight);
   color: var(--theme-text-primary);
 }
 
 .logo-icon {
-  font-size: 1.875rem;
+  font-size: var(--font-h6-size);
+  line-height: var(--font-h6-line-height);
 }
 
 .logo-text {
@@ -54,24 +56,24 @@
 .layout-nav {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: var(--space-4);
 }
 
 .roles-badge-container {
   display: flex;
-  gap: 0.5rem;
-  margin-right: 0.5rem;
+  gap: var(--space-2);
+  margin-right: var(--space-2);
 }
 
 .layout-main {
   flex: 1;
-  padding: 2rem;
+  padding: var(--space-page-inline);
 }
 
 .layout-footer {
   background-color: var(--theme-surface-primary);
-  border-top: 1px solid var(--theme-border-primary);
-  padding: 1.5rem 2rem;
+  border-top: var(--stroke-border) solid var(--theme-border-primary);
+  padding: var(--space-6) var(--space-7);
   text-align: center;
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
@@ -79,6 +81,7 @@
 .layout-footer p {
   margin: 0;
   color: var(--theme-text-secondary);
-  font-size: 0.875rem;
+  font-size: var(--text-label-size);
+  line-height: var(--text-label-line-height);
   transition: color 0.2s ease;
 }

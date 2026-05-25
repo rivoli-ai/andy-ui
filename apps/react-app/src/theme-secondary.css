@@ -1,0 +1,37 @@
+/**
+ * React app — Secondary brand theme (Andy UI magenta scale)
+ * Loaded after theme.css; remaps semantic tokens from Primary → Secondary.
+ */
+
+:root {
+  --theme-bg-inverse: var(--color-secondary-900);
+
+  --theme-border-accent: var(--color-secondary-500);
+
+  --theme-accent-primary: var(--color-secondary-500);
+  --theme-accent-secondary: var(--color-secondary-400);
+  --theme-accent-hover: var(--color-secondary-600);
+  --theme-accent-light: var(--color-secondary-100);
+
+  --theme-text-on-inverse-secondary: var(--color-secondary-100);
+}
+
+.dark {
+  --theme-bg-primary: var(--color-secondary-1000);
+  --theme-bg-secondary: var(--color-secondary-900);
+  --theme-bg-tertiary: var(--color-secondary-800);
+
+  --theme-border-primary: var(--color-secondary-700);
+  --theme-border-secondary: var(--color-secondary-600);
+  --theme-border-accent: var(--color-secondary-400);
+
+  --theme-accent-primary: var(--color-secondary-400);
+  --theme-accent-secondary: var(--color-secondary-300);
+  --theme-accent-hover: var(--color-secondary-200);
+  --theme-accent-light: var(--color-secondary-800);
+
+  --theme-surface-primary: var(--color-secondary-900);
+  --theme-surface-secondary: var(--color-secondary-800);
+  --theme-surface-elevated: var(--color-secondary-700);
+  --theme-surface-hover: var(--color-secondary-800);
+}

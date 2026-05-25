@@ -1,0 +1,23 @@
+/**
+ * Andy UI stroke (border-width) scale
+ * Source: Figma Andy-UI---Design-System (node 1:8917)
+ * https://www.figma.com/design/TcEuJHlNPkME9br19X1Qhx/Andy-UI---Design-System?node-id=1-8917&m=dev
+ *
+ * Token IDs (#0–#4) match Figma. Use --stroke-* widths with theme border colors.
+ */
+
+:root {
+  --stroke-0: 1px; /* #0 */
+  --stroke-1: 2px; /* #1 */
+  --stroke-2: 4px; /* #2 */
+  --stroke-3: 6px; /* #3 */
+  --stroke-4: 8px; /* #4 */
+
+  /* Semantic aliases */
+  --stroke-border: var(--stroke-0);
+  --stroke-divider: var(--stroke-0);
+  --stroke-focus: var(--stroke-1);
+  --stroke-emphasis: var(--stroke-2);
+  --stroke-strong: var(--stroke-3);
+  --stroke-heavy: var(--stroke-4);
+}

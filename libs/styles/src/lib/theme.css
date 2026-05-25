@@ -1,99 +1,148 @@
 /**
- * CSS Custom Properties for Theme Colors
- * 
- * This is the SINGLE SOURCE OF TRUTH for all theme colors.
- * These variables are dynamically updated based on the current theme.
- * 
- * To customize colors, edit the values below.
- * The :root selector defines light theme, .dark defines dark theme.
+ * Andy UI Design System — theme tokens
+ * Source: Figma Andy-UI---Design-System
+ * - Colors: node 1:7336
+ * - Spacing: node 1:8356
+ * - Radius: node 1:8750
+ * - Stroke: node 1:8917
+ * - Typography: node 1:8246
+ * https://www.figma.com/design/TcEuJHlNPkME9br19X1Qhx/Andy-UI---Design-System
+ *
+ * Primitive scales are raw values; semantic tokens map primitives to UI roles.
  */
 
+@import './typography.css';
+@import './spacing.css';
+@import './radius.css';
+@import './stroke.css';
+
 :root {
-  /* Light theme (default) */
-  --theme-bg-primary: #ffffff;
-  --theme-bg-secondary: #f8fafc;
-  --theme-bg-tertiary: #f1f5f9;
-  --theme-bg-inverse: #0f172a;
+  /* ── Primitives: Primary (blue) ── */
+  --color-primary-100: #b0bcf4;
+  --color-primary-200: #889aef;
+  --color-primary-300: #6078ea;
+  --color-primary-400: #3857e4;
+  --color-primary-500: #1c3dd3;
+  --color-primary-600: #1731ab;
+  --color-primary-700: #122683;
+  --color-primary-800: #0c1a5c;
+  --color-primary-900: #070f34;
+  --color-primary-1000: #050b25;
 
-  --theme-text-primary: #0f172a;
-  --theme-text-secondary: #475569;
-  --theme-text-tertiary: #64748b;
-  --theme-text-inverse: #ffffff;
-  --theme-text-muted: #94a3b8;
+  /* ── Primitives: Secondary (magenta) ── */
+  --color-secondary-100: #f1abff;
+  --color-secondary-200: #e982ff;
+  --color-secondary-300: #e258ff;
+  --color-secondary-400: #db2eff;
+  --color-secondary-500: #d404ff;
+  --color-secondary-600: #b400da;
+  --color-secondary-700: #9200b0;
+  --color-secondary-800: #6f0086;
+  --color-secondary-900: #510062;
+  --color-secondary-1000: #33003e;
 
-  --theme-border-primary: #e2e8f0;
-  --theme-border-secondary: #cbd5e1;
-  --theme-border-accent: #4f46e5;
+  /* ── Primitives: Neutral ── */
+  --color-neutral-100: #ffffff;
+  --color-neutral-200: #e8e8e8;
+  --color-neutral-300: #d2d2d2;
+  --color-neutral-400: #bbbbbb;
+  --color-neutral-500: #a4a4a4;
+  --color-neutral-600: #8e8e8e;
+  --color-neutral-700: #777777;
+  --color-neutral-800: #606060;
+  --color-neutral-900: #4a4a4a;
+  --color-neutral-1000: #333333;
 
-  --theme-accent-primary: #4f46e5;
-  --theme-accent-secondary: #6366f1;
-  --theme-accent-hover: #4338ca;
-  --theme-accent-light: #e0e7ff;
+  /* ── Primitives: Tertiary (cyan) ── */
+  --color-tertiary-100: #d6f9fd;
+  --color-tertiary-200: #aef3fa;
+  --color-tertiary-300: #85ecf8;
+  --color-tertiary-400: #5de6f5;
+  --color-tertiary-500: #34e0f3;
+  --color-tertiary-600: #10daf1;
+  --color-tertiary-700: #0cbbce;
+  --color-tertiary-800: #0a9aa9;
+  --color-tertiary-900: #087985;
+  --color-tertiary-1000: #065861;
 
-  --theme-status-success: #10b981;
-  --theme-status-warning: #f59e0b;
-  --theme-status-error: #ef4444;
-  --theme-status-info: #3b82f6;
+  /* ── Primitives: Status ── */
+  --color-red-100: #ff0016;
+  --color-red-200: #a41723;
+  --color-yellow-100: #ebbe00;
+  --color-yellow-200: #af8e00;
+  --color-green-100: #84ebb4;
+  --color-green-200: #1fc16b;
 
-  --theme-surface-primary: #ffffff;
-  --theme-surface-secondary: #f8fafc;
-  --theme-surface-elevated: #ffffff;
-  --theme-surface-hover: #f1f5f9;
+  /* ── Light theme (semantic) ── */
+  --theme-bg-primary: var(--color-neutral-100);
+  --theme-bg-secondary: var(--color-neutral-200);
+  --theme-bg-tertiary: var(--color-neutral-300);
+  --theme-bg-inverse: var(--color-primary-900);
 
-  /* Typography scale (rem — same in light/dark) */
-  --font-size-xs: 0.75rem;
-  --font-size-sm: 0.875rem;
-  --font-size-lg: 1.25rem;
-  --font-size-xl: 1.5rem;
-  --font-size-2xl: 1.875rem;
+  --theme-text-primary: var(--color-neutral-1000);
+  --theme-text-secondary: var(--color-neutral-700);
+  --theme-text-tertiary: var(--color-neutral-600);
+  --theme-text-inverse: var(--color-neutral-100);
+  --theme-text-muted: var(--color-neutral-500);
 
-  /* Border radii */
-  --radius-sm: 0.375rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-full: 9999px;
+  --theme-border-primary: var(--color-neutral-300);
+  --theme-border-secondary: var(--color-neutral-400);
+  --theme-border-accent: var(--color-primary-500);
+
+  --theme-accent-primary: var(--color-primary-500);
+  --theme-accent-secondary: var(--color-primary-400);
+  --theme-accent-hover: var(--color-primary-600);
+  --theme-accent-light: var(--color-primary-100);
+
+  --theme-status-success: var(--color-green-200);
+  --theme-status-warning: var(--color-yellow-200);
+  --theme-status-error: var(--color-red-200);
+  --theme-status-info: var(--color-tertiary-600);
+
+  --theme-surface-primary: var(--color-neutral-100);
+  --theme-surface-secondary: var(--color-neutral-200);
+  --theme-surface-elevated: var(--color-neutral-100);
+  --theme-surface-hover: var(--color-neutral-200);
+
+  --theme-text-on-inverse-primary: var(--color-neutral-100);
+  --theme-text-on-inverse-secondary: var(--color-primary-100);
 
   /* Stacking contexts */
   --z-sticky: 50;
-
-  /* Text on inverse surfaces (--theme-bg-inverse): dark bg in light theme */
-  --theme-text-on-inverse-primary: #ffffff;
-  --theme-text-on-inverse-secondary: #e2e8f0;
 }
 
 .dark {
-  /* Dark theme */
-  --theme-bg-primary: #0f172a;
-  --theme-bg-secondary: #1e293b;
-  --theme-bg-tertiary: #334155;
-  --theme-bg-inverse: #ffffff;
+  /* ── Dark theme (semantic) ── */
+  --theme-bg-primary: var(--color-primary-1000);
+  --theme-bg-secondary: var(--color-primary-900);
+  --theme-bg-tertiary: var(--color-primary-800);
+  --theme-bg-inverse: var(--color-neutral-100);
 
-  --theme-text-primary: #f1f5f9;
-  --theme-text-secondary: #cbd5e1;
-  --theme-text-tertiary: #94a3b8;
-  --theme-text-inverse: #0f172a;
-  --theme-text-muted: #64748b;
+  --theme-text-primary: var(--color-neutral-100);
+  --theme-text-secondary: var(--color-neutral-300);
+  --theme-text-tertiary: var(--color-neutral-400);
+  --theme-text-inverse: var(--color-neutral-1000);
+  --theme-text-muted: var(--color-neutral-600);
 
-  --theme-border-primary: #334155;
-  --theme-border-secondary: #475569;
-  --theme-border-accent: #6366f1;
+  --theme-border-primary: var(--color-primary-700);
+  --theme-border-secondary: var(--color-primary-600);
+  --theme-border-accent: var(--color-primary-400);
 
-  --theme-accent-primary: #6366f1;
-  --theme-accent-secondary: #818cf8;
-  --theme-accent-hover: #818cf8;
-  --theme-accent-light: #312e81;
+  --theme-accent-primary: var(--color-primary-400);
+  --theme-accent-secondary: var(--color-primary-300);
+  --theme-accent-hover: var(--color-primary-200);
+  --theme-accent-light: var(--color-primary-800);
 
-  --theme-status-success: #10b981;
-  --theme-status-warning: #f59e0b;
-  --theme-status-error: #ef4444;
-  --theme-status-info: #3b82f6;
+  --theme-status-success: var(--color-green-200);
+  --theme-status-warning: var(--color-yellow-100);
+  --theme-status-error: var(--color-red-100);
+  --theme-status-info: var(--color-tertiary-500);
 
-  --theme-surface-primary: #1e293b;
-  --theme-surface-secondary: #334155;
-  --theme-surface-elevated: #475569;
-  --theme-surface-hover: #334155;
+  --theme-surface-primary: var(--color-primary-900);
+  --theme-surface-secondary: var(--color-primary-800);
+  --theme-surface-elevated: var(--color-primary-700);
+  --theme-surface-hover: var(--color-primary-800);
 
-  /* Text on inverse surfaces: light bg in dark theme */
-  --theme-text-on-inverse-primary: #0f172a;
-  --theme-text-on-inverse-secondary: #475569;
+  --theme-text-on-inverse-primary: var(--color-neutral-1000);
+  --theme-text-on-inverse-secondary: var(--color-neutral-700);
 }

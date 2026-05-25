@@ -1,13 +1,13 @@
 .location-loading,
 .location-error,
 .location-info {
-  padding: 1rem;
+  padding: var(--space-4);
 }
 
 .location-loading {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: var(--space-3);
   color: var(--theme-text-secondary);
 }
 
@@ -15,7 +15,7 @@
   display: inline-block;
   width: 1rem;
   height: 1rem;
-  border: 2px solid var(--theme-border-primary);
+  border: var(--stroke-focus) solid var(--theme-border-primary);
   border-top-color: var(--theme-accent-primary);
   border-radius: 50%;
   animation: spin 0.6s linear infinite;
@@ -32,31 +32,33 @@
 }
 
 .location-error p {
-  margin: 0 0 1rem 0;
+  margin: 0 0 var(--space-4) 0;
   color: var(--theme-status-error);
 }
 
 .location-info {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: var(--space-6);
 }
 
 .location-main {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: var(--space-1);
   text-align: center;
 }
 
 .location-city {
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: var(--font-h7-size);
+  line-height: var(--font-h7-line-height);
+  font-weight: var(--font-h7-weight);
   color: var(--theme-text-primary);
 }
 
 .location-region {
-  font-size: 0.875rem;
+  font-size: var(--text-label-size);
+  line-height: var(--text-label-line-height);
   color: var(--theme-text-secondary);
 }
 
@@ -69,19 +71,21 @@
 .location-detail {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: var(--space-1);
 }
 
 .location-label {
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: var(--text-caption-size);
+  line-height: var(--text-caption-line-height);
+  font-weight: var(--font-weight-bold);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--theme-text-secondary);
 }
 
 .location-value {
-  font-size: 0.875rem;
+  font-size: var(--text-label-size);
+  line-height: var(--text-label-line-height);
   color: var(--theme-text-primary);
   word-break: break-all;
 }

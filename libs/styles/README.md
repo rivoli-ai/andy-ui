@@ -96,9 +96,23 @@ You can also use CSS custom properties directly:
 .my-component {
   background-color: var(--theme-bg-primary);
   color: var(--theme-text-primary);
-  border: 1px solid var(--theme-border-primary);
+  border: var(--stroke-border) solid var(--theme-border-primary);
 }
 ```
+
+### Typography (Figma node 1:8246)
+
+Ubuntu is loaded via `typography.css` (imported from `theme.css`).
+
+| Token | Size | Weight |
+|-------|------|--------|
+| `--font-h1` … `--font-h7` | 68px → 22px | Bold (700) |
+| `--font-b1` | 18px | Medium (500) |
+| `--font-b2` … `--font-b7` | 16px → 6px | Regular (400) |
+
+Use primitives (`--font-h4-size`, `--font-b2-line-height`) or semantic roles (`--text-body-size`, `--text-title-size`). Utility classes: `.text-h1` … `.text-b4`. Tailwind: `text-h4`, `text-b2`, `font-sans`.
+
+Legacy aliases `--font-size-xs` … `--font-size-2xl` map to the new scale.
 
 ## Theme Service
 

@@ -9,18 +9,18 @@
 .identity-container {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: var(--space-4);
   font-family: system-ui, -apple-system, sans-serif;
 }
 
 .user-info {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: var(--space-3);
 }
 
 .user-name {
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   color: var(--theme-text-primary);
   transition: color 0.2s ease;
 }

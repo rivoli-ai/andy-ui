@@ -31,7 +31,7 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
     provideAuthWithInterceptor({
-      authority: 'https://localhost:5002',
+      authority: 'https://localhost:5001',
       clientId: 'omnifex-ui',
       ...spaAuthUrls(),
       /** Until `apps/angular-app/public/silent-refresh.html` ships, avoid silent-renew iframe 404 noise. */

@@ -4,8 +4,8 @@
 
 .footer {
   background-color: var(--theme-surface-primary);
-  border-top: 1px solid var(--theme-border-primary);
-  padding: 1.5rem 2rem;
+  border-top: var(--stroke-border) solid var(--theme-border-primary);
+  padding: var(--space-6) var(--space-7);
   text-align: center;
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
@@ -13,6 +13,7 @@
 .footer-text {
   margin: 0;
   color: var(--theme-text-secondary);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-b3-size);
+  line-height: var(--font-b3-line-height);
   transition: color 0.2s ease;
 }

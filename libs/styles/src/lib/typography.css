@@ -1,0 +1,208 @@
+/**
+ * Andy UI typography
+ * Source: Figma Andy-UI---Design-System (node 1:8246)
+ * https://www.figma.com/design/TcEuJHlNPkME9br19X1Qhx/Andy-UI---Design-System?node-id=1-8246&m=dev
+ *
+ * Primary family: Ubuntu (400 Regular, 500 Medium, 700 Bold).
+ * Use --font-h* / --font-b* primitives or semantic --text-* aliases.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
+
+:root {
+  --font-family-sans: 'Ubuntu', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, sans-serif;
+  --font-family-display: var(--font-family-sans);
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  --letter-spacing-none: 0;
+
+  /* Headings */
+  --font-h1-size: 4.25rem; /* 68px */
+  --font-h1-line-height: 6.375rem; /* 102px */
+  --font-h1-weight: var(--font-weight-bold);
+
+  --font-h2-size: 3.5rem; /* 56px */
+  --font-h2-line-height: 5.25rem; /* 84px */
+  --font-h2-weight: var(--font-weight-bold);
+
+  --font-h3-size: 2.875rem; /* 46px */
+  --font-h3-line-height: 4.3125rem; /* 69px */
+  --font-h3-weight: var(--font-weight-bold);
+
+  --font-h4-size: 2.375rem; /* 38px */
+  --font-h4-line-height: 3.5625rem; /* 57px */
+  --font-h4-weight: var(--font-weight-bold);
+
+  --font-h5-size: 2rem; /* 32px */
+  --font-h5-line-height: 3rem; /* 48px */
+  --font-h5-weight: var(--font-weight-bold);
+
+  --font-h6-size: 1.625rem; /* 26px */
+  --font-h6-line-height: 2.4375rem; /* 39px */
+  --font-h6-weight: var(--font-weight-bold);
+
+  --font-h7-size: 1.375rem; /* 22px */
+  --font-h7-line-height: 2.0625rem; /* 33px */
+  --font-h7-weight: var(--font-weight-bold);
+
+  /* Body */
+  --font-b1-size: 1.125rem; /* 18px */
+  --font-b1-line-height: 1.6875rem; /* 27px */
+  --font-b1-weight: var(--font-weight-medium);
+
+  --font-b2-size: 1rem; /* 16px */
+  --font-b2-line-height: 1.5rem; /* 24px */
+  --font-b2-weight: var(--font-weight-regular);
+
+  --font-b3-size: 0.875rem; /* 14px */
+  --font-b3-line-height: 1.3125rem; /* 21px */
+  --font-b3-weight: var(--font-weight-regular);
+
+  --font-b4-size: 0.75rem; /* 12px */
+  --font-b4-line-height: 1.125rem; /* 18px */
+  --font-b4-weight: var(--font-weight-regular);
+
+  --font-b5-size: 0.625rem; /* 10px */
+  --font-b5-line-height: 0.9375rem; /* 15px */
+  --font-b5-weight: var(--font-weight-regular);
+
+  --font-b6-size: 0.5rem; /* 8px */
+  --font-b6-line-height: 0.75rem; /* 12px */
+  --font-b6-weight: var(--font-weight-regular);
+
+  --font-b7-size: 0.375rem; /* 6px */
+  --font-b7-line-height: 0.5625rem; /* 9px */
+  --font-b7-weight: var(--font-weight-regular);
+
+  /* Semantic text roles */
+  --text-display-size: var(--font-h1-size);
+  --text-display-line-height: var(--font-h1-line-height);
+  --text-display-weight: var(--font-h1-weight);
+
+  --text-title-size: var(--font-h4-size);
+  --text-title-line-height: var(--font-h4-line-height);
+  --text-title-weight: var(--font-h4-weight);
+
+  --text-subtitle-size: var(--font-b1-size);
+  --text-subtitle-line-height: var(--font-b1-line-height);
+  --text-subtitle-weight: var(--font-b1-weight);
+
+  --text-body-size: var(--font-b2-size);
+  --text-body-line-height: var(--font-b2-line-height);
+  --text-body-weight: var(--font-b2-weight);
+
+  --text-label-size: var(--font-b3-size);
+  --text-label-line-height: var(--font-b3-line-height);
+  --text-label-weight: var(--font-b3-weight);
+
+  --text-caption-size: var(--font-b4-size);
+  --text-caption-line-height: var(--font-b4-line-height);
+  --text-caption-weight: var(--font-b4-weight);
+
+  /* Legacy aliases (pre–Andy UI scale) */
+  --font-size-xs: var(--font-b4-size);
+  --font-size-sm: var(--font-b3-size);
+  --font-size-lg: var(--font-b1-size);
+  --font-size-xl: var(--font-h7-size);
+  --font-size-2xl: var(--font-h6-size);
+}
+
+/* Heading & body utility classes */
+.text-h1,
+h1 {
+  font-family: var(--font-family-sans);
+  font-size: var(--font-h1-size);
+  line-height: var(--font-h1-line-height);
+  font-weight: var(--font-h1-weight);
+  letter-spacing: var(--letter-spacing-none);
+}
+
+.text-h2,
+h2 {
+  font-family: var(--font-family-sans);
+  font-size: var(--font-h2-size);
+  line-height: var(--font-h2-line-height);
+  font-weight: var(--font-h2-weight);
+  letter-spacing: var(--letter-spacing-none);
+}
+
+.text-h3,
+h3 {
+  font-family: var(--font-family-sans);
+  font-size: var(--font-h3-size);
+  line-height: var(--font-h3-line-height);
+  font-weight: var(--font-h3-weight);
+  letter-spacing: var(--letter-spacing-none);
+}
+
+.text-h4,
+h4 {
+  font-family: var(--font-family-sans);
+  font-size: var(--font-h4-size);
+  line-height: var(--font-h4-line-height);
+  font-weight: var(--font-h4-weight);
+  letter-spacing: var(--letter-spacing-none);
+}
+
+.text-h5,
+h5 {
+  font-family: var(--font-family-sans);
+  font-size: var(--font-h5-size);
+  line-height: var(--font-h5-line-height);
+  font-weight: var(--font-h5-weight);
+  letter-spacing: var(--letter-spacing-none);
+}
+
+.text-h6,
+h6 {
+  font-family: var(--font-family-sans);
+  font-size: var(--font-h6-size);
+  line-height: var(--font-h6-line-height);
+  font-weight: var(--font-h6-weight);
+  letter-spacing: var(--letter-spacing-none);
+}
+
+.text-h7 {
+  font-family: var(--font-family-sans);
+  font-size: var(--font-h7-size);
+  line-height: var(--font-h7-line-height);
+  font-weight: var(--font-h7-weight);
+  letter-spacing: var(--letter-spacing-none);
+}
+
+.text-b1 {
+  font-family: var(--font-family-sans);
+  font-size: var(--font-b1-size);
+  line-height: var(--font-b1-line-height);
+  font-weight: var(--font-b1-weight);
+  letter-spacing: var(--letter-spacing-none);
+}
+
+.text-b2,
+p {
+  font-family: var(--font-family-sans);
+  font-size: var(--font-b2-size);
+  line-height: var(--font-b2-line-height);
+  font-weight: var(--font-b2-weight);
+  letter-spacing: var(--letter-spacing-none);
+}
+
+.text-b3 {
+  font-family: var(--font-family-sans);
+  font-size: var(--font-b3-size);
+  line-height: var(--font-b3-line-height);
+  font-weight: var(--font-b3-weight);
+  letter-spacing: var(--letter-spacing-none);
+}
+
+.text-b4 {
+  font-family: var(--font-family-sans);
+  font-size: var(--font-b4-size);
+  line-height: var(--font-b4-line-height);
+  font-weight: var(--font-b4-weight);
+  letter-spacing: var(--letter-spacing-none);
+}

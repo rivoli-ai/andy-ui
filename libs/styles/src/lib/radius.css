@@ -1,0 +1,33 @@
+/**
+ * Andy UI border-radius scale
+ * Source: Figma Andy-UI---Design-System (node 1:8750)
+ * https://www.figma.com/design/TcEuJHlNPkME9br19X1Qhx/Andy-UI---Design-System?node-id=1-8750&m=dev
+ *
+ * Token IDs match Figma (#none, #1–#8, #full). Use --radius-* or semantic aliases.
+ */
+
+:root {
+  --radius-none: 0; /* #none — 0px */
+  --radius-1: 0.25rem; /* 4px  — #1 */
+  --radius-2: 0.375rem; /* 6px  — #2 */
+  --radius-3: 0.5rem; /* 8px  — #3 */
+  --radius-4: 0.625rem; /* 10px — #4 */
+  --radius-5: 0.75rem; /* 12px — #5 */
+  --radius-6: 0.875rem; /* 14px — #6 */
+  --radius-7: 1.125rem; /* 18px — #7 */
+  --radius-8: 1.5rem; /* 24px — #8 */
+  --radius-full: 999px; /* #full — pill / circle on UI-sized elements */
+
+  /* Semantic aliases */
+  --radius-button: var(--radius-2);
+  --radius-control: var(--radius-3);
+  --radius-card: var(--radius-5);
+  --radius-panel: var(--radius-6);
+  --radius-surface: var(--radius-8);
+  --radius-pill: var(--radius-full);
+
+  /* Legacy names (pre–Andy UI scale) */
+  --radius-sm: var(--radius-2);
+  --radius-md: var(--radius-3);
+  --radius-lg: var(--radius-5);
+}

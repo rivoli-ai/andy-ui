@@ -18,11 +18,12 @@ Priority order:
    - Dependency rules
 
 3. /docs/standards/**
-   - UI standards
+   - **Figma MCP integration** → `/docs/standards/figma-integration.md` (required for any Figma-driven or design-token UI work)
+   - UI standards → `styles-and-design-system.md`
    - Accessibility requirements
    - Responsive/mobile-first rules
    - Coding conventions
-   - Testing standards
+   - Testing standards → `ui-components-qa.md`
 
 4. /docs/roadmap/**
    - Planned features
@@ -76,6 +77,7 @@ Examples:
 - New component → update component docs
 - New Nx generator → update developer docs
 - New token rules → update design-system docs
+- Figma scale / MCP workflow change → update `docs/standards/figma-integration.md`
 - New CI validation → update contribution/CI docs
 
 ---
@@ -116,10 +118,25 @@ Avoid:
 
 ---
 
+# Figma & Design-System Work
+
+When the user references Figma URLs, design tokens, Andy UI Design System, or asks to match designs:
+
+1. **Read** `/docs/standards/figma-integration.md` first (mandatory).
+2. **Use Figma MCP** analysis-first: `get_metadata` → `get_variable_defs` / `get_design_context` on the correct parent frame.
+3. **Map** all values to `libs/styles` tokens (`theme.css`, `typography.css`, `spacing.css`, `radius.css`, `stroke.css`).
+4. **Never** paste raw Figma-generated CSS into apps or `ui-components`.
+5. **Implement** mobile-first, token-driven, framework-agnostic shared UI where possible.
+6. **Verify** with stylelint, audit, and e2e gates listed in `figma-integration.md` §9.
+
+Figma file key: `TcEuJHlNPkME9br19X1Qhx` (Andy UI — Design System).
+
+---
+
 # AI Assistant Operational Workflow
 
 Before implementation:
-1. Read relevant docs
+1. Read relevant docs (include `figma-integration.md` for any UI/Figma task)
 2. Validate constraints
 3. Execute minimal scoped changes
 4. Run verification commands
