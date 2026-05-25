@@ -61,11 +61,11 @@ const Location: React.FC = () => {
     }
   }, [isAuthenticated, hasFetched, fetchLocation]);
 
-  // Handle button click events from omnifex-button components
+  // Handle button click events from andy-ui-button components
   useEffect(() => {
     const handleButtonClick = (e: Event) => {
       const target = e.target as HTMLElement;
-      if (target.closest('omnifex-button')) {
+      if (target.closest('andy-ui-button')) {
         fetchLocation();
       }
     };
@@ -102,9 +102,9 @@ const Location: React.FC = () => {
       {error && (
         <div className="location-error">
           <p>{error}</p>
-          <omnifex-button variant={Variant.PRIMARY} appearance={Appearance.OUTLINED}>
+          <andy-ui-button variant={Variant.PRIMARY} appearance={Appearance.OUTLINED}>
             Try Again
-          </omnifex-button>
+          </andy-ui-button>
         </div>
       )}
       {location && !loading && !error && (
@@ -137,9 +137,9 @@ const Location: React.FC = () => {
             </div>
           </div>
           
-          <omnifex-button variant={Variant.PRIMARY} appearance={Appearance.OUTLINED}>
+          <andy-ui-button variant={Variant.PRIMARY} appearance={Appearance.OUTLINED}>
             🔄 Refresh
-          </omnifex-button>
+          </andy-ui-button>
         </div>
       )}
     </omnifex-card>

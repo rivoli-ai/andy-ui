@@ -36,4 +36,9 @@
   --space-page-inline: var(--space-7);
   --space-page-block: var(--space-8);
   --space-section: var(--space-9);
+
+  /* Button (Figma 10px / 5px padding; 44px min touch target) */
+  --space-button-inline: 0.625rem; /* 10px */
+  --space-button-block: 0.3125rem; /* 5px */
+  --space-touch-min: 2.75rem; /* 44px — WCAG touch target */
 }

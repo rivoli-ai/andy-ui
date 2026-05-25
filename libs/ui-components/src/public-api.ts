@@ -6,7 +6,7 @@
  * 
  * To use these components:
  * 1. Import the loader: import '@omnifex/ui-components/loader'
- * 2. Use the components as web components: <omnifex-button>Click me</omnifex-button>
+ * 2. Use the components as web components: <andy-ui-button>Click me</andy-ui-button>
  * 
  * Framework-specific setup:
  * - Angular: Import CUSTOM_ELEMENTS_SCHEMA in your module or component
@@ -17,7 +17,7 @@
 
 // Note: StencilJS components (OmnifexButton, OmnifexIdentity, OmnifexCallback, OmnifexCard, etc.) are built separately
 // and loaded via the StencilJS loader. They are not exported here as TypeScript classes.
-// Use them as web components: <omnifex-button>, <omnifex-identity>, <omnifex-callback>, <omnifex-card>, etc.
+// Use them as web components: <andy-ui-button>, <omnifex-identity>, <omnifex-callback>, <omnifex-card>, etc.
 
 // Export shared types and enums
 export * from './lib/shared/index.js';

@@ -48,6 +48,43 @@
         "cwd": "libs/ui-components",
         "command": "corepack pnpm run test"
       }
+    },
+
+    "storybook": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build"],
+      "options": {
+        "cwd": "libs/ui-components",
+        "command": "corepack pnpm run storybook"
+      }
+    },
+
+    "build-storybook": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["@omnifex/ui-components:build"],
+      "options": {
+        "cwd": "libs/ui-components",
+        "command": "corepack pnpm run build-storybook"
+      }
+    },
+
+    "verify": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{workspaceRoot}",
+        "command": "node tools/scripts/verify-ui-component.mjs --with-nx --fail-on-error"
+      },
+      "configurations": {
+        "static": {
+          "command": "node tools/scripts/verify-ui-component.mjs --static --fail-on-error"
+        },
+        "full": {
+          "command": "node tools/scripts/verify-ui-component.mjs --with-nx --with-e2e --fail-on-error"
+        },
+        "button": {
+          "command": "node tools/scripts/verify-ui-component.mjs --component=button --with-nx --fail-on-error"
+        }
+      }
     }
   },
 

@@ -22,6 +22,7 @@
     "stylelint": "stylelint \"libs/ui-components/**/*.css\"",
     "stylelint:fix": "stylelint --fix \"libs/ui-components/**/*.css\"",
     "audit:ui-components": "node tools/scripts/audit-ui-components.mjs",
+    "verify:ui-components": "nx run @omnifex/ui-components:verify",
     "test:stylelint-plugin": "node tools/stylelint-plugin-omnifex/__tests__/rules.spec.js"
   },
   "prettier": {

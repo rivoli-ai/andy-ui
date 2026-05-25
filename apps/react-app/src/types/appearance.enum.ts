@@ -5,6 +5,7 @@
  * to work around Create React App's restriction on importing outside of src/
  */
 export enum Appearance {
-  OUTLINED = 'outlined',
   FILLED = 'filled',
+  OUTLINED = 'outlined',
+  BASIC = 'basic',
 }

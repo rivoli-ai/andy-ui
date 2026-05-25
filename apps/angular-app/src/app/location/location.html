@@ -15,7 +15,7 @@
     } @else if (error()) {
       <div class="error">
         <p>{{ error() }}</p>
-        <omnifex-button variant="outline" (click)="refresh()">Try Again</omnifex-button>
+        <andy-ui-button variant="primary" appearance="outlined" (click)="refresh()">Try Again</andy-ui-button>
       </div>
     } @else if (location()) {
       <div class="location-info">
@@ -43,7 +43,7 @@
           </div>
         </div>
         
-        <omnifex-button variant="outline" (click)="refresh()">🔄 Refresh</omnifex-button>
+        <andy-ui-button variant="primary" appearance="outlined" (click)="refresh()">🔄 Refresh</andy-ui-button>
       </div>
     }
   </omnifex-card>

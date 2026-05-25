@@ -10,6 +10,7 @@ Priority order:
    - Global AI operating context
    - Repository constraints
    - Architecture rules
+   - **Figma MCP prompts** → `/docs/ai-context/prompts/` (analysis → implement → storybook → tests → audit)
 
 2. /docs/architecture/**
    - Monorepo architecture
@@ -24,6 +25,7 @@ Priority order:
    - Responsive/mobile-first rules
    - Coding conventions
    - Testing standards → `ui-components-qa.md`
+   - Component verification → `component-verification.md`
 
 4. /docs/roadmap/**
    - Planned features
@@ -122,12 +124,12 @@ Avoid:
 
 When the user references Figma URLs, design tokens, Andy UI Design System, or asks to match designs:
 
-1. **Read** `/docs/standards/figma-integration.md` first (mandatory).
+1. **Read** `/docs/standards/figma-integration.md` first (mandatory). Use `/docs/ai-context/prompts/` templates for structured Auto workflows.
 2. **Use Figma MCP** analysis-first: `get_metadata` → `get_variable_defs` / `get_design_context` on the correct parent frame.
 3. **Map** all values to `libs/styles` tokens (`theme.css`, `typography.css`, `spacing.css`, `radius.css`, `stroke.css`).
 4. **Never** paste raw Figma-generated CSS into apps or `ui-components`.
 5. **Implement** mobile-first, token-driven, framework-agnostic shared UI where possible.
-6. **Verify** with stylelint, audit, and e2e gates listed in `figma-integration.md` §9.
+6. **Verify** with `nx run @omnifex/ui-components:verify` and gates in `component-verification.md` / `figma-integration.md` §9.
 
 Figma file key: `TcEuJHlNPkME9br19X1Qhx` (Andy UI — Design System).
 

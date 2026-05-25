@@ -44,7 +44,7 @@ export class OmnifexIdentity {
   private setupButtonListeners() {
     const attemptSetup = (attempts = 0) => {
       if (attempts > 10) {
-        console.warn('omnifex-identity: Failed to find omnifex-button after 10 attempts');
+        console.warn('omnifex-identity: Failed to find andy-ui-button after 10 attempts');
         return;
       }
 
@@ -54,7 +54,7 @@ export class OmnifexIdentity {
         return;
       }
 
-      const button = shadowRoot.querySelector('omnifex-button') as HTMLElement;
+      const button = shadowRoot.querySelector('andy-ui-button') as HTMLElement;
       if (!button) {
         setTimeout(() => attemptSetup(attempts + 1), 10);
         return;
@@ -81,7 +81,7 @@ export class OmnifexIdentity {
     if (this.buttonClickHandler) {
       const shadowRoot = this.el.shadowRoot;
       if (shadowRoot) {
-        const button = shadowRoot.querySelector('omnifex-button') as HTMLElement;
+        const button = shadowRoot.querySelector('andy-ui-button') as HTMLElement;
         if (button) {
           button.removeEventListener('buttonClick', this.buttonClickHandler);
         }
@@ -104,9 +104,9 @@ export class OmnifexIdentity {
         <div class="identity-container">
           <div class="user-info">
             <span class="user-name">{this.userName || 'User'}</span>
-            <omnifex-button variant={OmnifexVariant.PRIMARY} appearance={OmnifexAppearance.OUTLINED} id="logout-button">
+            <andy-ui-button variant={OmnifexVariant.PRIMARY} appearance={OmnifexAppearance.OUTLINED} id="logout-button">
               Logout
-            </omnifex-button>
+            </andy-ui-button>
           </div>
         </div>
       );
@@ -114,9 +114,9 @@ export class OmnifexIdentity {
 
     return (
       <div class="identity-container">
-        <omnifex-button variant={OmnifexVariant.PRIMARY} id="login-button">
+        <andy-ui-button variant={OmnifexVariant.PRIMARY} id="login-button">
           Login
-        </omnifex-button>
+        </andy-ui-button>
       </div>
     );
   }

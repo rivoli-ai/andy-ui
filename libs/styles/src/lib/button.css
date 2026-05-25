@@ -1,0 +1,74 @@
+/**
+ * Andy UI button semantic tokens
+ * Source: Figma Andy-UI---Design-System (node 14:4)
+ * https://www.figma.com/design/TcEuJHlNPkME9br19X1Qhx/Andy-UI---Design-System?node-id=14-4&m=dev
+ *
+ * Use in components via var(--button-*). Primitives only in theme.css.
+ */
+
+:root {
+  --button-gap: var(--space-1);
+  --button-padding-inline: var(--space-button-inline);
+  --button-padding-block: var(--space-button-block);
+  --button-min-height: var(--space-touch-min);
+
+  --button-icon-size-large: var(--space-4);
+  --button-icon-size-medium: var(--space-3);
+  --button-icon-size-small: var(--space-2);
+
+  /* Primary */
+  --button-primary-bg: var(--color-primary-600);
+  --button-primary-bg-hover: var(--color-primary-800);
+  --button-primary-fg-filled: var(--color-neutral-100);
+  --button-primary-fg-ghost: var(--color-primary-600);
+  --button-primary-border: var(--color-primary-600);
+  --button-primary-ghost-hover-bg: var(--color-primary-100);
+
+  /* Secondary */
+  --button-secondary-bg: var(--color-secondary-600);
+  --button-secondary-bg-hover: var(--color-secondary-800);
+  --button-secondary-fg-filled: var(--color-neutral-100);
+  --button-secondary-fg-ghost: var(--color-secondary-600);
+  --button-secondary-border: var(--color-secondary-600);
+  --button-secondary-ghost-hover-bg: var(--color-secondary-100);
+
+  /* Tertiary */
+  --button-tertiary-bg: var(--color-tertiary-700);
+  --button-tertiary-bg-hover: var(--color-tertiary-800);
+  --button-tertiary-fg-filled: var(--color-neutral-100);
+  --button-tertiary-fg-ghost: var(--color-tertiary-700);
+  --button-tertiary-border: var(--color-tertiary-700);
+  --button-tertiary-ghost-hover-bg: var(--color-tertiary-100);
+
+  /* Disabled (light) */
+  --button-disabled-bg: var(--color-neutral-500);
+  --button-disabled-fg: var(--color-neutral-500);
+  --button-disabled-border: var(--color-neutral-500);
+}
+
+.dark {
+  --button-primary-bg: var(--color-primary-200);
+  --button-primary-bg-hover: var(--color-primary-100);
+  --button-primary-fg-filled: var(--color-primary-900);
+  --button-primary-fg-ghost: var(--color-primary-200);
+  --button-primary-border: var(--color-primary-200);
+  --button-primary-ghost-hover-bg: var(--color-primary-800);
+
+  --button-secondary-bg: var(--color-secondary-200);
+  --button-secondary-bg-hover: var(--color-secondary-100);
+  --button-secondary-fg-filled: var(--color-primary-900);
+  --button-secondary-fg-ghost: var(--color-secondary-200);
+  --button-secondary-border: var(--color-secondary-200);
+  --button-secondary-ghost-hover-bg: var(--color-secondary-900);
+
+  --button-tertiary-bg: var(--color-tertiary-200);
+  --button-tertiary-bg-hover: var(--color-tertiary-100);
+  --button-tertiary-fg-filled: var(--color-primary-900);
+  --button-tertiary-fg-ghost: var(--color-tertiary-200);
+  --button-tertiary-border: var(--color-tertiary-200);
+  --button-tertiary-ghost-hover-bg: var(--color-tertiary-900);
+
+  --button-disabled-bg: var(--color-neutral-500);
+  --button-disabled-fg: var(--color-neutral-600);
+  --button-disabled-border: var(--color-neutral-500);
+}

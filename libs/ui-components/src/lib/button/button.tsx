@@ -1,51 +1,87 @@
-import { Component, Prop, Event, EventEmitter, h } from '@stencil/core';
+import { Component, Prop, Event, EventEmitter, h, State } from '@stencil/core';
 import { OmnifexVariant } from '../shared/variant.enum';
 import { OmnifexAppearance } from '../shared/appearance.enum';
+import { OmnifexButtonSize } from '../shared/button-size.enum';
 
 @Component({
-  tag: 'omnifex-button',
+  tag: 'andy-ui-button',
   styleUrl: 'button.css',
   shadow: true,
 })
-export class OmnifexButton {
-  @Prop() variant: OmnifexVariant = OmnifexVariant.PRIMARY;
-  @Prop() appearance: OmnifexAppearance = OmnifexAppearance.FILLED;
-  @Prop() disabled: boolean = false;
-  @Prop() type: 'button' | 'submit' | 'reset' = 'button';
+export class AndyUiButton {
+  /** Color appearance: primary, secondary, tertiary (Figma Apperance) */
+  @Prop({ reflect: true }) variant: OmnifexVariant = OmnifexVariant.PRIMARY;
+
+  /** Visual style: filled, outlined, basic/ghost (Figma variant) */
+  @Prop({ reflect: true }) appearance: OmnifexAppearance = OmnifexAppearance.FILLED;
+
+  @Prop({ reflect: true }) size: OmnifexButtonSize = OmnifexButtonSize.LARGE;
+
+  @Prop({ reflect: true }) disabled = false;
+
+  @Prop({ reflect: true }) fullWidth = false;
+
+  @Prop({ reflect: true }) type: 'button' | 'submit' | 'reset' = 'button';
+
+  @State() private hasIcon = false;
+
+  private handleIconSlotChange = (event: Event): void => {
+    const slot = event.target as HTMLSlotElement;
+    const nodes = slot.assignedNodes({ flatten: true });
+    this.hasIcon = nodes.some(
+      (node) =>
+        node.nodeType !== Node.TEXT_NODE ||
+        (node.textContent?.trim().length ?? 0) > 0
+    );
+  };
 
   @Event({
     eventName: 'buttonClick',
     bubbles: true,
     composed: true,
-  }) buttonClick!: EventEmitter<void>;
+  })
+  buttonClick!: EventEmitter<void>;
 
-  private handleClick = () => {
+  private handleClick = (): void => {
     if (!this.disabled) {
       this.buttonClick.emit();
     }
   };
 
   private getButtonClasses(): string {
-    const classes = ['btn'];
-    
-    // Add variant class
-    classes.push(`btn-${this.variant}`);
-    
-    // Add appearance class
-    classes.push(`btn-${this.appearance}`);
-    
+    const classes = [
+      'btn',
+      `btn-${this.variant}`,
+      `btn-${this.appearance}`,
+      `btn-size-${this.size}`,
+    ];
+
+    if (this.fullWidth) {
+      classes.push('btn--full-width');
+    }
+
     return classes.join(' ');
   }
 
   render() {
     return (
       <button
+        part="button"
         type={this.type}
         disabled={this.disabled}
         class={this.getButtonClasses()}
         onClick={this.handleClick}
+        aria-disabled={this.disabled ? 'true' : undefined}
       >
-        <slot></slot>
+        <span
+          class={{ 'btn__icon': true, 'btn__icon--hidden': !this.hasIcon }}
+          aria-hidden="true"
+        >
+          <slot name="icon" onSlotchange={this.handleIconSlotChange} />
+        </span>
+        <span class="btn__label">
+          <slot />
+        </span>
       </button>
     );
   }

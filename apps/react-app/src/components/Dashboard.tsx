@@ -26,9 +26,9 @@ const Dashboard: React.FC = () => {
           Your modern React application with secure authentication
         </p>
         <div className="dashboard-buttons">
-          <omnifex-button variant={Variant.PRIMARY}>Primary Button</omnifex-button>
-          <omnifex-button variant={Variant.SECONDARY}>Secondary Button</omnifex-button>
-          <omnifex-button variant={Variant.PRIMARY} appearance={Appearance.OUTLINED}>Outline Button</omnifex-button>
+          <andy-ui-button variant={Variant.PRIMARY}>Primary Button</andy-ui-button>
+          <andy-ui-button variant={Variant.SECONDARY}>Secondary Button</andy-ui-button>
+          <andy-ui-button variant={Variant.PRIMARY} appearance={Appearance.OUTLINED}>Outline Button</andy-ui-button>
         </div>
         <div className="dashboard-badges">
           <omnifex-badge variant={Variant.PRIMARY}>Primary</omnifex-badge>

@@ -45,7 +45,7 @@ export class OmnifexCallback {
 
     const attemptSetup = (attempts = 0) => {
       if (attempts > 20) {
-        console.warn('omnifex-callback: Failed to find omnifex-button after 20 attempts');
+        console.warn('omnifex-callback: Failed to find andy-ui-button after 20 attempts');
         return;
       }
 
@@ -55,7 +55,7 @@ export class OmnifexCallback {
         return;
       }
 
-      const button = shadowRoot.querySelector('omnifex-button') as HTMLElement;
+      const button = shadowRoot.querySelector('andy-ui-button') as HTMLElement;
       if (!button) {
         setTimeout(() => attemptSetup(attempts + 1), 20);
         return;
@@ -80,7 +80,7 @@ export class OmnifexCallback {
     if (this.buttonClickHandler) {
       const shadowRoot = this.el.shadowRoot;
       if (shadowRoot) {
-        const button = shadowRoot.querySelector('omnifex-button') as HTMLElement;
+        const button = shadowRoot.querySelector('andy-ui-button') as HTMLElement;
         if (button) {
           button.removeEventListener('buttonClick', this.buttonClickHandler);
         }
@@ -105,9 +105,9 @@ export class OmnifexCallback {
         <div class="callback-container">
           <div class="error">
             <p>{this.error}</p>
-            <omnifex-button variant={OmnifexVariant.PRIMARY} appearance={OmnifexAppearance.OUTLINED}>
+            <andy-ui-button variant={OmnifexVariant.PRIMARY} appearance={OmnifexAppearance.OUTLINED}>
               Try Again
-            </omnifex-button>
+            </andy-ui-button>
           </div>
         </div>
       );

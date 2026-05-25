@@ -21,10 +21,12 @@ declare global {
         variant?: Variant;
         children?: React.ReactNode;
       };
-      'omnifex-button': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+      'andy-ui-button': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
         variant?: Variant;
         appearance?: Appearance;
+        size?: 'large' | 'medium' | 'small';
         disabled?: boolean;
+        fullWidth?: boolean;
         type?: 'button' | 'submit' | 'reset';
         children?: React.ReactNode;
       };

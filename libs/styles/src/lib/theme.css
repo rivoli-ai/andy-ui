@@ -6,6 +6,7 @@
  * - Radius: node 1:8750
  * - Stroke: node 1:8917
  * - Typography: node 1:8246
+ * - Button: node 14:4
  * https://www.figma.com/design/TcEuJHlNPkME9br19X1Qhx/Andy-UI---Design-System
  *
  * Primitive scales are raw values; semantic tokens map primitives to UI roles.
@@ -15,6 +16,7 @@
 @import './spacing.css';
 @import './radius.css';
 @import './stroke.css';
+@import './button.css';
 
 :root {
   /* ── Primitives: Primary (blue) ── */

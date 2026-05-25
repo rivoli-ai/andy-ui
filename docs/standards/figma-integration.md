@@ -9,6 +9,7 @@ Related docs:
 - [`styles-and-design-system.md`](./styles-and-design-system.md) — theme architecture and usage
 - [`ui-components-qa.md`](./ui-components-qa.md) — lint, audit, Playwright gates
 - [`/docs/ai-context/overview.md`](../ai-context/overview.md) — monorepo constraints
+- [`/docs/ai-context/prompts/`](../ai-context/prompts/) — Cursor Auto prompt templates
 - Token source: `libs/styles/src/lib/` (`theme.css`, `typography.css`, `spacing.css`, `radius.css`, `stroke.css`)
 
 ---
@@ -314,55 +315,25 @@ Before writing code:
 
 ## 7. AI Prompting Standards
 
-Copy and adapt these prompts in Cursor. Always attach the **Figma URL** and specify **target app or package**.
+Use the **canonical prompt templates** in [`docs/ai-context/prompts/`](../ai-context/prompts/). They enforce this standard, MCP workflow, and [component-verification.md](./component-verification.md).
 
-### Analyze a component
+| Step | Prompt file |
+|------|-------------|
+| Analyze (no code) | [`figma-analysis.md`](../ai-context/prompts/figma-analysis.md) |
+| Implement | [`figma-component-implementation.md`](../ai-context/prompts/figma-component-implementation.md) |
+| Audit / pre-PR | [`figma-component-audit.md`](../ai-context/prompts/figma-component-audit.md) |
+| Storybook | [`figma-storybook.md`](../ai-context/prompts/figma-storybook.md) |
+| Tests | [`figma-tests.md`](../ai-context/prompts/figma-tests.md) |
 
-```text
-Read docs/standards/figma-integration.md. Using Figma MCP, analyze this node: [URL].
-Output: structure summary, token mapping table (Figma → CSS var), responsive interpretation,
-a11y checklist, and whether implementation belongs in ui-components vs an app.
-Do not write code yet.
-```
-
-### Generate implementation plan
-
-```text
-From Figma node [URL], produce an implementation plan for [component name].
-Include: files to touch, tokens (--space, --font, --radius, --theme), mobile-first breakpoints,
-Stencil vs Angular vs React ownership, and verification commands.
-```
-
-### Map tokens from a Figma scale frame
+**Cursor invocation:**
 
 ```text
-Using Figma MCP on node [URL], extract spacing/typography/color values.
-Map each to libs/styles tokens; list gaps requiring new primitives in theme.css.
-Convert all px to rem (16px root). Do not add hex to component CSS.
+Follow docs/ai-context/prompts/figma-analysis.md
+Figma URL: https://www.figma.com/design/TcEuJHlNPkME9br19X1Qhx/Andy-UI---Design-System?node-id=14-4&m=dev
+Component: button
 ```
 
-### Audit responsiveness
-
-```text
-Review [file paths] against figma-integration.md §4.
-Flag max-width media queries, fixed widths, missing min-width enhancements, and touch target risks.
-Suggest token-based fixes only.
-```
-
-### Generate Storybook stories (when Storybook is enabled)
-
-```text
-For @omnifex/ui-components/[component], create Storybook stories aligned with Figma node [URL].
-Cover: default, dark theme (data-theme), mobile viewport, disabled/loading states.
-Use CSS variables from theme.css only in CSS parts.
-```
-
-### Create tests
-
-```text
-Add Playwright coverage for [feature]: @a11y (axe WCAG 2.2 AA), @responsive (360/768/1280 no horizontal scroll),
-@touch (44×44 targets on mobile). Follow docs/standards/ui-components-qa.md.
-```
+See [`prompts/README.md`](../ai-context/prompts/README.md) for the recommended Auto workflow and best practices.
 
 ---
 
@@ -486,8 +457,14 @@ corepack pnpm nx run angular-app-e2e:e2e:responsive
 ## Quick reference — verification commands
 
 ```bash
-# Token / component CSS lint
+# @omnifex/ui-components — development
+corepack pnpm nx run @omnifex/ui-components:build
+corepack pnpm nx run @omnifex/ui-components:test
 corepack pnpm nx run @omnifex/ui-components:stylelint
+corepack pnpm nx run @omnifex/ui-components:storybook
+
+# All-in-one component verification
+corepack pnpm nx run @omnifex/ui-components:verify
 
 # Dependency-free token audit
 corepack pnpm nx run @omnifex/ui-components:audit
@@ -500,6 +477,8 @@ corepack pnpm nx run angular-app-e2e:e2e:a11y
 corepack pnpm nx run angular-app-e2e:e2e:responsive
 corepack pnpm nx run angular-app-e2e:e2e:touch
 ```
+
+See [component-verification.md](./component-verification.md) for the full workflow.
 
 ---
 

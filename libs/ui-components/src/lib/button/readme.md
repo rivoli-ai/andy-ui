@@ -1,42 +1,62 @@
-# omnifex-button
+# andy-ui-button
 
+Andy UI button (Figma node `14:4`). Stencil web component for Angular and React.
 
+## Usage
 
-<!-- Auto Generated Below -->
+```html
+<andy-ui-button variant="primary" appearance="filled" size="large">Button</andy-ui-button>
 
+<andy-ui-button variant="secondary" appearance="outlined" size="medium">
+  <svg slot="icon" ...></svg>
+  Save
+</andy-ui-button>
+
+<andy-ui-button appearance="basic" variant="tertiary" size="small" disabled>Disabled</andy-ui-button>
+
+<andy-ui-button full-width variant="primary">Full width on mobile</andy-ui-button>
+```
 
 ## Properties
 
-| Property     | Attribute    | Description | Type                                                                                                      | Default                    |
-| ------------ | ------------ | ----------- | --------------------------------------------------------------------------------------------------------- | -------------------------- |
-| `appearance` | `appearance` |             | `OmnifexAppearance.FILLED \| OmnifexAppearance.OUTLINED`                                                  | `OmnifexAppearance.FILLED` |
-| `disabled`   | `disabled`   |             | `boolean`                                                                                                 | `false`                    |
-| `type`       | `type`       |             | `"button" \| "reset" \| "submit"`                                                                         | `'button'`                 |
-| `variant`    | `variant`    |             | `OmnifexVariant.INVERSE \| OmnifexVariant.PRIMARY \| OmnifexVariant.SECONDARY \| OmnifexVariant.TERTIARY` | `OmnifexVariant.PRIMARY`   |
-
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `primary` \| `secondary` \| `tertiary` \| `inverse` | `primary` | Color appearance (Figma Apperance) |
+| `appearance` | `filled` \| `outlined` \| `basic` | `filled` | Visual style (Figma variant) |
+| `size` | `large` \| `medium` \| `small` | `large` | Size scale |
+| `disabled` | `boolean` | `false` | Disables interaction |
+| `full-width` | `boolean` | `false` | Block-level width for responsive layouts |
+| `type` | `button` \| `submit` \| `reset` | `button` | Native button type |
 
 ## Events
 
-| Event         | Description | Type                |
-| ------------- | ----------- | ------------------- |
-| `buttonClick` |             | `CustomEvent<void>` |
+| Event | Description |
+|-------|-------------|
+| `buttonClick` | Emitted on click when not disabled |
 
+## Slots
 
-## Dependencies
+| Slot | Description |
+|------|-------------|
+| (default) | Button label |
+| `icon` | Optional leading icon (`aria-hidden` on wrapper) |
 
-### Used by
+## CSS parts
 
- - [omnifex-callback](../callback)
- - [omnifex-identity](../identity)
+| Part | Description |
+|------|-------------|
+| `button` | Native `<button>` element |
 
-### Graph
-```mermaid
-graph TD;
-  omnifex-callback --> omnifex-button
-  omnifex-identity --> omnifex-button
-  style omnifex-button fill:#f9f,stroke:#333,stroke-width:4px
+## Tokens
+
+Uses `--button-*` from `libs/styles/src/lib/button.css` (imported via `theme.css`).
+
+## Development commands
+
+```bash
+corepack pnpm nx run @omnifex/ui-components:build
+corepack pnpm nx run @omnifex/ui-components:test
+corepack pnpm nx run @omnifex/ui-components:stylelint
+corepack pnpm nx run @omnifex/ui-components:storybook
+corepack pnpm nx run @omnifex/ui-components:verify:button
 ```
-
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*

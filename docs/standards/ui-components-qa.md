@@ -3,6 +3,8 @@
 This document is the contributor-facing summary of UI-8 Phase 1 (foundations).
 The full plan lives in [`BACKLOG.md` § UI-8](../roadmap/BACKLOG.md).
 
+**Unified verification:** run `nx run @omnifex/ui-components:verify` or see [component-verification.md](./component-verification.md).
+
 ## What ships in Phase 1
 
 - A custom **stylelint plugin** at `tools/stylelint-plugin-omnifex/` with four
@@ -31,9 +33,28 @@ The full plan lives in [`BACKLOG.md` § UI-8](../roadmap/BACKLOG.md).
 
 ## Commands
 
+### `@omnifex/ui-components` targets
+
 ```bash
-# Component lint (fast, required before commit)
+corepack pnpm nx run @omnifex/ui-components:build
+corepack pnpm nx run @omnifex/ui-components:test
 corepack pnpm nx run @omnifex/ui-components:stylelint
+corepack pnpm nx run @omnifex/ui-components:storybook
+```
+
+- **build** — Stencil compile + publish layout under `dist/ui-components`
+- **test** — Jest unit specs (e.g. `button.spec.tsx`)
+- **stylelint** — design-token and mobile-first CSS rules
+- **storybook** — local catalog on port 6006 (`dependsOn: build`)
+
+### Verification & audit
+
+```bash
+# All-in-one verification (static + stylelint + audit + test + build)
+corepack pnpm nx run @omnifex/ui-components:verify
+
+# Static-only (fast CI)
+corepack pnpm nx run @omnifex/ui-components:verify:static
 
 # Dependency-free audit (produces docs/UI_AUDIT_REPORT.md)
 corepack pnpm nx run @omnifex/ui-components:audit

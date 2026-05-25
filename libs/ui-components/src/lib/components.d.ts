@@ -7,17 +7,14 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { OmnifexVariant } from "./shared/variant.enum";
 import { OmnifexAppearance } from "./shared/appearance.enum";
+import { OmnifexButtonSize } from "./shared/button-size.enum";
 export { OmnifexVariant } from "./shared/variant.enum";
 export { OmnifexAppearance } from "./shared/appearance.enum";
+export { OmnifexButtonSize } from "./shared/button-size.enum";
 export namespace Components {
-    interface OmnifexBadge {
+    interface AndyUiButton {
         /**
-          * @default OmnifexVariant.PRIMARY
-         */
-        "variant": OmnifexVariant;
-    }
-    interface OmnifexButton {
-        /**
+          * Visual style: filled, outlined, basic/ghost (Figma variant)
           * @default OmnifexAppearance.FILLED
          */
         "appearance": OmnifexAppearance;
@@ -26,9 +23,24 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * @default false
+         */
+        "fullWidth": boolean;
+        /**
+          * @default OmnifexButtonSize.LARGE
+         */
+        "size": OmnifexButtonSize;
+        /**
           * @default 'button'
          */
         "type": 'button' | 'submit' | 'reset';
+        /**
+          * Color appearance: primary, secondary, tertiary (Figma Apperance)
+          * @default OmnifexVariant.PRIMARY
+         */
+        "variant": OmnifexVariant;
+    }
+    interface OmnifexBadge {
         /**
           * @default OmnifexVariant.PRIMARY
          */
@@ -131,9 +143,9 @@ export namespace Components {
         "isDark": boolean;
     }
 }
-export interface OmnifexButtonCustomEvent<T> extends CustomEvent<T> {
+export interface AndyUiButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLOmnifexButtonElement;
+    target: HTMLAndyUiButtonElement;
 }
 export interface OmnifexCallbackCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -152,28 +164,28 @@ export interface OmnifexThemeToggleCustomEvent<T> extends CustomEvent<T> {
     target: HTMLOmnifexThemeToggleElement;
 }
 declare global {
+    interface HTMLAndyUiButtonElementEventMap {
+        "buttonClick": void;
+    }
+    interface HTMLAndyUiButtonElement extends Components.AndyUiButton, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAndyUiButtonElementEventMap>(type: K, listener: (this: HTMLAndyUiButtonElement, ev: AndyUiButtonCustomEvent<HTMLAndyUiButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAndyUiButtonElementEventMap>(type: K, listener: (this: HTMLAndyUiButtonElement, ev: AndyUiButtonCustomEvent<HTMLAndyUiButtonElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLAndyUiButtonElement: {
+        prototype: HTMLAndyUiButtonElement;
+        new (): HTMLAndyUiButtonElement;
+    };
     interface HTMLOmnifexBadgeElement extends Components.OmnifexBadge, HTMLStencilElement {
     }
     var HTMLOmnifexBadgeElement: {
         prototype: HTMLOmnifexBadgeElement;
         new (): HTMLOmnifexBadgeElement;
-    };
-    interface HTMLOmnifexButtonElementEventMap {
-        "buttonClick": void;
-    }
-    interface HTMLOmnifexButtonElement extends Components.OmnifexButton, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLOmnifexButtonElementEventMap>(type: K, listener: (this: HTMLOmnifexButtonElement, ev: OmnifexButtonCustomEvent<HTMLOmnifexButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLOmnifexButtonElementEventMap>(type: K, listener: (this: HTMLOmnifexButtonElement, ev: OmnifexButtonCustomEvent<HTMLOmnifexButtonElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLOmnifexButtonElement: {
-        prototype: HTMLOmnifexButtonElement;
-        new (): HTMLOmnifexButtonElement;
     };
     interface HTMLOmnifexCallbackElementEventMap {
         "retry-click": void;
@@ -259,8 +271,8 @@ declare global {
         new (): HTMLOmnifexThemeToggleElement;
     };
     interface HTMLElementTagNameMap {
+        "andy-ui-button": HTMLAndyUiButtonElement;
         "omnifex-badge": HTMLOmnifexBadgeElement;
-        "omnifex-button": HTMLOmnifexButtonElement;
         "omnifex-callback": HTMLOmnifexCallbackElement;
         "omnifex-card": HTMLOmnifexCardElement;
         "omnifex-footer": HTMLOmnifexFooterElement;
@@ -270,14 +282,9 @@ declare global {
     }
 }
 declare namespace LocalJSX {
-    interface OmnifexBadge {
+    interface AndyUiButton {
         /**
-          * @default OmnifexVariant.PRIMARY
-         */
-        "variant"?: OmnifexVariant;
-    }
-    interface OmnifexButton {
-        /**
+          * Visual style: filled, outlined, basic/ghost (Figma variant)
           * @default OmnifexAppearance.FILLED
          */
         "appearance"?: OmnifexAppearance;
@@ -285,11 +292,26 @@ declare namespace LocalJSX {
           * @default false
          */
         "disabled"?: boolean;
-        "onButtonClick"?: (event: OmnifexButtonCustomEvent<void>) => void;
+        /**
+          * @default false
+         */
+        "fullWidth"?: boolean;
+        "onButtonClick"?: (event: AndyUiButtonCustomEvent<void>) => void;
+        /**
+          * @default OmnifexButtonSize.LARGE
+         */
+        "size"?: OmnifexButtonSize;
         /**
           * @default 'button'
          */
         "type"?: 'button' | 'submit' | 'reset';
+        /**
+          * Color appearance: primary, secondary, tertiary (Figma Apperance)
+          * @default OmnifexVariant.PRIMARY
+         */
+        "variant"?: OmnifexVariant;
+    }
+    interface OmnifexBadge {
         /**
           * @default OmnifexVariant.PRIMARY
          */
@@ -399,8 +421,8 @@ declare namespace LocalJSX {
         "onToggle-click"?: (event: OmnifexThemeToggleCustomEvent<void>) => void;
     }
     interface IntrinsicElements {
+        "andy-ui-button": AndyUiButton;
         "omnifex-badge": OmnifexBadge;
-        "omnifex-button": OmnifexButton;
         "omnifex-callback": OmnifexCallback;
         "omnifex-card": OmnifexCard;
         "omnifex-footer": OmnifexFooter;
@@ -413,8 +435,8 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "andy-ui-button": LocalJSX.AndyUiButton & JSXBase.HTMLAttributes<HTMLAndyUiButtonElement>;
             "omnifex-badge": LocalJSX.OmnifexBadge & JSXBase.HTMLAttributes<HTMLOmnifexBadgeElement>;
-            "omnifex-button": LocalJSX.OmnifexButton & JSXBase.HTMLAttributes<HTMLOmnifexButtonElement>;
             "omnifex-callback": LocalJSX.OmnifexCallback & JSXBase.HTMLAttributes<HTMLOmnifexCallbackElement>;
             "omnifex-card": LocalJSX.OmnifexCard & JSXBase.HTMLAttributes<HTMLOmnifexCardElement>;
             "omnifex-footer": LocalJSX.OmnifexFooter & JSXBase.HTMLAttributes<HTMLOmnifexFooterElement>;

@@ -2,14 +2,25 @@
 
 This library contains UI components built with StencilJS that are framework-agnostic and can be used in any framework (Angular, React, Vue, vanilla JavaScript, etc.).
 
-## Installation
+## Development commands
 
-The library is part of the monorepo and can be built using:
+From the repository root:
 
 ```bash
-nx build ui-components
-# or
-pnpm nx build ui-components
+corepack pnpm nx run @omnifex/ui-components:build
+corepack pnpm nx run @omnifex/ui-components:test
+corepack pnpm nx run @omnifex/ui-components:stylelint
+corepack pnpm nx run @omnifex/ui-components:storybook
+```
+
+See [docs/standards/component-verification.md](../../docs/standards/component-verification.md) for the full verification workflow (`verify`, `verify:static`, e2e gates).
+
+## Installation
+
+The library is part of the monorepo. Build before consuming or running Storybook:
+
+```bash
+corepack pnpm nx run @omnifex/ui-components:build
 ```
 
 ## Usage

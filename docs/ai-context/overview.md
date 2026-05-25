@@ -222,4 +222,5 @@ Use `implicitDependencies` and `dependsOn` to make relationships clear:
 - **Packages**: Explore library APIs in [packages.md](../architecture/packages.md)
 - **Identity**: Deep dive into authentication in [identity-and-auth.md](../architecture/identity-and-auth.md)
 - **Styles**: Learn about theming in [styles-and-design-system.md](../standards/styles-and-design-system.md)
+- **Figma + UI (AI)**: Use prompt templates in [prompts/](./prompts/) with [figma-integration.md](../standards/figma-integration.md)
 

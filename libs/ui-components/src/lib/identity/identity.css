@@ -29,8 +29,8 @@
   color: var(--theme-text-secondary);
 }
 
-/* Ensure omnifex-button is visible and properly styled */
-omnifex-button {
+/* Ensure andy-ui-button is visible and properly styled */
+andy-ui-button {
   display: inline-block !important;
   visibility: visible !important;
   opacity: 1 !important;
@@ -38,6 +38,6 @@ omnifex-button {
 }
 
 /* Ensure button content is visible */
-omnifex-button::part(button) {
+andy-ui-button::part(button) {
   display: inline-block !important;
 }
