@@ -551,8 +551,8 @@ net::ERR_CONNECTION_REFUSED
 2. **Check Authority URL**:
    ```typescript
    provideAuth({
-     authority: 'https://localhost:5001',  // Correct
-     // authority: 'http://localhost:5001',  // Wrong!
+     authority: 'https://localhost:5002',  // Correct
+     // authority: 'http://localhost:5002',  // Wrong!
    });
    ```
 
@@ -565,7 +565,7 @@ net::ERR_CONNECTION_REFUSED
 
 **Symptoms**:
 ```
-Access to fetch at 'https://localhost:5001' has been blocked by CORS policy
+Access to fetch at 'https://localhost:5002' has been blocked by CORS policy
 ```
 
 **Solution**: Update Identity Server CORS config:

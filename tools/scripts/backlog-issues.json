@@ -1,0 +1,223 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "_comment": "Source of truth for GitHub issue creation. Consumed by tools/scripts/create-backlog-issues.sh. See docs/BACKLOG.md for the full narrative.",
+  "labels": [
+    { "name": "area:scaffolding", "color": "1d76db", "description": "Generators, schematics, app scaffolding" },
+    { "name": "area:ui",          "color": "5319e7", "description": "UI components & design system" },
+    { "name": "area:docs",        "color": "0e8a16", "description": "Documentation & discoverability" },
+    { "name": "area:ai",          "color": "fbca04", "description": "AI tooling, MCP servers, prompts" },
+    { "name": "area:devops",      "color": "b60205", "description": "CI/CD, Docker, environments" },
+    { "name": "area:testing",     "color": "c2e0c6", "description": "Testing & quality" },
+    { "name": "area:architecture",      "color": "5319e7", "description": "Architecture, governance, ADRs" },
+    { "name": "type:story",       "color": "bfd4f2", "description": "User story" },
+    { "name": "type:improvement", "color": "bfdadc", "description": "Improvement / chore" },
+    { "name": "priority:p0",      "color": "b60205", "description": "Do next" },
+    { "name": "priority:p1",      "color": "d93f0b", "description": "Plan" },
+    { "name": "priority:p2",      "color": "fbca04", "description": "Opportunistic" },
+    { "name": "mobile-first",     "color": "0e8a16", "description": "Mobile-first behaviour mandatory" },
+    { "name": "a11y",             "color": "0e8a16", "description": "Accessibility considerations" },
+    { "name": "cross-framework",  "color": "0e8a16", "description": "Angular + React parity required" }
+  ],
+  "issues": [
+    {
+      "title": "[GEN-1] Nx generator: @omnifex/workspace:app (Angular & React)",
+      "labels": ["area:scaffolding", "type:story", "priority:p0"],
+      "body": "**User Story**\n\nAs a team lead onboarding a new product, I want a single Nx generator that scaffolds a new Angular or React app pre-wired with identity, styles, ui-components, routing, and CI, so that teams start from a compliant baseline instead of copy-pasting `apps/angular-app`.\n\n**Acceptance Criteria**\n\n- **Given** an empty workspace, **when** I run `nx g @omnifex/workspace:app my-app --framework=angular|react`, **then** a new app exists under `apps/my-app` with `@omnifex/identity-<fw>`, `@omnifex/styles-<fw>`, `@omnifex/ui-components` wired; OIDC `/callback` route + auth guard configured; theme provider + global styles imported; e2e project under `apps/my-app-e2e`; `project.json` targets `serve`/`build`/`test`/`lint`/`e2e`; CI entry honoured by `nx affected`.\n- **Given** the generator ran, **when** I run `nx serve my-app`, **then** it boots and shows the shared header/footer/theme-toggle without manual edits.\n\n**Impact** High · **Effort** Medium · **Priority** P0\n\n**Technical Notes**\n\n- Implement under `tools/generators/app/` with `@nx/devkit` `generateFiles` + EJS templates.\n- Prompts: `framework`, `auth` (yes/no), `style` (tailwind v4 default).\n- Unit tests with `createTreeWithEmptyWorkspace`.\n- Register in `package.json` `\"generators\"`."
+    },
+    {
+      "title": "[GEN-2] Nx generator: @omnifex/ui-components:component",
+      "labels": ["area:scaffolding", "area:ui", "type:story", "priority:p0", "a11y"],
+      "body": "**User Story**\n\nAs a UI contributor, I want a generator that creates a new Stencil component with css, spec, stories, and a11y test, so that new components are always consistent with design tokens and a11y baselines.\n\n**Acceptance Criteria**\n\n- **Given** I run `nx g @omnifex/ui-components:component data-table`, **then** it creates `data-table.tsx`, `data-table.css` (token-only), `data-table.spec.ts`, `data-table.e2e.ts`, `data-table.stories.mdx`, `data-table.a11y.spec.ts`, and exports it from `libs/ui-components/src/lib/components.ts`.\n- **Given** the component exists, **when** I open it in Storybook on a 360×640 viewport, **then** it renders without horizontal scroll.\n\n**Impact** High · **Effort** Low · **Priority** P0\n\n**Technical Notes**\n\n- Validate `tag` starts with `omnifex-`.\n- Enforce no hex colors via custom ESLint rule `no-hex-in-components`."
+    },
+    {
+      "title": "[GEN-3] Nx generator: feature-lib with enforced module boundaries",
+      "labels": ["area:scaffolding", "area:architecture", "type:story", "priority:p0"],
+      "body": "**User Story**\n\nAs a feature team, I want a generator that creates a feature library with correct tags and boundaries (`type:feature`, `scope:<domain>`), so that Nx can enforce architectural rules via `@nx/enforce-module-boundaries`.\n\n**Acceptance Criteria**\n\n- **Given** I run `nx g @omnifex/workspace:feature-lib orders --scope=sales`, **then** library is created under `libs/sales/orders` with tags `type:feature`, `scope:sales`, and `.eslintrc.json` enforces: `type:feature → type:ui|type:util|type:data-access` only.\n\n**Impact** High · **Effort** Low · **Priority** P0\n\n**Technical Notes**\n\n- Prereq: GOV-1 (tag taxonomy)."
+    },
+    {
+      "title": "[GEN-4] Generator: adopt @omnifex/* into an existing app",
+      "labels": ["area:scaffolding", "type:story", "priority:p1"],
+      "body": "**User Story**\n\nAs a maintainer of a legacy app, I want a generator that injects `@omnifex/*` into an existing Angular/React app, so that gradual adoption is possible without a rewrite.\n\n**Acceptance Criteria**\n\n- **Given** an existing `apps/legacy-app`, **when** I run `nx g @omnifex/workspace:adopt legacy-app`, **then** workspace deps are added to `package.json`; `ThemeProvider`/`provideAuth` is injected via AST transform; `/callback` route added if missing; a `MIGRATION.md` is written next to the app summarising changes & manual follow-ups.\n\n**Impact** Medium · **Effort** Medium · **Priority** P1\n\n**Technical Notes**\n\n- Use `ts-morph` (or `@angular-devkit/schematics`) for AST. Must be idempotent."
+    },
+    {
+      "title": "[UI-0] Formalise design tokens contract (W3C tokens → CSS/TS/Figma)",
+      "labels": ["area:ui", "type:story", "priority:p0", "mobile-first", "a11y", "cross-framework"],
+      "body": "**User Story**\n\nAs a design-system owner, I want design tokens defined in a framework-neutral JSON source with generated CSS/JS/Swift outputs, so that web, native, and Figma stay in sync.\n\n**Acceptance Criteria**\n\n- **Given** `libs/styles/tokens.json` (W3C Design Tokens draft), **when** I run `nx build styles`, **then** `tokens.css`, `tokens.ts`, `tokens.figma.json` are generated.\n- **Given** a component uses a hex literal, **when** CI lints, **then** build fails with rule `no-hex-in-components`.\n\n**Mobile-first**: tokens for `space`, `font-size`, `radius`, `touch-target` use `clamp()` for fluid scaling.\n\n**Responsive**: breakpoint tokens `--bp-sm..--bp-2xl` exposed as CSS custom media.\n\n**A11y**: Colors ship verified pairs (`--fg-on-primary`, `--fg-on-surface`); motion tokens respect `prefers-reduced-motion`.\n\n**Cross-framework**: CSS vars + typed TS objects consumed by Angular signals and React hooks.\n\n**Theming**: Replace ad-hoc vars in `libs/styles/src/lib/theme.css` progressively.\n\n**Impact** High · **Effort** Medium · **Priority** P0\n\n**Technical Notes**\n\n- Use `style-dictionary` or token-studio. Publish under `@omnifex/styles/tokens`."
+    },
+    {
+      "title": "[UI-1] omnifex-input — accessible, mobile-first form input",
+      "labels": ["area:ui", "type:story", "priority:p0", "mobile-first", "a11y", "cross-framework"],
+      "body": "**User Story**\n\nAs a product developer, I want a themed, accessible text input with label, helper, error, and prefix/suffix slots, so that forms look and behave consistently.\n\n**Acceptance Criteria**\n\n- **Given** the input is rendered at 360px, **then** label/control/error stack vertically with a 44×44px touch target on the control.\n- **Given** `aria-invalid=\"true\"`, **then** the error has `role=\"alert\"` and is associated via `aria-describedby`.\n\n**Mobile-first**: `inputmode`, `autocomplete`, `autocapitalize` props; 16px font on iOS to prevent zoom; touch-sized `:focus-visible` ring.\n\n**Responsive**: at ≥md, label can switch to `labelPosition=\"start\"` (inline); at <md it is forced to `top`.\n\n**A11y**: Label always present (visible or `sr-only`); supports `aria-required`, `aria-invalid`; error announced via `aria-live=\"polite\"`.\n\n**Cross-framework**: Stencil core + Angular `ControlValueAccessor` + React `forwardRef` + RHF adapter.\n\n**Theming**: `--color-border`, `--color-border-hover`, `--color-border-focus`, `--color-danger`, `--radius-input`.\n\n**Impact** High · **Effort** Medium · **Priority** P0"
+    },
+    {
+      "title": "[UI-2] omnifex-dialog / omnifex-sheet — bottom-sheet on mobile, modal on desktop",
+      "labels": ["area:ui", "type:story", "priority:p1", "mobile-first", "a11y", "cross-framework"],
+      "body": "**User Story**\n\nAs a product developer, I want a modal that automatically becomes a bottom-sheet on small viewports, so that mobile UX feels native without a separate component.\n\n**Acceptance Criteria**\n\n- **Given** viewport `<md`, **then** the dialog animates from the bottom, respects `env(safe-area-inset-bottom)`, and supports drag-to-dismiss.\n- **Given** viewport `≥md`, **then** it renders centered with backdrop.\n- **Given** the dialog opens, **then** focus moves to the first focusable element; Tab is trapped; `Escape` closes; previous focus is restored on close.\n\n**Mobile-first**: bottom-sheet by default; centered variant is opt-in at ≥md.\n\n**Responsive**: prefer `@container` queries over viewport media.\n\n**A11y**: `role=\"dialog\"`, `aria-modal=\"true\"`, `aria-labelledby`; siblings made `inert` when open.\n\n**Cross-framework**: same public API; Angular `DialogService`; React `useDialog()` + `<Dialog>`.\n\n**Theming**: `--dialog-radius`, `--dialog-surface`, `--scrim-color`.\n\n**Impact** High · **Effort** High · **Priority** P1"
+    },
+    {
+      "title": "[UI-3] omnifex-toast — non-blocking notifications with a11y announcements",
+      "labels": ["area:ui", "type:story", "priority:p0", "mobile-first", "a11y", "cross-framework"],
+      "body": "**User Story**\n\nAs a product developer, I want a non-blocking toast system with queueing and a11y announcements, so that feedback is consistent across apps.\n\n**Acceptance Criteria**\n\n- **Given** I call `toast.success(\"Saved\")`, **then** a toast appears within 100 ms, auto-dismisses in 5 s, and is announced via a visually hidden `aria-live=\"polite\"` region.\n- **Given** `prefers-reduced-motion`, **then** animations are replaced with opacity fade only.\n\n**Mobile-first**: bottom on `<md`, top-right on `≥md`; stacked; swipe-to-dismiss on touch.\n\n**Responsive**: max-width 360px on mobile (full-width minus 16px gutters); 440px at ≥md.\n\n**A11y**: non-focus-stealing; dismiss button labelled; `Esc` dismisses focused/hovered toast.\n\n**Cross-framework**: Stencil core + Angular `ToastService` + React `useToast` hook.\n\n**Theming**: `--toast-success-bg`, etc., derived from status palette.\n\n**Impact** High · **Effort** Medium · **Priority** P0"
+    },
+    {
+      "title": "[UI-4] omnifex-app-shell + omnifex-nav-drawer (bottom-tabs → side-rail → sidebar)",
+      "labels": ["area:ui", "type:story", "priority:p1", "mobile-first", "a11y", "cross-framework"],
+      "body": "**User Story**\n\nAs a product developer, I want an app-shell with a responsive navigation pattern (bottom tab bar on mobile, side rail on tablet, full sidebar on desktop), so that layout is solved once for every app.\n\n**Acceptance Criteria**\n\n- **Given** viewport `<sm`, **then** a bottom tab bar shows up to 5 items with icons + labels, respecting `safe-area-inset-bottom`.\n- **Given** viewport `≥md && <xl`, **then** a collapsed side rail shows icons with tooltips.\n- **Given** viewport `≥xl`, **then** a full sidebar with labels is shown; user-togglable.\n\n**Mobile-first**: tab bar is the base; wider layouts override.\n\n**Responsive**: powered by `@container` queries on the shell element.\n\n**A11y**: `nav[aria-label]`, current page `aria-current=\"page\"`, skip-link to main content.\n\n**Cross-framework**: Angular `<omnifex-app-shell>` with named slots + React `<AppShell slots={...}>`.\n\n**Theming**: `--shell-surface`, `--shell-divider`, `--nav-active`.\n\n**Impact** High · **Effort** High · **Priority** P1"
+    },
+    {
+      "title": "[UI-5] omnifex-data-table — table on desktop, stacked cards on mobile",
+      "labels": ["area:ui", "type:story", "priority:p1", "mobile-first", "a11y", "cross-framework"],
+      "body": "**User Story**\n\nAs a product developer, I want a data table that degrades to stacked cards on mobile, so that the same data component works on any viewport.\n\n**Acceptance Criteria**\n\n- **Given** viewport `<md`, **then** each row renders as a card with key/value pairs; column priorities drive which fields are shown.\n- **Given** viewport `≥md`, **then** a traditional table renders with sortable headers and sticky first column.\n- **Given** 10k rows, **then** virtual scrolling keeps main thread <50 ms per frame.\n\n**Mobile-first**: card view is the base; table view is progressive enhancement.\n\n**Responsive**: column `priority` prop drives hide-order.\n\n**A11y**: `<caption>` on table; `aria-sort` on sortable headers; cards expose semantic lists; grid keyboard pattern in table view.\n\n**Cross-framework**: slot-driven cells; typed helpers — Angular `ColumnDef<T>`, React `createColumnHelper<T>()`.\n\n**Theming**: `--row-hover`, `--row-selected`, `--header-surface`.\n\n**Impact** High · **Effort** High · **Priority** P1"
+    },
+    {
+      "title": "[UI-6] omnifex-skeleton — layout-preserving loading primitives",
+      "labels": ["area:ui", "type:story", "priority:p0", "mobile-first", "a11y", "cross-framework"],
+      "body": "**User Story**\n\nAs a product developer, I want skeleton loaders that preserve layout and respect reduced-motion, so that perceived performance improves and CLS stays low.\n\n**Acceptance Criteria**\n\n- **Given** a skeleton block replaces content of known size, **then** CLS contribution is 0 once real content arrives.\n- **Given** `prefers-reduced-motion: reduce`, **then** the shimmer animation is disabled.\n\n**Mobile-first**: default sizes tuned for 360px content width.\n\n**Responsive**: `aspect-ratio` prop so it scales with container.\n\n**A11y**: `aria-busy=\"true\"` on parent; “Loading …” announced once via `aria-live=\"polite\"`.\n\n**Cross-framework**: variants `text`, `circle`, `rect`.\n\n**Theming**: `--skeleton-base`, `--skeleton-highlight`.\n\n**Impact** Medium · **Effort** Low · **Priority** P0"
+    },
+    {
+      "title": "[UI-7] omnifex-form — schema-driven forms (Zod) with Angular + React adapters",
+      "labels": ["area:ui", "type:story", "priority:p2", "mobile-first", "a11y", "cross-framework"],
+      "body": "**User Story**\n\nAs a product developer, I want a schema-driven form component using Zod, so that the same schema validates in Angular and React, with server parity.\n\n**Acceptance Criteria**\n\n- **Given** a Zod schema, **when** I render `<omnifex-form schema={...}>`, **then** fields, validators, and error messages are generated; the same schema is used server-side.\n- **Given** viewport `<md`, **then** fields stack with full-width controls; submit button stays above keyboard on iOS (use `visualViewport`).\n\n**Mobile-first**: submit CTA always reachable; large touch targets.\n\n**Responsive**: `columns` prop (1 mobile → 2/3 desktop).\n\n**A11y**: error summary region at top of form on submit, focused programmatically.\n\n**Cross-framework**: Angular Reactive Forms + React Hook Form adapters.\n\n**Theming**: inherits UI-1 tokens.\n\n**Impact** High · **Effort** High · **Priority** P2"
+    },
+    {
+      "title": "[UI-8] Audit existing components for mobile-first / a11y / token usage",
+      "labels": ["area:ui", "type:improvement", "priority:p0", "mobile-first", "a11y"],
+      "body": "**User Story**\n\nAs a design-system maintainer, I want existing components (button/card/header/footer/badge/theme-toggle) re-audited for mobile-first, a11y, and token usage, so that they pass the same bar as new ones.\n\n**Acceptance Criteria**\n\n- **Given** each component, **then** axe-core shows 0 serious/critical issues.\n- **Given** each component, **then** no hex literals remain in `*.css`.\n- **Given** button/badge/card, **then** 44×44px minimum hit target on touch.\n\n**Impact** Medium · **Effort** Medium · **Priority** P0\n\n**Technical Notes**\n\n- Pair with UI-0 (token pipeline) and QA-1 (axe in CI)."
+    },
+    {
+      "title": "[DOC-1] Storybook for @omnifex/ui-components (viewport, theme, a11y addons)",
+      "labels": ["area:docs", "area:ui", "type:story", "priority:p0", "a11y"],
+      "body": "**User Story**\n\nAs a product developer, I want a single Storybook documenting every `@omnifex/ui-components` component with live props, themes, and viewports, so that I can discover and try components without reading source.\n\n**Acceptance Criteria**\n\n- **Given** `nx run ui-components:storybook`, **then** Storybook 8 boots with: viewport addon preset matching our breakpoints (UI-0); theme toggle addon (light/dark/system) wired to `@omnifex/styles`; Autodocs on; `@storybook/addon-a11y` failing CI on serious/critical.\n- **Given** a component has stories, **when** CI runs, **then** Chromatic or Playwright visual diffs are executed.\n\n**Impact** High · **Effort** Medium · **Priority** P0\n\n**Technical Notes**\n\n- `@storybook/web-components-vite` for Stencil. Publish static build to GitHub Pages on `main`."
+    },
+    {
+      "title": "[DOC-2] Living documentation site (Starlight + TypeDoc + Storybook embed)",
+      "labels": ["area:docs", "type:story", "priority:p1"],
+      "body": "**User Story**\n\nAs a new hire, I want a single documentation site combining architecture, ADRs, guides, and API references, so that I stop hunting across repos and Markdown folders.\n\n**Acceptance Criteria**\n\n- **Given** `nx build docs`, **then** a static site (Astro Starlight) is produced containing `/docs/*.md`, auto-generated TypeDoc references for `@omnifex/*`, embedded Storybook iframe, and per-release versioning.\n- **Given** a PR changes a public API, **when** CI runs, **then** docs rebuild and a preview URL is posted as a PR comment.\n\n**Impact** High · **Effort** Medium · **Priority** P1\n\n**Technical Notes**\n\n- Stack suggestion: `starlight` + `@astrojs/starlight-typedoc`."
+    },
+    {
+      "title": "[DOC-3] ADR process under /docs/adr/NNNN-*.md (MADR template)",
+      "labels": ["area:docs", "area:architecture", "type:story", "priority:p1"],
+      "body": "**User Story**\n\nAs an architect, I want Architecture Decision Records captured in the repo, so that the rationale behind framework choices is preserved.\n\n**Acceptance Criteria**\n\n- **Given** a significant architecture change, **then** an ADR is required in the PR (enforced via PR template checkbox and dangerjs rule).\n\n**Impact** Medium · **Effort** Low · **Priority** P1\n\n**Technical Notes**\n\n- Seed ADRs: framework-agnostic core, Stencil choice, Tailwind v4, pnpm workspaces."
+    },
+    {
+      "title": "[AI-1] MCP server for Storybook (component querying for AI assistants)",
+      "labels": ["area:ai", "area:ui", "type:story", "priority:p1"],
+      "body": "**User Story**\n\nAs a developer using an AI assistant, I want an MCP server exposing our Storybook catalog, so that the assistant can answer “which omnifex component fits X?” with concrete props, code snippets, and a11y notes.\n\n**Acceptance Criteria**\n\n- **Given** the MCP server runs, **when** an assistant calls `tools/list`, **then** these tools are exposed: `search_components(query, framework)`, `get_component(tag)`, `get_example(tag, framework)`.\n- **Given** the server is configured in Cursor/Claude Desktop, **then** “give me an Angular login form using @omnifex/ui-components” returns a compiling snippet.\n\n**Impact** High · **Effort** Medium · **Priority** P1\n\n**Technical Notes**\n\n- Index source: Storybook `stories.json` + Stencil `docs.json` (`outputTargets: 'docs-json'`).\n- Implement with `@modelcontextprotocol/sdk`. Host under `tools/mcp/storybook`."
+    },
+    {
+      "title": "[AI-2] MCP server for documentation (API + guides)",
+      "labels": ["area:ai", "area:docs", "type:story", "priority:p0"],
+      "body": "**User Story**\n\nAs a developer, I want an MCP server that indexes `/docs` and TypeDoc output, so that AI assistants answer API questions with citations to our own docs, not outdated web results.\n\n**Acceptance Criteria**\n\n- **Given** the server is running, **then** `search_docs(query)` and `get_doc(path)` return Markdown with source paths.\n- **Given** a question like “how do I add auth to an Angular app”, **then** the answer cites `docs/identity-and-auth.md` with the snippet used.\n\n**Impact** High · **Effort** Low · **Priority** P0\n\n**Technical Notes**\n\n- Simple ripgrep or embedding-based index (`@lancedb/lancedb`).\n- Ship `.cursor/mcp.json` config."
+    },
+    {
+      "title": "[AI-3] AI adoption toolkit (.cursor rules, Copilot instructions, prompt library)",
+      "labels": ["area:ai", "type:story", "priority:p0"],
+      "body": "**User Story**\n\nAs a developer, I want curated AI rules and prompt snippets checked into the repo, so that AI assistants follow our architectural constraints (framework-agnostic core, token usage, mobile-first) out of the box.\n\n**Acceptance Criteria**\n\n- **Given** the repo is cloned, **then** `.cursor/rules/` contains `no-framework-in-core.mdc`, `mobile-first.mdc`, `design-tokens-only.mdc`, etc., each with examples.\n- **Given** Copilot is used, **then** `.github/copilot-instructions.md` contains the same rules.\n\n**Impact** Medium · **Effort** Low · **Priority** P0"
+    },
+    {
+      "title": "[OPS-1] Dockerize Angular & React apps (and generated apps)",
+      "labels": ["area:devops", "type:story", "priority:p0"],
+      "body": "**User Story**\n\nAs a platform engineer, I want production Dockerfiles for Angular and React apps (including future generated apps), so that we can deploy consistently to Kubernetes/Cloud Run.\n\n**Acceptance Criteria**\n\n- **Given** `nx container angular-app` runs, **then** a multi-stage image is built using `pnpm` deploy + NGINX, image size <70 MB.\n- **Given** a new app is scaffolded via GEN-1, **then** a Dockerfile is generated by default.\n- **Given** the image starts, **then** it exposes port 8080, serves SPA with proper `try_files` fallback, and respects `PORT`.\n\n**Impact** High · **Effort** Medium · **Priority** P0\n\n**Technical Notes**\n\n- `@nx-tools/nx-container` or bespoke target. Base images: `node:20-alpine` (build), `nginxinc/nginx-unprivileged:alpine-slim` (runtime).\n- Add Trivy scan in CI."
+    },
+    {
+      "title": "[OPS-2] Dockerize Duende identity server + local docker-compose",
+      "labels": ["area:devops", "type:story", "priority:p0"],
+      "body": "**User Story**\n\nAs a developer, I want `docker compose up` to start identity server + optional apps, so that onboarding takes minutes, not hours.\n\n**Acceptance Criteria**\n\n- **Given** a fresh clone, **when** I run `docker compose up`, **then** identity server is reachable on `https://localhost:5002` with a trusted dev cert (using `mkcert` step in README) and SQLite seeded.\n- **Given** I pass `--profile apps`, **then** `angular-app` and `react-app` containers also start.\n\n**Impact** High · **Effort** Medium · **Priority** P0"
+    },
+    {
+      "title": "[OPS-3] Per-PR preview environments (Angular app, React app, Storybook)",
+      "labels": ["area:devops", "type:story", "priority:p1"],
+      "body": "**User Story**\n\nAs a reviewer, I want per-PR preview URLs for the Angular app, React app, and Storybook, so that I can review UX changes without checking out the branch.\n\n**Acceptance Criteria**\n\n- **Given** a PR is opened, **then** a bot comments with 3 URLs that stay alive until the PR closes.\n- **Given** the PR is closed/merged, **then** the environments are torn down.\n\n**Impact** High · **Effort** Medium · **Priority** P1\n\n**Technical Notes**\n\n- Candidates: Vercel, Cloudflare Pages, or k3s + argo."
+    },
+    {
+      "title": "[OPS-4] Release automation: changesets → npm + changelog",
+      "labels": ["area:devops", "area:architecture", "type:story", "priority:p1"],
+      "body": "**User Story**\n\nAs a library owner, I want semver-driven releases of `@omnifex/*` triggered by changesets on merge to main, so that consumers get reliable, documented versions.\n\n**Acceptance Criteria**\n\n- **Given** a PR adds a changeset file, **when** it’s merged, **then** a “Version Packages” PR is opened; merging it publishes to npm/GitHub Packages and tags the repo.\n\n**Impact** Medium · **Effort** Low · **Priority** P1\n\n**Technical Notes**\n\n- `.changeset/` already exists; integrate `changesets/action` in `.github/workflows/publish.yml`. Decide via ADR whether to use `fixed: ['@omnifex/*']`."
+    },
+    {
+      "title": "[QA-1] Automated accessibility tests in CI (axe on Storybook + apps)",
+      "labels": ["area:testing", "a11y", "type:story", "priority:p0"],
+      "body": "**User Story**\n\nAs a design-system owner, I want axe-core running against every Storybook story and every app route in CI, so that a11y regressions never ship.\n\n**Acceptance Criteria**\n\n- **Given** a Storybook story, **when** CI runs `@storybook/test-runner` with the a11y hook, **then** serious/critical violations fail the job.\n- **Given** each app, **then** `@axe-core/playwright` runs against the top 10 routes.\n\n**Impact** High · **Effort** Low · **Priority** P0"
+    },
+    {
+      "title": "[QA-2] Visual regression testing across mobile & desktop viewports",
+      "labels": ["area:testing", "area:ui", "type:story", "priority:p1", "mobile-first"],
+      "body": "**User Story**\n\nAs a UI contributor, I want pixel-diff tests for each component in both 360px and 1280px viewports, so that unintended visual changes are caught.\n\n**Acceptance Criteria**\n\n- **Given** a PR changes UI, **then** Chromatic (or Playwright snapshots) shows visual diffs at 360px and 1280px, blocking if over the configured threshold.\n\n**Impact** High · **Effort** Medium · **Priority** P1"
+    },
+    {
+      "title": "[QA-3] Performance budgets (Lighthouse CI: LCP / CLS / TBT / JS size)",
+      "labels": ["area:testing", "area:devops", "type:story", "priority:p1"],
+      "body": "**User Story**\n\nAs a performance steward, I want Lighthouse CI budgets enforced per app, so that bundle and perf regressions fail the pipeline.\n\n**Acceptance Criteria**\n\n- **Given** a PR, **then** `@lhci/cli` runs against app preview URLs and fails if: LCP (mobile, 4× CPU throttle) > 2.5 s · CLS > 0.05 · TBT > 200 ms · total JS > 300 KB gz per app.\n\n**Impact** High · **Effort** Medium · **Priority** P1"
+    },
+    {
+      "title": "[GOV-1] Module-boundary tag taxonomy + enforced ESLint rules",
+      "labels": ["area:architecture", "type:story", "priority:p0"],
+      "body": "**User Story**\n\nAs an architect, I want Nx tags for `type:*` and `scope:*` with enforced boundaries via ESLint, so that teams cannot create circular or cross-scope dependencies.\n\n**Acceptance Criteria**\n\n- **Given** `@nx/enforce-module-boundaries` is configured, **then** violations fail `nx lint`.\n- **Given** a feature lib tagged `scope:sales`, **then** it cannot import from `scope:hr`.\n\n**Impact** High · **Effort** Low · **Priority** P0\n\n**Technical Notes**\n\n- Seed taxonomy: `type:core | type:adapter | type:feature | type:ui | type:util | type:data-access | type:e2e`, `scope:public | scope:<domain>`."
+    },
+    {
+      "title": "[GOV-2] Public-API contracts via API Extractor (review files in PRs)",
+      "labels": ["area:architecture", "type:story", "priority:p1"],
+      "body": "**User Story**\n\nAs a library consumer, I want stable, documented public APIs for `@omnifex/*`, so that breaking changes are detected at PR time.\n\n**Acceptance Criteria**\n\n- **Given** a change to an exported symbol, **when** CI runs `api-extractor run`, **then** a review file is updated in the PR; missing review file fails the build.\n\n**Impact** Medium · **Effort** Medium · **Priority** P1"
+    },
+    {
+      "title": "[GOV-3] Contribution guidelines, CODEOWNERS, PR & issue templates",
+      "labels": ["area:architecture", "area:docs", "type:story", "priority:p1"],
+      "body": "**User Story**\n\nAs a new contributor, I want `CONTRIBUTING.md`, `CODEOWNERS`, PR template, issue templates, and a tier-1 support rota, so that I know how to contribute and who to ping.\n\n**Acceptance Criteria**\n\n- **Given** I open a PR, **then** reviewers are auto-requested based on `CODEOWNERS`.\n- **Given** I open an issue, **then** a templated form appears (`bug_report.yml`, `feature_request.yml`, `ui-component.yml`).\n\n**Impact** Medium · **Effort** Low · **Priority** P1"
+    },
+    {
+      "title": "[STRAT-1] Establish i18n baseline package @omnifex/i18n (ICU)",
+      "labels": ["area:architecture", "type:improvement", "priority:p1"],
+      "body": "Without a shared i18n approach, every app will invent its own → fragmentation.\n\n**Acceptance Criteria**\n\n- `@omnifex/i18n` provides ICU message format + runtime loader + a generator to add a locale.\n- Adapters for Angular `$localize`/transloco choice (decide via ADR) and React (`react-intl` or `i18next`).\n- Storybook locale switcher addon."
+    },
+    {
+      "title": "[STRAT-2] Telemetry baseline @omnifex/telemetry (OpenTelemetry web)",
+      "labels": ["area:architecture", "type:improvement", "priority:p1"],
+      "body": "Wrap OpenTelemetry web; expose `track(event, props)` and automatic route + web-vitals beacons. Avoids product analytics vendor lock-in.\n\n**Acceptance Criteria**\n\n- Apps emit `route_change` and `web_vital` events without per-app code.\n- Pluggable exporters (OTLP, console, custom)."
+    },
+    {
+      "title": "[STRAT-3] Feature flags abstraction @omnifex/flags (OpenFeature)",
+      "labels": ["area:architecture", "type:improvement", "priority:p2"],
+      "body": "Provider-agnostic interface based on OpenFeature. Prevents branch-based toggling hacks.\n\n**Acceptance Criteria**\n\n- Angular `FlagService` + React `useFlag(name)`.\n- Provider adapters for at least one SaaS (e.g. LaunchDarkly) and one OSS (Unleash).\n- Storybook addon to toggle flags per story."
+    },
+    {
+      "title": "[STRAT-4] Headless / bring-your-own-styles primitives layer",
+      "labels": ["area:ui", "type:improvement", "priority:p2", "a11y", "cross-framework"],
+      "body": "Provide behaviour-only primitives (à la Radix/Ark UI) so teams can theme beyond tokens while keeping a11y semantics. Useful for white-labelled deployments.\n\n**Acceptance Criteria**\n\n- A separate package `@omnifex/primitives` with unstyled, fully a11y popover/menu/dialog/tabs.\n- Styled `@omnifex/ui-components` is implemented on top of these primitives."
+    },
+    {
+      "title": "[STRAT-5] Native mobile shell (Capacitor) — prove mobile-first claim",
+      "labels": ["area:devops", "area:ui", "type:improvement", "priority:p2", "mobile-first"],
+      "body": "Add `apps/mobile-shell` using Capacitor wrapping the React (or Stencil-driven) app. Validates touch gestures and that components survive on real devices.\n\n**Acceptance Criteria**\n\n- iOS + Android builds via `nx run mobile-shell:build:ios|android`.\n- E2E with Appium or Maestro on at least one critical flow."
+    },
+    {
+      "title": "[STRAT-6] @omnifex/api — OpenAPI-driven typed client + shared auth fetcher",
+      "labels": ["area:architecture", "type:improvement", "priority:p1", "cross-framework"],
+      "body": "Generate typed clients from OpenAPI; provide a shared auth-aware fetcher used by Angular `HttpClient` interceptors and React `tanstack-query`.\n\n**Acceptance Criteria**\n\n- `nx g @omnifex/api:client --spec=path/to/openapi.json` produces a typed client.\n- Auth fetcher reuses tokens from `@omnifex/identity`."
+    },
+    {
+      "title": "[STRAT-7] Runtime config contract @omnifex/config",
+      "labels": ["area:architecture", "type:improvement", "priority:p1"],
+      "body": "Today `authority`/`clientId` are hard-coded in `app.config.ts` / `authConfig.ts`. Bake a runtime env loader so the same image runs across environments.\n\n**Acceptance Criteria**\n\n- Apps read config from `/config.json` at runtime.\n- Docker images do not need rebuilding to switch identity authority."
+    },
+    {
+      "title": "[STRAT-8] Bundle-size dashboard (size-limit) per package",
+      "labels": ["area:devops", "area:testing", "type:improvement", "priority:p2"],
+      "body": "Track per-package size over time and publish to docs.\n\n**Acceptance Criteria**\n\n- `size-limit` configured per app & per shared lib.\n- CI fails on regressions beyond budget; trend chart on docs site."
+    },
+    {
+      "title": "[STRAT-9] Renovate + grouped, scheduled dependency upgrades",
+      "labels": ["area:devops", "type:improvement", "priority:p1"],
+      "body": "Today there is no automated upgrade strategy. Configure Renovate to group ecosystem upgrades (Angular together, React together, Stencil alone) with a scheduled CI run.\n\n**Acceptance Criteria**\n\n- `renovate.json` checked in with grouping rules.\n- Weekly digest PR includes test results from `nx affected`."
+    },
+    {
+      "title": "[STRAT-10] Security baseline (CSP, CodeQL, Dependabot, secret scanning)",
+      "labels": ["area:devops", "area:architecture", "type:improvement", "priority:p1"],
+      "body": "Publish a CSP header policy, enable CodeQL + Dependabot + secret scanning, and document CSRF guidance for token flows.\n\n**Acceptance Criteria**\n\n- Workflows: `codeql.yml`, `dependabot.yml`.\n- `docs/security.md` with CSP samples and rationale."
+    },
+    {
+      "title": "[STRAT-11] SSR strategy ADR (CSR vs SSR vs SSG)",
+      "labels": ["area:architecture", "area:docs", "type:improvement", "priority:p2"],
+      "body": "Both apps are CSR today. Even an ADR capturing “we chose CSR because X” prevents ad-hoc per-team experiments.\n\n**Acceptance Criteria**\n\n- `docs/adr/0001-rendering-strategy.md` published.\n- If SSR is chosen later, a migration plan is appended."
+    }
+  ]
+}

@@ -106,7 +106,7 @@ const authority = azureAuthority('your-tenant-id');
 ```typescript
 // Initialize once at app startup
 initAuth({
-  authority: 'https://localhost:5001',
+  authority: 'https://localhost:5002',
   clientId: 'my-app',
   redirectUri: 'http://localhost:4200/callback',
   scope: 'openid profile email roles'
@@ -346,7 +346,7 @@ import { provideAuth } from '@omnifex/identity-angular';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideAuth({
-      authority: 'https://localhost:5001',
+      authority: 'https://localhost:5002',
       clientId: 'angular-app',
       redirectUri: 'http://localhost:4200/callback',
       scope: 'openid profile email'
@@ -524,7 +524,7 @@ function App() {
   return (
     <AuthProvider
       config={{
-        authority: 'https://localhost:5001',
+        authority: 'https://localhost:5002',
         clientId: 'react-app',
         redirectUri: 'http://localhost:3000/callback',
         scope: 'openid profile email'

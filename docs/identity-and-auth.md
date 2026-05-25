@@ -393,7 +393,7 @@ import { AuthProvider } from '@omnifex/identity-react';
 
 // Initialize core before rendering
 initAuth({
-  authority: 'https://localhost:5001',
+  authority: 'https://localhost:5002',
   clientId: 'react-app',
   redirectUri: 'http://localhost:3000/callback',
   scope: 'openid profile email roles',
@@ -426,7 +426,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideAuth({
-      authority: 'https://localhost:5001',
+      authority: 'https://localhost:5002',
       clientId: 'angular-app',
       redirectUri: 'http://localhost:4200/callback',
       postLogoutRedirectUri: 'http://localhost:4200',
@@ -532,7 +532,7 @@ import { AuthProvider } from '@omnifex/identity-react';
 import App from './App';
 
 initAuth({
-  authority: 'https://localhost:5001',
+  authority: 'https://localhost:5002',
   clientId: 'react-app',
   redirectUri: 'http://localhost:3000/callback',
   postLogoutRedirectUri: 'http://localhost:3000',

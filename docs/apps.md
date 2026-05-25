@@ -172,7 +172,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideAuth({
-      authority: 'https://localhost:5001',
+      authority: 'https://localhost:5002',
       clientId: 'omnifex-ui',
       redirectUri: 'http://localhost:4200/callback',
       scope: 'openid profile email roles'
