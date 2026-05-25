@@ -773,6 +773,6 @@ describe('omnifex-button', () => {
 ## Next Steps
 
 - **Testing**: Learn about testing strategies in [testing-strategy.md](./testing-strategy.md)
-- **Build & CI**: Understand build optimization in [build-and-ci.md](./build-and-ci.md)
+- **Build & CI**: Understand build optimization in [build-and-ci.md](../architecture/build-and-ci.md)
 - **Troubleshooting**: Common styling issues in [troubleshooting.md](./troubleshooting.md)
 

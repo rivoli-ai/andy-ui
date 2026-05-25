@@ -969,6 +969,6 @@ NODE_OPTIONS=--max-old-space-size=4096 nx build angular-app
 
 ## Next Steps
 
-- **Troubleshooting**: Common build issues in [troubleshooting.md](./troubleshooting.md)
+- **Troubleshooting**: Common build issues in [troubleshooting.md](../standards/troubleshooting.md)
 - **Architecture**: Understand build dependencies in [architecture.md](./architecture.md)
 

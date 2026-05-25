@@ -1,7 +1,7 @@
 # UI Components — QA & Regression Workflow (Phase 1)
 
 This document is the contributor-facing summary of UI-8 Phase 1 (foundations).
-The full plan lives in [`BACKLOG.md` § UI-8](./BACKLOG.md).
+The full plan lives in [`BACKLOG.md` § UI-8](../roadmap/BACKLOG.md).
 
 ## What ships in Phase 1
 
@@ -97,4 +97,4 @@ show 0 hard errors and 0 non-token warnings).
 - `@storybook/web-components-vite` config for Stencil.
 - Token coverage dashboard and `api-extractor` review files.
 
-See [`BACKLOG.md` § UI-8](./BACKLOG.md) for the complete plan.
+See [`BACKLOG.md` § UI-8](../roadmap/BACKLOG.md) for the complete plan.

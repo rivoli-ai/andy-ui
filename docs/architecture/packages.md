@@ -660,6 +660,6 @@ corepack pnpm nx test styles-react
 ## Next Steps
 
 - **Identity Deep Dive**: Learn about OIDC integration in [identity-and-auth.md](./identity-and-auth.md)
-- **Styles Deep Dive**: Learn about theming in [styles-and-design-system.md](./styles-and-design-system.md)
-- **Testing**: Understand testing strategies in [testing-strategy.md](./testing-strategy.md)
+- **Styles Deep Dive**: Learn about theming in [styles-and-design-system.md](../standards/styles-and-design-system.md)
+- **Testing**: Understand testing strategies in [testing-strategy.md](../standards/testing-strategy.md)
 

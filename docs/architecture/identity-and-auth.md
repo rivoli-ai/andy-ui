@@ -785,7 +785,7 @@ describe('useAuth', () => {
 
 ## Next Steps
 
-- **Styles**: Learn about theming in [styles-and-design-system.md](./styles-and-design-system.md)
-- **Testing**: Understand test strategies in [testing-strategy.md](./testing-strategy.md)
-- **Troubleshooting**: Common auth issues in [troubleshooting.md](./troubleshooting.md)
+- **Styles**: Learn about theming in [styles-and-design-system.md](../standards/styles-and-design-system.md)
+- **Testing**: Understand test strategies in [testing-strategy.md](../standards/testing-strategy.md)
+- **Troubleshooting**: Common auth issues in [troubleshooting.md](../standards/troubleshooting.md)
 

@@ -217,9 +217,9 @@ Use `implicitDependencies` and `dependsOn` to make relationships clear:
 
 ## Next Steps
 
-- **Architecture**: Learn about dependency rules and build strategy in [architecture.md](./architecture.md)
-- **Apps**: Understand how applications consume libraries in [apps.md](./apps.md)
-- **Packages**: Explore library APIs in [packages.md](./packages.md)
-- **Identity**: Deep dive into authentication in [identity-and-auth.md](./identity-and-auth.md)
-- **Styles**: Learn about theming in [styles-and-design-system.md](./styles-and-design-system.md)
+- **Architecture**: Learn about dependency rules and build strategy in [architecture.md](../architecture/architecture.md)
+- **Apps**: Understand how applications consume libraries in [apps.md](../architecture/apps.md)
+- **Packages**: Explore library APIs in [packages.md](../architecture/packages.md)
+- **Identity**: Deep dive into authentication in [identity-and-auth.md](../architecture/identity-and-auth.md)
+- **Styles**: Learn about theming in [styles-and-design-system.md](../standards/styles-and-design-system.md)
 

@@ -718,6 +718,6 @@ Only affected projects are tested, dramatically reducing CI time.
 
 ## Next Steps
 
-- **Build & CI**: Understand build optimization in [build-and-ci.md](./build-and-ci.md)
+- **Build & CI**: Understand build optimization in [build-and-ci.md](../architecture/build-and-ci.md)
 - **Troubleshooting**: Debug test failures in [troubleshooting.md](./troubleshooting.md)
 

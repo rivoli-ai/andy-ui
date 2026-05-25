@@ -548,6 +548,6 @@ Webpack/Vite configurations include special handling for this path:
 
 - **Packages**: Explore library APIs in [packages.md](./packages.md)
 - **Identity**: Deep dive into authentication in [identity-and-auth.md](./identity-and-auth.md)
-- **Styles**: Learn about theming in [styles-and-design-system.md](./styles-and-design-system.md)
-- **Testing**: Understand test strategies in [testing-strategy.md](./testing-strategy.md)
+- **Styles**: Learn about theming in [styles-and-design-system.md](../standards/styles-and-design-system.md)
+- **Testing**: Understand test strategies in [testing-strategy.md](../standards/testing-strategy.md)
 

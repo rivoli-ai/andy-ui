@@ -772,14 +772,14 @@ npx @nrwl/nx-console profile.json
 
 ### Check Documentation
 
-1. [Overview](./overview.md) - Monorepo philosophy
-2. [Architecture](./architecture.md) - Project structure
-3. [Apps](./apps.md) - Application details
-4. [Packages](./packages.md) - Library APIs
-5. [Identity & Auth](./identity-and-auth.md) - Authentication guide
+1. [Overview](../ai-context/overview.md) - Monorepo philosophy
+2. [Architecture](../architecture/architecture.md) - Project structure
+3. [Apps](../architecture/apps.md) - Application details
+4. [Packages](../architecture/packages.md) - Library APIs
+5. [Identity & Auth](../architecture/identity-and-auth.md) - Authentication guide
 6. [Styles](./styles-and-design-system.md) - Theming guide
 7. [Testing](./testing-strategy.md) - Testing guide
-8. [Build & CI](./build-and-ci.md) - Build optimization
+8. [Build & CI](../architecture/build-and-ci.md) - Build optimization
 
 ### Community Resources
 
