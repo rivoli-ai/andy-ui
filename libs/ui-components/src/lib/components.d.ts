@@ -31,6 +31,7 @@ export namespace Components {
          */
         "fullWidth": boolean;
         /**
+          * Figma scale only: large, medium, small (no flex).
           * @default OmnifexButtonSize.LARGE
          */
         "size": OmnifexButtonSize;
@@ -336,6 +337,7 @@ declare namespace LocalJSX {
         "fullWidth"?: boolean;
         "onButtonClick"?: (event: AndyUiButtonCustomEvent<void>) => void;
         /**
+          * Figma scale only: large, medium, small (no flex).
           * @default OmnifexButtonSize.LARGE
          */
         "size"?: OmnifexButtonSize;

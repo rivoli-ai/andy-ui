@@ -86,6 +86,17 @@ describe('andy-ui-button', () => {
     expect(button?.classList.contains('btn--full-width')).toBe(true);
   });
 
+  it('falls back to large when size is invalid (e.g. flex)', async () => {
+    const page = await newSpecPage({
+      components: [AndyUiButton],
+      html: `<andy-ui-button size="flex">Label</andy-ui-button>`,
+    });
+
+    const button = page.root?.shadowRoot?.querySelector('button');
+    expect(button?.classList.contains('btn-size-large')).toBe(true);
+    expect(button?.classList.contains('btn-size-flex')).toBe(false);
+  });
+
   it('supports basic (ghost) appearance', async () => {
     const page = await newSpecPage({
       components: [AndyUiButton],

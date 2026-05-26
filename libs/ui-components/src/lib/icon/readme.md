@@ -15,9 +15,9 @@ Presentational icon glyph (no button). Use inside `andy-ui-button`, cards, or la
 <andy-ui-icon name="search" size="medium"></andy-ui-icon>
 <andy-ui-icon name="close" size="small"></andy-ui-icon>
 
-<!-- Inside a text button -->
-<andy-ui-button variant="primary">
-  <andy-ui-icon slot="icon" name="home" size="medium"></andy-ui-icon>
+<!-- Inside a text button: icon uses flex to fill the button icon slot -->
+<andy-ui-button variant="primary" size="large">
+  <andy-ui-icon slot="icon" name="home" size="flex"></andy-ui-icon>
   Home
 </andy-ui-button>
 ```

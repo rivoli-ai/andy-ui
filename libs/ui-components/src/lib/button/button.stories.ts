@@ -17,7 +17,7 @@ const meta: Meta<ButtonStoryArgs> = {
   },
   render: (args) => {
     const icon = args.showIcon
-      ? `<andy-ui-icon slot="icon" name="add" size="medium"></andy-ui-icon>`
+      ? `<andy-ui-icon slot="icon" name="add" size="flex"></andy-ui-icon>`
       : '';
 
     return `<andy-ui-button

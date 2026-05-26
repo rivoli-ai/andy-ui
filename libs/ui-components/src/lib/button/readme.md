@@ -23,7 +23,7 @@ Andy UI button (Figma node `14:4`). Stencil web component for Angular and React.
 |------|------|---------|-------------|
 | `variant` | `primary` \| `secondary` \| `tertiary` \| `inverse` | `primary` | Color appearance (Figma Apperance) |
 | `appearance` | `filled` \| `outlined` \| `basic` | `filled` | Visual style (Figma variant) |
-| `size` | `large` \| `medium` \| `small` | `large` | Size scale |
+| `size` | `large` \| `medium` \| `small` | `large` | Size scale (no `flex`; use `size="flex"` on `andy-ui-icon` in the icon slot) |
 | `disabled` | `boolean` | `false` | Disables interaction |
 | `full-width` | `boolean` | `false` | Block-level width for responsive layouts |
 | `type` | `button` \| `submit` \| `reset` | `button` | Native button type |

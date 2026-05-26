@@ -24,7 +24,7 @@ export function buttonSource(args: ButtonStoryArgs): string {
     .join('\n  ');
 
   const icon = args.showIcon
-    ? `  <andy-ui-icon slot="icon" name="add" size="medium"></andy-ui-icon>\n  `
+    ? `  <andy-ui-icon slot="icon" name="add" size="flex"></andy-ui-icon>\n  `
     : '';
 
   return `<andy-ui-button

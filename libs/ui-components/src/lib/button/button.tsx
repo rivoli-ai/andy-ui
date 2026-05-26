@@ -15,7 +15,13 @@ export class AndyUiButton {
   /** Visual style: filled, outlined, basic/ghost (Figma variant) */
   @Prop({ reflect: true }) appearance: OmnifexAppearance = OmnifexAppearance.FILLED;
 
+  /** Figma scale only: large, medium, small (no flex). */
   @Prop({ reflect: true }) size: OmnifexButtonSize = OmnifexButtonSize.LARGE;
+
+  private normalizedSize(): OmnifexButtonSize {
+    const valid = Object.values(OmnifexButtonSize) as string[];
+    return valid.includes(this.size) ? this.size : OmnifexButtonSize.LARGE;
+  }
 
   @Prop({ reflect: true }) disabled = false;
 
@@ -53,7 +59,7 @@ export class AndyUiButton {
       'btn',
       `btn-${this.variant}`,
       `btn-${this.appearance}`,
-      `btn-size-${this.size}`,
+      `btn-size-${this.normalizedSize()}`,
     ];
 
     if (this.fullWidth) {
