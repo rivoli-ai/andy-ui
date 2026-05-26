@@ -3,23 +3,19 @@
  * Source: Figma Andy-UI---Design-System (node 15:386, component set 19:1458)
  * https://www.figma.com/design/TcEuJHlNPkME9br19X1Qhx/Andy-UI---Design-System?node-id=15-386&m=dev
  *
- * Colors reuse --button-*; sizes match Figma Icon matrix (42 / 32 / 22 px).
- * Touch target minimum enforced via --icon-button-min-size.
+ * Colors reuse --button-*; fixed sizes match Figma Icon matrix (42 / 32 / 22 px).
+ * size="flex" fills the host; set width/height on the parent wrapper.
  */
 
 :root {
-  --icon-button-min-size: var(--space-touch-min);
   --icon-button-size-large: 2.625rem; /* 42px */
   --icon-button-size-medium: 2rem; /* 32px */
-  --icon-button-size-small: 1.375rem; /* 22px visual; min-size still 44px */
-
-  --icon-button-glyph-large: var(--button-icon-size-large);
-  --icon-button-glyph-medium: var(--button-icon-size-medium);
-  --icon-button-glyph-small: var(--button-icon-size-small);
+  --icon-button-size-small: 1.375rem; /* 22px */
 
   --icon-button-radius-large: var(--radius-4);
   --icon-button-radius-medium: var(--radius-2);
   --icon-button-radius-small: var(--radius-2);
+  --icon-button-radius-flex: var(--radius-2);
 
   /* Figma Variant=standard — icon color on hover (lighter tint) */
   --icon-button-standard-hover-primary: var(--color-primary-100);

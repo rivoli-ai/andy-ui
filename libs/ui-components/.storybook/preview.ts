@@ -1,6 +1,7 @@
 import type { Preview } from '@storybook/web-components';
 import { defineCustomElements } from '../../../dist/ui-components/loader/index.js';
 import '../src/global/theme.css';
+import { resolveDocsSource } from './docs-source';
 
 defineCustomElements();
 
@@ -9,6 +10,13 @@ const preview: Preview = {
     layout: 'centered',
     a11y: {
       test: 'todo',
+    },
+    docs: {
+      source: {
+        language: 'html',
+        type: 'dynamic',
+        transform: (code, context) => resolveDocsSource(code, context),
+      },
     },
   },
   globalTypes: {

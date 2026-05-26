@@ -31,15 +31,8 @@ declare global {
         children?: React.ReactNode;
       };
       'andy-ui-icon': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
-        /** Built-in icon name — renders from the Andy UI icon registry. */
         name?: string;
-        /** Accessible name (aria-label). Defaults to `name` when name is provided. */
-        label?: string;
-        variant?: Variant;
-        appearance?: Appearance;
-        size?: 'large' | 'medium' | 'small';
-        disabled?: boolean;
-        type?: 'button' | 'submit' | 'reset';
+        size?: 'flex' | 'large' | 'medium' | 'small';
         children?: React.ReactNode;
       };
       'omnifex-identity': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {

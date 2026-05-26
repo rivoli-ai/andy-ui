@@ -1,83 +1,58 @@
 # andy-ui-icon
 
-Icon-only action button aligned with Figma **Icons** / **Icon** component set (node `15:386`).
+Presentational icon glyph (no button). Use inside `andy-ui-button`, cards, or layouts.
 
-Two usage modes — mutually exclusive; `name` takes precedence:
-
-## Named icon (built-in registry)
+## Usage
 
 ```html
-<andy-ui-icon name="settings"></andy-ui-icon>
-<andy-ui-icon name="home" variant="secondary" appearance="outlined"></andy-ui-icon>
+<!-- Default: size="flex" fills the parent wrapper -->
+<div style="width: 2rem; height: 2rem; display: inline-flex;">
+  <andy-ui-icon name="settings"></andy-ui-icon>
+</div>
+
+<!-- Fixed Figma sizes (42 / 32 / 22 px) -->
+<andy-ui-icon name="home" size="large"></andy-ui-icon>
+<andy-ui-icon name="search" size="medium"></andy-ui-icon>
+<andy-ui-icon name="close" size="small"></andy-ui-icon>
+
+<!-- Inside a text button -->
+<andy-ui-button variant="primary">
+  <andy-ui-icon slot="icon" name="home" size="medium"></andy-ui-icon>
+  Home
+</andy-ui-button>
 ```
 
-`aria-label` defaults to the icon name. Override with `label`:
+Accessibility: set `aria-label` when the icon conveys meaning on its own; otherwise it is decorative (`aria-hidden`).
 
 ```html
-<andy-ui-icon name="user" label="View your profile"></andy-ui-icon>
+<andy-ui-icon name="user" aria-label="View your profile"></andy-ui-icon>
 ```
 
-## Custom SVG (slot)
-
-Backward-compatible. Provide your own SVG via the default slot:
+Custom SVG (slot) when `name` is omitted or unknown:
 
 ```html
-<andy-ui-icon label="My icon">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-       fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-    <!-- paths -->
-  </svg>
+<andy-ui-icon aria-label="Custom">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">...</svg>
 </andy-ui-icon>
 ```
-
-Use `stroke="currentColor"` / `fill="currentColor"` so the glyph follows color tokens.
-
-## Available icon names
-
-| Name | Name | Name |
-|------|------|------|
-| `add` | `arrow-left` | `arrow-right` |
-| `check` | `chevron-down` | `chevron-left` |
-| `chevron-right` | `chevron-up` | `close` |
-| `delete` | `edit` | `error` |
-| `home` | `info` | `logout` |
-| `menu` | `more-horizontal` | `more-vertical` |
-| `search` | `settings` | `user` |
-| `warning` | | |
-
-**Adding icons:** see [Icon registry — adding a new named icon](../../../docs/standards/figma-integration.md#icon-registry--adding-a-new-named-icon) in `docs/standards/figma-integration.md`, or edit `icons.ts` directly.
 
 ## Properties
 
 | Property | Attribute | Type | Default | Description |
 |----------|-----------|------|---------|-------------|
-| `name` | `name` | `IconName` (string) | — | Built-in icon name; renders SVG from registry |
-| `label` | `label` | `string` | icon name | `aria-label`; defaults to `name` when `name` is set |
-| `variant` | `variant` | `'primary' \| 'secondary' \| 'tertiary'` | `'primary'` | Color role (Figma Appearance) |
-| `appearance` | `appearance` | `'filled' \| 'outlined' \| 'basic'` | `'filled'` | Visual style (Figma Variant) |
-| `size` | `size` | `'large' \| 'medium' \| 'small'` | `'large'` | 42 / 32 / 22 px visual; min 44 px touch target |
-| `disabled` | `disabled` | `boolean` | `false` | Disables interaction |
-| `type` | `type` | `'button' \| 'submit' \| 'reset'` | `'button'` | Native button type |
+| `name` | `name` | `IconName` | — | Built-in icon from registry |
+| `size` | `size` | `'flex' \| 'large' \| 'medium' \| 'small'` | `'flex'` | `flex` fills parent; fixed sizes match Figma |
+| `ariaLabel` | `aria-label` | `string` | — | Accessible name; omit when decorative |
 
-## Events
+## Sizes
 
-| Event | Description |
-|-------|-------------|
-| `iconClick` | Emitted on click when not disabled |
+| `size` | Host dimensions | Use |
+|--------|-----------------|-----|
+| `flex` | 100% of parent | Set `width`/`height` on wrapper (default) |
+| `large` | 42×42 px | Figma large |
+| `medium` | 32×32 px | Figma medium |
+| `small` | 22×22 px | Figma small |
 
-## Slots
+## Adding icons
 
-| Slot | Description |
-|------|-------------|
-| (default) | Custom SVG icon. Used when `name` is not provided or unknown. |
-
-## CSS parts
-
-| Part | Description |
-|------|-------------|
-| `button` | Native `<button>` element |
-
-## Tokens
-
-- Sizes / radius: `libs/styles/src/lib/icon-button.css`
-- Colors: `var(--button-*)` from `button.css`
+See [Icon registry](../../../docs/standards/figma-integration.md#icon-registry--adding-a-new-named-icon) in `docs/standards/figma-integration.md`.

@@ -9,10 +9,12 @@ import { OmnifexVariant } from "./shared/variant.enum";
 import { OmnifexAppearance } from "./shared/appearance.enum";
 import { OmnifexButtonSize } from "./shared/button-size.enum";
 import { IconName } from "./icon/icons";
+import { OmnifexIconSize } from "./shared/icon-size.enum";
 export { OmnifexVariant } from "./shared/variant.enum";
 export { OmnifexAppearance } from "./shared/appearance.enum";
 export { OmnifexButtonSize } from "./shared/button-size.enum";
 export { IconName } from "./icon/icons";
+export { OmnifexIconSize } from "./shared/icon-size.enum";
 export namespace Components {
     interface AndyUiButton {
         /**
@@ -43,48 +45,23 @@ export namespace Components {
         "variant": OmnifexVariant;
     }
     /**
-     * Icon-only action button (Figma: Icons / Icon component set, node 15:386).
-     * Two usage modes — they are mutually exclusive; `name` takes precedence:
-     * 1. **Named icon** (built-in registry):
-     *    <andy-ui-icon name="settings"></andy-ui-icon>
-     * 2. **Custom SVG** (slot):
-     *    <andy-ui-icon label="My icon">
-     *      <svg ...><path .../></svg>
-     *    </andy-ui-icon>
-     * Always provide an accessible name via `label`. When using `name`, the label
-     * defaults to the icon name if `label` is omitted.
+     * Presentational icon glyph (no button). Use inside `andy-ui-button` or layouts.
+     *   <andy-ui-icon name="home"></andy-ui-icon>
+     *   <andy-ui-button variant="primary">
+     *     <andy-ui-icon slot="icon" name="home"></andy-ui-icon>
+     *     Home
+     *   </andy-ui-button>
      */
     interface AndyUiIcon {
         /**
-          * Visual style: filled, outlined, basic (Figma: filled / outllined / standard)
-          * @default OmnifexAppearance.FILLED
+          * When set, exposes role="img"; otherwise decorative (aria-hidden)
          */
-        "appearance": OmnifexAppearance;
-        /**
-          * @default false
-         */
-        "disabled": boolean;
-        /**
-          * Accessible name mapped to `aria-label`. Optional when `name` is provided — defaults to the icon name in that case. Required when using the slot (custom SVG) without `name`.
-         */
-        "label"?: string;
-        /**
-          * Built-in icon name from the Andy UI icon registry. When set, the named SVG is rendered and the default slot is ignored. See `IconName` for the full list.
-         */
+        "ariaLabel"?: string;
         "name"?: IconName;
         /**
-          * @default OmnifexButtonSize.LARGE
+          * @default OmnifexIconSize.FLEX
          */
-        "size": OmnifexButtonSize;
-        /**
-          * @default 'button'
-         */
-        "type": 'button' | 'submit' | 'reset';
-        /**
-          * Color role: primary, secondary, tertiary
-          * @default OmnifexVariant.PRIMARY
-         */
-        "variant": OmnifexVariant;
+        "size": OmnifexIconSize;
     }
     interface OmnifexBadge {
         /**
@@ -193,10 +170,6 @@ export interface AndyUiButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLAndyUiButtonElement;
 }
-export interface AndyUiIconCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLAndyUiIconElement;
-}
 export interface OmnifexCallbackCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLOmnifexCallbackElement;
@@ -231,30 +204,15 @@ declare global {
         prototype: HTMLAndyUiButtonElement;
         new (): HTMLAndyUiButtonElement;
     };
-    interface HTMLAndyUiIconElementEventMap {
-        "iconClick": void;
-    }
     /**
-     * Icon-only action button (Figma: Icons / Icon component set, node 15:386).
-     * Two usage modes — they are mutually exclusive; `name` takes precedence:
-     * 1. **Named icon** (built-in registry):
-     *    <andy-ui-icon name="settings"></andy-ui-icon>
-     * 2. **Custom SVG** (slot):
-     *    <andy-ui-icon label="My icon">
-     *      <svg ...><path .../></svg>
-     *    </andy-ui-icon>
-     * Always provide an accessible name via `label`. When using `name`, the label
-     * defaults to the icon name if `label` is omitted.
+     * Presentational icon glyph (no button). Use inside `andy-ui-button` or layouts.
+     *   <andy-ui-icon name="home"></andy-ui-icon>
+     *   <andy-ui-button variant="primary">
+     *     <andy-ui-icon slot="icon" name="home"></andy-ui-icon>
+     *     Home
+     *   </andy-ui-button>
      */
     interface HTMLAndyUiIconElement extends Components.AndyUiIcon, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAndyUiIconElementEventMap>(type: K, listener: (this: HTMLAndyUiIconElement, ev: AndyUiIconCustomEvent<HTMLAndyUiIconElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAndyUiIconElementEventMap>(type: K, listener: (this: HTMLAndyUiIconElement, ev: AndyUiIconCustomEvent<HTMLAndyUiIconElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLAndyUiIconElement: {
         prototype: HTMLAndyUiIconElement;
@@ -392,49 +350,23 @@ declare namespace LocalJSX {
         "variant"?: OmnifexVariant;
     }
     /**
-     * Icon-only action button (Figma: Icons / Icon component set, node 15:386).
-     * Two usage modes — they are mutually exclusive; `name` takes precedence:
-     * 1. **Named icon** (built-in registry):
-     *    <andy-ui-icon name="settings"></andy-ui-icon>
-     * 2. **Custom SVG** (slot):
-     *    <andy-ui-icon label="My icon">
-     *      <svg ...><path .../></svg>
-     *    </andy-ui-icon>
-     * Always provide an accessible name via `label`. When using `name`, the label
-     * defaults to the icon name if `label` is omitted.
+     * Presentational icon glyph (no button). Use inside `andy-ui-button` or layouts.
+     *   <andy-ui-icon name="home"></andy-ui-icon>
+     *   <andy-ui-button variant="primary">
+     *     <andy-ui-icon slot="icon" name="home"></andy-ui-icon>
+     *     Home
+     *   </andy-ui-button>
      */
     interface AndyUiIcon {
         /**
-          * Visual style: filled, outlined, basic (Figma: filled / outllined / standard)
-          * @default OmnifexAppearance.FILLED
+          * When set, exposes role="img"; otherwise decorative (aria-hidden)
          */
-        "appearance"?: OmnifexAppearance;
-        /**
-          * @default false
-         */
-        "disabled"?: boolean;
-        /**
-          * Accessible name mapped to `aria-label`. Optional when `name` is provided — defaults to the icon name in that case. Required when using the slot (custom SVG) without `name`.
-         */
-        "label"?: string;
-        /**
-          * Built-in icon name from the Andy UI icon registry. When set, the named SVG is rendered and the default slot is ignored. See `IconName` for the full list.
-         */
+        "ariaLabel"?: string;
         "name"?: IconName;
-        "onIconClick"?: (event: AndyUiIconCustomEvent<void>) => void;
         /**
-          * @default OmnifexButtonSize.LARGE
+          * @default OmnifexIconSize.FLEX
          */
-        "size"?: OmnifexButtonSize;
-        /**
-          * @default 'button'
-         */
-        "type"?: 'button' | 'submit' | 'reset';
-        /**
-          * Color role: primary, secondary, tertiary
-          * @default OmnifexVariant.PRIMARY
-         */
-        "variant"?: OmnifexVariant;
+        "size"?: OmnifexIconSize;
     }
     interface OmnifexBadge {
         /**
@@ -563,16 +495,12 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "andy-ui-button": LocalJSX.AndyUiButton & JSXBase.HTMLAttributes<HTMLAndyUiButtonElement>;
             /**
-             * Icon-only action button (Figma: Icons / Icon component set, node 15:386).
-             * Two usage modes — they are mutually exclusive; `name` takes precedence:
-             * 1. **Named icon** (built-in registry):
-             *    <andy-ui-icon name="settings"></andy-ui-icon>
-             * 2. **Custom SVG** (slot):
-             *    <andy-ui-icon label="My icon">
-             *      <svg ...><path .../></svg>
-             *    </andy-ui-icon>
-             * Always provide an accessible name via `label`. When using `name`, the label
-             * defaults to the icon name if `label` is omitted.
+             * Presentational icon glyph (no button). Use inside `andy-ui-button` or layouts.
+             *   <andy-ui-icon name="home"></andy-ui-icon>
+             *   <andy-ui-button variant="primary">
+             *     <andy-ui-icon slot="icon" name="home"></andy-ui-icon>
+             *     Home
+             *   </andy-ui-button>
              */
             "andy-ui-icon": LocalJSX.AndyUiIcon & JSXBase.HTMLAttributes<HTMLAndyUiIconElement>;
             "omnifex-badge": LocalJSX.OmnifexBadge & JSXBase.HTMLAttributes<HTMLOmnifexBadgeElement>;

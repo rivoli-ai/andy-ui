@@ -2,23 +2,22 @@ import type { Meta, StoryObj } from '@storybook/web-components';
 import { OmnifexVariant } from '../shared/variant.enum';
 import { OmnifexAppearance } from '../shared/appearance.enum';
 import { OmnifexButtonSize } from '../shared/button-size.enum';
-
-type ButtonStoryArgs = {
-  label: string;
-  variant: OmnifexVariant;
-  appearance: OmnifexAppearance;
-  size: OmnifexButtonSize;
-  disabled: boolean;
-  fullWidth: boolean;
-  showIcon: boolean;
-};
+import { buttonSource, type ButtonStoryArgs } from '../../storybook/button-source';
+import { htmlSource } from '../../../.storybook/docs-source';
 
 const meta: Meta<ButtonStoryArgs> = {
   title: 'Andy UI/Button',
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      source: {
+        generate: (args: Record<string, unknown>) => buttonSource(args as ButtonStoryArgs),
+      },
+    },
+  },
   render: (args) => {
     const icon = args.showIcon
-      ? `<svg slot="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>`
+      ? `<andy-ui-icon slot="icon" name="add" size="medium"></andy-ui-icon>`
       : '';
 
     return `<andy-ui-button
@@ -97,8 +96,15 @@ export const FullWidth: Story = {
   parameters: { layout: 'padded' },
 };
 
+const MATRIX_SOURCE = `<andy-ui-button variant="primary" appearance="filled" size="large">Button</andy-ui-button>
+<andy-ui-button variant="primary" appearance="filled" size="medium">Button</andy-ui-button>
+<andy-ui-button variant="primary" appearance="filled" size="small">Button</andy-ui-button>`;
+
 export const MatrixLight: Story = {
-  parameters: { layout: 'fullscreen' },
+  parameters: {
+    layout: 'fullscreen',
+    docs: { source: htmlSource(MATRIX_SOURCE).source },
+  },
   render: () => `
     <div style="display:flex;flex-direction:column;gap:var(--space-4);padding:var(--space-6);flex-wrap:wrap;">
       ${[OmnifexAppearance.FILLED, OmnifexAppearance.OUTLINED, OmnifexAppearance.BASIC]
@@ -111,10 +117,10 @@ export const MatrixLight: Story = {
             <andy-ui-button variant="${variant}" appearance="${appearance}" size="large">Button</andy-ui-button>
             <andy-ui-button variant="${variant}" appearance="${appearance}" size="medium">Button</andy-ui-button>
             <andy-ui-button variant="${variant}" appearance="${appearance}" size="small">Button</andy-ui-button>
-          `
+          `,
             )
             .join('')}
-        </div>`
+        </div>`,
         )
         .join('')}
     </div>`,

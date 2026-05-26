@@ -172,18 +172,21 @@ Pair stroke width tokens with **theme border colors**: `var(--theme-border-prima
 | Spacing | `1:8356` | |
 | Radius | `1:8750` | |
 | Stroke | `1:8917` | |
-| Icon buttons (`andy-ui-icon`) | `15:386` | Component set `19:1458`; analyze sub-symbols, not full matrix |
+| Icon glyphs (`andy-ui-icon`) | `15:386` | Presentational; use inside `andy-ui-button` or layouts |
 | Design System page | `1:1101` | Use `get_metadata` to discover children |
 
 **Critical:** If `get_variable_defs` returns empty on a child swatch, call `get_metadata` on the parent frame and re-fetch variables from the **scale frame**, not decorative gradient layers.
 
 ### Icon registry — adding a new named icon
 
-The **`andy-ui-icon`** Stencil component renders icon-only action buttons (Figma **Icons** frame, node `15:386`). Consumers can reference built-in glyphs by name (Material Icons–style) without pasting SVG in every app:
+**`andy-ui-icon`** is a presentational glyph (Figma **Icons** frame, node `15:386`). Reference built-in glyphs by `name` or pass custom SVG via the default slot:
 
 ```html
-<andy-ui-icon name="home"></andy-ui-icon>
-<andy-ui-icon name="settings" label="Open settings" variant="secondary" appearance="outlined"></andy-ui-icon>
+<andy-ui-icon name="home" size="large"></andy-ui-icon>
+<andy-ui-button variant="primary">
+  <andy-ui-icon slot="icon" name="home" size="medium"></andy-ui-icon>
+  Home
+</andy-ui-button>
 ```
 
 | Artifact | Path |
@@ -252,18 +255,18 @@ The **`andy-ui-icon`** Stencil component renders icon-only action buttons (Figma
 **Angular** (requires `CUSTOM_ELEMENTS_SCHEMA` and loader import):
 
 ```html
-<andy-ui-icon name="search" label="Search" variant="primary" appearance="outlined" size="medium"></andy-ui-icon>
+<andy-ui-icon name="search" size="medium" aria-label="Search"></andy-ui-icon>
 ```
 
 **React** (see `apps/react-app/src/types/stencil-components.d.ts` for JSX types):
 
 ```tsx
-<andy-ui-icon name="search" label="Search" variant={Variant.PRIMARY} appearance={Appearance.OUTLINED} size="medium" />
+<andy-ui-icon name="search" size="medium" aria-label="Search" />
 ```
 
-- **`label`** — maps to `aria-label`. Optional when `name` is set (defaults to the icon name).
-- **`iconClick`** — composed click event when not `disabled`.
-- **Touch target** — minimum **44×44 CSS px** via `--icon-button-min-size` even when visual size is `small` (22px).
+- **`aria-label`** — set when the icon conveys meaning; omit when decorative (`aria-hidden`).
+- **`size="flex"`** (default) — fills parent wrapper; use `large` / `medium` / `small` for fixed Figma dimensions.
+- **`slot="icon"`** — required when nesting inside `andy-ui-button` (the button exposes a named icon slot).
 
 #### Figma MCP workflow for new icons
 

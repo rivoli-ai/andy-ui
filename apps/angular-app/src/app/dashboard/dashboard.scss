@@ -25,6 +25,11 @@
   gap: var(--space-2);
 }
 
+.icon-showcase__item--flex {
+  width: var(--icon-button-size-large);
+  height: var(--icon-button-size-large);
+}
+
 .icon-showcase__label {
   font-size: var(--font-b6-size);
   line-height: var(--font-b6-line-height);

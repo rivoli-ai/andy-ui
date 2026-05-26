@@ -26,36 +26,53 @@ const Dashboard: React.FC = () => {
           Your modern React application with secure authentication
         </p>
         <div className="dashboard-buttons">
-          <andy-ui-button variant={Variant.PRIMARY}>Primary Button</andy-ui-button>
-          <andy-ui-button variant={Variant.SECONDARY}>Secondary Button</andy-ui-button>
-          <andy-ui-button variant={Variant.PRIMARY} appearance={Appearance.OUTLINED}>Outline Button</andy-ui-button>
+          <andy-ui-button variant={Variant.PRIMARY}>
+            <andy-ui-icon slot="icon" name="home" size="flex" />
+            Home
+          </andy-ui-button>
+          <andy-ui-button variant={Variant.SECONDARY}>
+            <andy-ui-icon slot="icon" name="search" size="medium" />
+            Search
+          </andy-ui-button>
+          <andy-ui-button variant={Variant.PRIMARY} appearance={Appearance.OUTLINED}>
+            <andy-ui-icon slot="icon" name="settings" size="medium" />
+            Settings
+          </andy-ui-button>
+          <andy-ui-button variant={Variant.TERTIARY}>
+            <andy-ui-icon slot="icon" size="medium" aria-label="Favorite">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg>
+            </andy-ui-icon>
+            Favorite
+          </andy-ui-button>
         </div>
-        <section className="icon-showcase" aria-label="andy-ui-icon examples">
-          <p className="icon-showcase__heading">Icon buttons</p>
+        <section className="icon-showcase" aria-label="Icon examples">
+          <p className="icon-showcase__heading">Icons</p>
           <div className="icon-showcase__grid">
             <div className="icon-showcase__item">
-              <andy-ui-icon name="home" variant={Variant.PRIMARY} appearance={Appearance.FILLED} size="large" />
-              <span className="icon-showcase__label">home · filled</span>
+              <andy-ui-icon name="home" size="large" aria-label="home" />
+              <span className="icon-showcase__label">home · large</span>
             </div>
             <div className="icon-showcase__item">
-              <andy-ui-icon name="search" label="Search" variant={Variant.PRIMARY} appearance={Appearance.OUTLINED} size="large" />
-              <span className="icon-showcase__label">search · outlined</span>
+              <andy-ui-icon name="search" size="medium" aria-label="search" />
+              <span className="icon-showcase__label">search · medium</span>
             </div>
             <div className="icon-showcase__item">
-              <andy-ui-icon name="settings" label="Settings" variant={Variant.SECONDARY} appearance={Appearance.FILLED} size="large" />
-              <span className="icon-showcase__label">settings · secondary</span>
+              <andy-ui-icon name="settings" size="small" aria-label="settings" />
+              <span className="icon-showcase__label">settings · small</span>
+            </div>
+            <div className="icon-showcase__item icon-showcase__item--flex">
+              <andy-ui-icon name="edit" aria-label="edit" />
+              <span className="icon-showcase__label">edit · flex</span>
             </div>
             <div className="icon-showcase__item">
-              <andy-ui-icon name="edit" label="Edit" variant={Variant.TERTIARY} appearance={Appearance.OUTLINED} size="medium" />
-              <span className="icon-showcase__label">edit · medium</span>
-            </div>
-            <div className="icon-showcase__item">
-              <andy-ui-icon name="delete" label="Delete" variant={Variant.PRIMARY} appearance={Appearance.BASIC} size="medium" />
-              <span className="icon-showcase__label">delete · basic</span>
-            </div>
-            <div className="icon-showcase__item">
-              <andy-ui-icon name="close" label="Close" variant={Variant.SECONDARY} appearance={Appearance.BASIC} size="small" />
-              <span className="icon-showcase__label">close · small</span>
+              <andy-ui-icon size="large" aria-label="Favorite">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+              </andy-ui-icon>
+              <span className="icon-showcase__label">favorite · custom slot</span>
             </div>
           </div>
         </section>
@@ -70,7 +87,6 @@ const Dashboard: React.FC = () => {
       <div className="dashboard-cards">
         <Location />
 
-        {/* Admin-only card */}
         {isAuthenticated && hasRole('admin') && (
           <omnifex-card
             appearance={Appearance.OUTLINED}
@@ -82,7 +98,6 @@ const Dashboard: React.FC = () => {
           />
         )}
 
-        {/* Manager-only card */}
         {isAuthenticated && hasRole('manager') && (
           <omnifex-card
             appearance={Appearance.OUTLINED}
@@ -94,7 +109,6 @@ const Dashboard: React.FC = () => {
           />
         )}
 
-        {/* Card visible to both admin and manager */}
         {isAuthenticated && hasAnyRole(['admin', 'manager']) && (
           <omnifex-card
             appearance={Appearance.OUTLINED}
@@ -106,7 +120,6 @@ const Dashboard: React.FC = () => {
           />
         )}
 
-        {/* User-only card (all authenticated users have this role) */}
         {isAuthenticated && hasRole('user') && (
           <omnifex-card
             appearance={Appearance.FILLED}
@@ -118,7 +131,6 @@ const Dashboard: React.FC = () => {
           />
         )}
 
-        {/* Example cards using Variant enum */}
         <omnifex-card
           appearance={Appearance.FILLED}
           variant={Variant.PRIMARY}

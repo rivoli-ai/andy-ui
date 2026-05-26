@@ -8,36 +8,53 @@
       Your modern Angular application with secure authentication
     </p>
     <div class="flex gap-4 justify-center items-center flex-wrap">
-      <andy-ui-button [variant]="Variant.PRIMARY">Primary Button</andy-ui-button>
-      <andy-ui-button [variant]="Variant.SECONDARY">Secondary Button</andy-ui-button>
-      <andy-ui-button [variant]="Variant.PRIMARY" [appearance]="Appearance.OUTLINED">Outline Button</andy-ui-button>
+      <andy-ui-button [variant]="Variant.PRIMARY">
+        <andy-ui-icon slot="icon" name="home" size="medium"></andy-ui-icon>
+        Home
+      </andy-ui-button>
+      <andy-ui-button [variant]="Variant.SECONDARY">
+        <andy-ui-icon slot="icon" name="search" size="medium"></andy-ui-icon>
+        Search
+      </andy-ui-button>
+      <andy-ui-button [variant]="Variant.PRIMARY" [appearance]="Appearance.OUTLINED">
+        <andy-ui-icon slot="icon" name="settings" size="medium"></andy-ui-icon>
+        Settings
+      </andy-ui-button>
+      <andy-ui-button [variant]="Variant.TERTIARY">
+        <andy-ui-icon slot="icon" size="medium" aria-label="Favorite">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+        </andy-ui-icon>
+        Favorite
+      </andy-ui-button>
     </div>
-    <section class="icon-showcase mt-6" aria-label="andy-ui-icon examples">
-      <p class="icon-showcase__heading">Icon buttons</p>
+    <section class="icon-showcase mt-6" aria-label="Icon examples">
+      <p class="icon-showcase__heading">Icons</p>
       <div class="icon-showcase__grid">
         <div class="icon-showcase__item">
-          <andy-ui-icon name="home" [variant]="Variant.PRIMARY" [appearance]="Appearance.FILLED" size="large"></andy-ui-icon>
-          <span class="icon-showcase__label">home · filled</span>
+          <andy-ui-icon name="home" size="large" aria-label="home"></andy-ui-icon>
+          <span class="icon-showcase__label">home · large</span>
         </div>
         <div class="icon-showcase__item">
-          <andy-ui-icon name="search" label="Search" [variant]="Variant.PRIMARY" [appearance]="Appearance.OUTLINED" size="large"></andy-ui-icon>
-          <span class="icon-showcase__label">search · outlined</span>
+          <andy-ui-icon name="search" size="medium" aria-label="search"></andy-ui-icon>
+          <span class="icon-showcase__label">search · medium</span>
         </div>
         <div class="icon-showcase__item">
-          <andy-ui-icon name="settings" label="Settings" [variant]="Variant.SECONDARY" [appearance]="Appearance.FILLED" size="large"></andy-ui-icon>
-          <span class="icon-showcase__label">settings · secondary</span>
+          <andy-ui-icon name="settings" size="small" aria-label="settings"></andy-ui-icon>
+          <span class="icon-showcase__label">settings · small</span>
+        </div>
+        <div class="icon-showcase__item icon-showcase__item--flex">
+          <andy-ui-icon name="edit" aria-label="edit"></andy-ui-icon>
+          <span class="icon-showcase__label">edit · flex</span>
         </div>
         <div class="icon-showcase__item">
-          <andy-ui-icon name="edit" label="Edit" [variant]="Variant.TERTIARY" [appearance]="Appearance.OUTLINED" size="medium"></andy-ui-icon>
-          <span class="icon-showcase__label">edit · medium</span>
-        </div>
-        <div class="icon-showcase__item">
-          <andy-ui-icon name="delete" label="Delete" [variant]="Variant.PRIMARY" [appearance]="Appearance.BASIC" size="medium"></andy-ui-icon>
-          <span class="icon-showcase__label">delete · basic</span>
-        </div>
-        <div class="icon-showcase__item">
-          <andy-ui-icon name="close" label="Close" [variant]="Variant.SECONDARY" [appearance]="Appearance.BASIC" size="small"></andy-ui-icon>
-          <span class="icon-showcase__label">close · small</span>
+          <andy-ui-icon size="large" aria-label="Favorite">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+          </andy-ui-icon>
+          <span class="icon-showcase__label">favorite · custom slot</span>
         </div>
       </div>
     </section>
