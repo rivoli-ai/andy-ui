@@ -30,6 +30,35 @@ const Dashboard: React.FC = () => {
           <andy-ui-button variant={Variant.SECONDARY}>Secondary Button</andy-ui-button>
           <andy-ui-button variant={Variant.PRIMARY} appearance={Appearance.OUTLINED}>Outline Button</andy-ui-button>
         </div>
+        <section className="icon-showcase" aria-label="andy-ui-icon examples">
+          <p className="icon-showcase__heading">Icon buttons</p>
+          <div className="icon-showcase__grid">
+            <div className="icon-showcase__item">
+              <andy-ui-icon name="home" variant={Variant.PRIMARY} appearance={Appearance.FILLED} size="large" />
+              <span className="icon-showcase__label">home · filled</span>
+            </div>
+            <div className="icon-showcase__item">
+              <andy-ui-icon name="search" label="Search" variant={Variant.PRIMARY} appearance={Appearance.OUTLINED} size="large" />
+              <span className="icon-showcase__label">search · outlined</span>
+            </div>
+            <div className="icon-showcase__item">
+              <andy-ui-icon name="settings" label="Settings" variant={Variant.SECONDARY} appearance={Appearance.FILLED} size="large" />
+              <span className="icon-showcase__label">settings · secondary</span>
+            </div>
+            <div className="icon-showcase__item">
+              <andy-ui-icon name="edit" label="Edit" variant={Variant.TERTIARY} appearance={Appearance.OUTLINED} size="medium" />
+              <span className="icon-showcase__label">edit · medium</span>
+            </div>
+            <div className="icon-showcase__item">
+              <andy-ui-icon name="delete" label="Delete" variant={Variant.PRIMARY} appearance={Appearance.BASIC} size="medium" />
+              <span className="icon-showcase__label">delete · basic</span>
+            </div>
+            <div className="icon-showcase__item">
+              <andy-ui-icon name="close" label="Close" variant={Variant.SECONDARY} appearance={Appearance.BASIC} size="small" />
+              <span className="icon-showcase__label">close · small</span>
+            </div>
+          </div>
+        </section>
         <div className="dashboard-badges">
           <omnifex-badge variant={Variant.PRIMARY}>Primary</omnifex-badge>
           <omnifex-badge variant={Variant.SECONDARY}>Secondary</omnifex-badge>

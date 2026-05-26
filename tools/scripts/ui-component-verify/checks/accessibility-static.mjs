@@ -30,13 +30,22 @@ export async function checkAccessibilityStatic(report, components) {
       });
     }
 
-    if (comp.id === 'button') {
+    if (comp.id === 'button' || comp.id === 'icon') {
       if (!src.includes('<button')) {
         report.add({
           id: comp.id,
           severity: SEVERITY.ERROR,
           category: 'accessibility',
-          message: 'Button component should render a native <button>.',
+          message: `${comp.id} component should render a native <button>.`,
+        });
+      }
+
+      if (comp.id === 'icon' && !src.includes('aria-label')) {
+        report.add({
+          id: comp.id,
+          severity: strict ? SEVERITY.ERROR : SEVERITY.WARNING,
+          category: 'accessibility',
+          message: 'Icon-only button should expose aria-label via label prop.',
         });
       }
       if (

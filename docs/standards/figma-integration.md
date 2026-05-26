@@ -172,9 +172,114 @@ Pair stroke width tokens with **theme border colors**: `var(--theme-border-prima
 | Spacing | `1:8356` | |
 | Radius | `1:8750` | |
 | Stroke | `1:8917` | |
+| Icon buttons (`andy-ui-icon`) | `15:386` | Component set `19:1458`; analyze sub-symbols, not full matrix |
 | Design System page | `1:1101` | Use `get_metadata` to discover children |
 
 **Critical:** If `get_variable_defs` returns empty on a child swatch, call `get_metadata` on the parent frame and re-fetch variables from the **scale frame**, not decorative gradient layers.
+
+### Icon registry — adding a new named icon
+
+The **`andy-ui-icon`** Stencil component renders icon-only action buttons (Figma **Icons** frame, node `15:386`). Consumers can reference built-in glyphs by name (Material Icons–style) without pasting SVG in every app:
+
+```html
+<andy-ui-icon name="home"></andy-ui-icon>
+<andy-ui-icon name="settings" label="Open settings" variant="secondary" appearance="outlined"></andy-ui-icon>
+```
+
+| Artifact | Path |
+|----------|------|
+| Icon path registry | `libs/ui-components/src/lib/icon/icons.ts` |
+| Component + styles | `libs/ui-components/src/lib/icon/icon.tsx`, `icon.css` |
+| Semantic size tokens | `libs/styles/src/lib/icon-button.css` |
+| Color tokens | `libs/styles/src/lib/button.css` (reuse `--button-*`) |
+| Component API docs | `libs/ui-components/src/lib/icon/readme.md` |
+
+#### Registry vs custom slot
+
+| Approach | When to use |
+|----------|-------------|
+| **`name="…"`** (registry) | Icon is shared across Angular, React, and Storybook; should appear in the Icon Catalog story |
+| **Default slot** (custom `<svg>`) | One-off or app-only graphic; no registry change |
+
+`name` takes precedence over slot content. If `name` is unknown, the component falls back to the slot.
+
+#### Step-by-step: add a named icon
+
+1. **Open** `libs/ui-components/src/lib/icon/icons.ts`.
+
+2. **Add the name** to the `IconName` union (kebab-case, match Figma/component naming where possible):
+
+   ```ts
+   export type IconName =
+     | 'home'
+     | 'settings'
+     | 'star'; // new
+   ```
+
+3. **Add SVG inner markup** to `ICONS` — **paths/lines/circles only**, no wrapping `<svg>` tag:
+
+   ```ts
+   star:
+     '<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>',
+   ```
+
+4. **Follow SVG conventions** (enforced by the component at render time):
+
+   | Rule | Detail |
+   |------|--------|
+   | ViewBox | Design in **24×24** coordinates (component sets `viewBox="0 0 24 24"`) |
+   | Stroke icons | Prefer Feather-style strokes; component applies `stroke="currentColor"`, `stroke-width="2"`, round caps/joins |
+   | Fill icons | Use `fill="currentColor"` on paths only if the design is solid; keep consistent with the set |
+   | No hardcoded colors | No `#hex` or `rgb()` in path strings — color comes from `--button-*` / variant CSS |
+   | Do not paste Figma MCP CSS | Export path data from Figma or a compatible icon set; map button colors to tokens separately |
+
+5. **Rebuild** the library (required for apps and Storybook lazy chunks):
+
+   ```bash
+   corepack pnpm nx run @omnifex/ui-components:build
+   ```
+
+6. **Verify** (publishable component):
+
+   ```bash
+   corepack pnpm nx run @omnifex/ui-components:verify:icon
+   ```
+
+7. **Document** — update the icon name table in `libs/ui-components/src/lib/icon/readme.md`. Storybook story **Catalog — all icons** picks up new names automatically via `Object.keys(ICONS)`.
+
+#### Usage in apps
+
+**Angular** (requires `CUSTOM_ELEMENTS_SCHEMA` and loader import):
+
+```html
+<andy-ui-icon name="search" label="Search" variant="primary" appearance="outlined" size="medium"></andy-ui-icon>
+```
+
+**React** (see `apps/react-app/src/types/stencil-components.d.ts` for JSX types):
+
+```tsx
+<andy-ui-icon name="search" label="Search" variant={Variant.PRIMARY} appearance={Appearance.OUTLINED} size="medium" />
+```
+
+- **`label`** — maps to `aria-label`. Optional when `name` is set (defaults to the icon name).
+- **`iconClick`** — composed click event when not `disabled`.
+- **Touch target** — minimum **44×44 CSS px** via `--icon-button-min-size` even when visual size is `small` (22px).
+
+#### Figma MCP workflow for new icons
+
+When a new glyph appears in Figma node `15:386`:
+
+1. `get_metadata` on `15:386` → locate the symbol for the new icon.
+2. `get_design_context` on a **single symbol** (e.g. primary / filled / default state) — use as visual reference only.
+3. Extract path geometry into `icons.ts`; map colors to existing `--button-*` / `--icon-button-*` tokens — do not add hex to component CSS.
+4. If sizes differ from the scale, adjust `libs/styles/src/lib/icon-button.css` (primitives in `libs/styles` only).
+
+#### Anti-patterns
+
+- Pasting full Figma MCP HTML/SVG export into `icons.ts` or component CSS.
+- Adding `#` colors inside path strings or `icon.css`.
+- Registering app-only icons in the shared registry (use the slot instead).
+- Skipping rebuild after `icons.ts` changes (apps will serve stale lazy chunks).
 
 ---
 
@@ -378,6 +483,7 @@ Update documentation when changes affect governance or discovery:
 | Figma scale added/changed | `libs/styles/src/lib/*.css` comments (Figma node ID), `libs/styles/README.md`, §3 tables in this file if IDs change |
 | New token category | `theme.css` + this doc §3 + `styles-and-design-system.md` |
 | New shared component | Component readme / Storybook (Phase 2), `ui-components-qa.md` if gates change |
+| New icon in registry | `libs/ui-components/src/lib/icon/icons.ts`, icon `readme.md` name table, §3 icon registry |
 | New responsive rule | This doc §4 + `.stylelintrc` / stylelint plugin if enforced |
 | Accessibility rule change | This doc §5 + `ui-components-qa.md` |
 | MCP workflow change | This doc §6–7 |
@@ -465,6 +571,7 @@ corepack pnpm nx run @omnifex/ui-components:storybook
 
 # All-in-one component verification
 corepack pnpm nx run @omnifex/ui-components:verify
+corepack pnpm nx run @omnifex/ui-components:verify:icon
 
 # Dependency-free token audit
 corepack pnpm nx run @omnifex/ui-components:audit

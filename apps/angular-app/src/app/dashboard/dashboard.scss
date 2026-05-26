@@ -1,0 +1,32 @@
+.icon-showcase {
+  text-align: center;
+}
+
+.icon-showcase__heading {
+  font-size: var(--font-b3-size);
+  font-weight: var(--font-weight-medium);
+  color: var(--theme-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-5);
+}
+
+.icon-showcase__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+  justify-content: center;
+}
+
+.icon-showcase__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.icon-showcase__label {
+  font-size: var(--font-b6-size);
+  line-height: var(--font-b6-line-height);
+  color: var(--theme-text-secondary);
+}

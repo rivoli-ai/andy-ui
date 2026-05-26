@@ -12,6 +12,35 @@
       <andy-ui-button [variant]="Variant.SECONDARY">Secondary Button</andy-ui-button>
       <andy-ui-button [variant]="Variant.PRIMARY" [appearance]="Appearance.OUTLINED">Outline Button</andy-ui-button>
     </div>
+    <section class="icon-showcase mt-6" aria-label="andy-ui-icon examples">
+      <p class="icon-showcase__heading">Icon buttons</p>
+      <div class="icon-showcase__grid">
+        <div class="icon-showcase__item">
+          <andy-ui-icon name="home" [variant]="Variant.PRIMARY" [appearance]="Appearance.FILLED" size="large"></andy-ui-icon>
+          <span class="icon-showcase__label">home · filled</span>
+        </div>
+        <div class="icon-showcase__item">
+          <andy-ui-icon name="search" label="Search" [variant]="Variant.PRIMARY" [appearance]="Appearance.OUTLINED" size="large"></andy-ui-icon>
+          <span class="icon-showcase__label">search · outlined</span>
+        </div>
+        <div class="icon-showcase__item">
+          <andy-ui-icon name="settings" label="Settings" [variant]="Variant.SECONDARY" [appearance]="Appearance.FILLED" size="large"></andy-ui-icon>
+          <span class="icon-showcase__label">settings · secondary</span>
+        </div>
+        <div class="icon-showcase__item">
+          <andy-ui-icon name="edit" label="Edit" [variant]="Variant.TERTIARY" [appearance]="Appearance.OUTLINED" size="medium"></andy-ui-icon>
+          <span class="icon-showcase__label">edit · medium</span>
+        </div>
+        <div class="icon-showcase__item">
+          <andy-ui-icon name="delete" label="Delete" [variant]="Variant.PRIMARY" [appearance]="Appearance.BASIC" size="medium"></andy-ui-icon>
+          <span class="icon-showcase__label">delete · basic</span>
+        </div>
+        <div class="icon-showcase__item">
+          <andy-ui-icon name="close" label="Close" [variant]="Variant.SECONDARY" [appearance]="Appearance.BASIC" size="small"></andy-ui-icon>
+          <span class="icon-showcase__label">close · small</span>
+        </div>
+      </div>
+    </section>
     <div class="flex gap-2 justify-center items-center flex-wrap mt-4">
       <omnifex-badge [variant]="Variant.PRIMARY">Primary</omnifex-badge>
       <omnifex-badge [variant]="Variant.SECONDARY">Secondary</omnifex-badge>

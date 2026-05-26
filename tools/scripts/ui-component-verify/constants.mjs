@@ -17,7 +17,7 @@ export const VIEWPORTS = [
 ];
 
 /** Components that must meet full Definition of Done (publishable). Others get warnings for gaps. */
-export const PUBLISHABLE_COMPONENTS = new Set(['button']);
+export const PUBLISHABLE_COMPONENTS = new Set(['button', 'icon']);
 
 export const SEVERITY = {
   ERROR: 'error',

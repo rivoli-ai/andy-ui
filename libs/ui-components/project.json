@@ -83,6 +83,9 @@
         },
         "button": {
           "command": "node tools/scripts/verify-ui-component.mjs --component=button --with-nx --fail-on-error"
+        },
+        "icon": {
+          "command": "node tools/scripts/verify-ui-component.mjs --component=icon --with-nx --fail-on-error"
         }
       }
     }

@@ -47,6 +47,7 @@ test('interactive elements meet 44×44 CSS px touch target on mobile @touch @res
     page.locator('a[href]'),
     page.locator('[role="button"]'),
     page.locator('andy-ui-button'),
+    page.locator('andy-ui-icon'),
     page.locator('omnifex-theme-toggle'),
   ];
 
