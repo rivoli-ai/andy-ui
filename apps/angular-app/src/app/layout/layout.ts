@@ -1,5 +1,5 @@
 import { Component, inject, computed, CUSTOM_ELEMENTS_SCHEMA, ChangeDetectorRef, effect } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { AuthService } from '../identity-wrapper';
 import { ThemeService } from '../theme-wrapper.service';
 
@@ -13,6 +13,7 @@ import { ThemeService } from '../theme-wrapper.service';
 export class Layout {
   readonly authService: AuthService = inject(AuthService);
   readonly themeService: ThemeService = inject(ThemeService);
+  private readonly router = inject(Router);
   private readonly cdr = inject(ChangeDetectorRef);
 
   readonly userName = computed(() => {
@@ -36,7 +37,7 @@ export class Layout {
   }
 
   login(): void {
-    this.authService.login();
+    void this.router.navigate(['/login']);
   }
 
   logout(): void {

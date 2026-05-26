@@ -61,6 +61,16 @@ declare global {
         text?: string;
         framework?: string;
       };
+      'omnifex-login': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+        heading?: string;
+        subheading?: string;
+        cardTitle?: string;
+        cardDescription?: string;
+        isLoading?: boolean;
+        error?: string | null;
+        actionLabel?: string;
+        actionDisabled?: boolean;
+      };
     }
   }
 }

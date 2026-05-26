@@ -5,6 +5,8 @@ import { ThemeProvider } from './hooks/useTheme';
 import Layout from './components/Layout';
 import Dashboard from './components/Dashboard';
 import Callback from './components/Callback';
+import Login from './components/Login';
+import ProtectedRoute from './components/ProtectedRoute';
 import './App.css';
 
 function App() {
@@ -27,9 +29,17 @@ function App() {
       <BrowserRouter>
         <AuthProvider>
           <Routes>
-            <Route path="/" element={<Layout />}>
+            <Route path="/login" element={<Login />} />
+            <Route path="/callback" element={<Callback />} />
+            <Route
+              path="/"
+              element={
+                <ProtectedRoute>
+                  <Layout />
+                </ProtectedRoute>
+              }
+            >
               <Route index element={<Dashboard />} />
-              <Route path="callback" element={<Callback />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Route>
           </Routes>

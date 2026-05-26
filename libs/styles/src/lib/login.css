@@ -1,0 +1,13 @@
+/**
+ * Andy UI login layout semantic tokens
+ * Figma: cards container `104:6051` / component `40:2010`
+ */
+:root {
+  --login-card-width: 31.25rem; /* 500px */
+  --login-card-min-height: 15.75rem; /* 252px */
+  --login-card-bg: color-mix(in srgb, var(--color-primary-100) 20%, transparent);
+  --login-card-border: var(--color-primary-200);
+  --login-card-radius: var(--radius-5);
+  --login-overlay: rgba(0, 0, 0, 0.6);
+  --login-hero-text: var(--color-neutral-100);
+}

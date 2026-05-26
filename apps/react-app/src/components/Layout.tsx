@@ -1,12 +1,13 @@
 import React, { useRef, useEffect } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import { useAuth } from '../identity-wrapper';
 import { useTheme } from '../hooks/useTheme';
 import './Layout.css';
 
 const Layout: React.FC = () => {
-  const { isAuthenticated, isLoading, user, login, logout, roles } = useAuth();
+  const { isAuthenticated, isLoading, user, logout, roles } = useAuth();
   const { isDark, toggleTheme } = useTheme();
+  const navigate = useNavigate();
   const headerRef = useRef<HTMLElement>(null);
 
   const userName = user?.profile?.name || user?.profile?.sub || '';
@@ -61,7 +62,7 @@ const Layout: React.FC = () => {
     };
   }, [login, logout, toggleTheme]);*/
   useEffect(() => {
-    const handleLoginClick = () => login();
+    const handleLoginClick = () => navigate('/login');
     const handleLogoutClick = () => logout();
     const handleThemeToggle = () => toggleTheme();
   
@@ -126,7 +127,7 @@ const Layout: React.FC = () => {
         attachedEl = null;
       }
     };
-  }, [login, logout, toggleTheme]);
+  }, [logout, toggleTheme, navigate]);
   
 
   // Update omnifex-header properties when they change

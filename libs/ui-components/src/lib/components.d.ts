@@ -160,6 +160,43 @@ export namespace Components {
          */
         "userName": string;
     }
+    /**
+     * Login layout page (Figma: gradient `104:6030`, cards container `104:6051`).
+     */
+    interface OmnifexLogin {
+        /**
+          * @default false
+         */
+        "actionDisabled": boolean;
+        /**
+          * @default 'Login'
+         */
+        "actionLabel": string;
+        /**
+          * @default 'Sign in to access your application again.'
+         */
+        "cardDescription": string;
+        /**
+          * @default 'Welcome Back'
+         */
+        "cardTitle": string;
+        /**
+          * @default null
+         */
+        "error": string | null;
+        /**
+          * @default 'Andy UI'
+         */
+        "heading": string;
+        /**
+          * @default false
+         */
+        "isLoading": boolean;
+        /**
+          * @default 'Design System'
+         */
+        "subheading": string;
+    }
     interface OmnifexThemeToggle {
         /**
           * @default false
@@ -182,6 +219,10 @@ export interface OmnifexHeaderCustomEvent<T> extends CustomEvent<T> {
 export interface OmnifexIdentityCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLOmnifexIdentityElement;
+}
+export interface OmnifexLoginCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLOmnifexLoginElement;
 }
 export interface OmnifexThemeToggleCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -291,6 +332,26 @@ declare global {
         prototype: HTMLOmnifexIdentityElement;
         new (): HTMLOmnifexIdentityElement;
     };
+    interface HTMLOmnifexLoginElementEventMap {
+        "login-click": void;
+    }
+    /**
+     * Login layout page (Figma: gradient `104:6030`, cards container `104:6051`).
+     */
+    interface HTMLOmnifexLoginElement extends Components.OmnifexLogin, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLOmnifexLoginElementEventMap>(type: K, listener: (this: HTMLOmnifexLoginElement, ev: OmnifexLoginCustomEvent<HTMLOmnifexLoginElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLOmnifexLoginElementEventMap>(type: K, listener: (this: HTMLOmnifexLoginElement, ev: OmnifexLoginCustomEvent<HTMLOmnifexLoginElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLOmnifexLoginElement: {
+        prototype: HTMLOmnifexLoginElement;
+        new (): HTMLOmnifexLoginElement;
+    };
     interface HTMLOmnifexThemeToggleElementEventMap {
         "toggle-click": void;
     }
@@ -317,6 +378,7 @@ declare global {
         "omnifex-footer": HTMLOmnifexFooterElement;
         "omnifex-header": HTMLOmnifexHeaderElement;
         "omnifex-identity": HTMLOmnifexIdentityElement;
+        "omnifex-login": HTMLOmnifexLoginElement;
         "omnifex-theme-toggle": HTMLOmnifexThemeToggleElement;
     }
 }
@@ -472,6 +534,44 @@ declare namespace LocalJSX {
          */
         "userName"?: string;
     }
+    /**
+     * Login layout page (Figma: gradient `104:6030`, cards container `104:6051`).
+     */
+    interface OmnifexLogin {
+        /**
+          * @default false
+         */
+        "actionDisabled"?: boolean;
+        /**
+          * @default 'Login'
+         */
+        "actionLabel"?: string;
+        /**
+          * @default 'Sign in to access your application again.'
+         */
+        "cardDescription"?: string;
+        /**
+          * @default 'Welcome Back'
+         */
+        "cardTitle"?: string;
+        /**
+          * @default null
+         */
+        "error"?: string | null;
+        /**
+          * @default 'Andy UI'
+         */
+        "heading"?: string;
+        /**
+          * @default false
+         */
+        "isLoading"?: boolean;
+        "onLogin-click"?: (event: OmnifexLoginCustomEvent<void>) => void;
+        /**
+          * @default 'Design System'
+         */
+        "subheading"?: string;
+    }
     interface OmnifexThemeToggle {
         /**
           * @default false
@@ -488,6 +588,7 @@ declare namespace LocalJSX {
         "omnifex-footer": OmnifexFooter;
         "omnifex-header": OmnifexHeader;
         "omnifex-identity": OmnifexIdentity;
+        "omnifex-login": OmnifexLogin;
         "omnifex-theme-toggle": OmnifexThemeToggle;
     }
 }
@@ -511,6 +612,10 @@ declare module "@stencil/core" {
             "omnifex-footer": LocalJSX.OmnifexFooter & JSXBase.HTMLAttributes<HTMLOmnifexFooterElement>;
             "omnifex-header": LocalJSX.OmnifexHeader & JSXBase.HTMLAttributes<HTMLOmnifexHeaderElement>;
             "omnifex-identity": LocalJSX.OmnifexIdentity & JSXBase.HTMLAttributes<HTMLOmnifexIdentityElement>;
+            /**
+             * Login layout page (Figma: gradient `104:6030`, cards container `104:6051`).
+             */
+            "omnifex-login": LocalJSX.OmnifexLogin & JSXBase.HTMLAttributes<HTMLOmnifexLoginElement>;
             "omnifex-theme-toggle": LocalJSX.OmnifexThemeToggle & JSXBase.HTMLAttributes<HTMLOmnifexThemeToggleElement>;
         }
     }
