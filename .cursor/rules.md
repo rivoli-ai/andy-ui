@@ -11,6 +11,7 @@ Priority order:
    - Repository constraints
    - Architecture rules
    - **Figma MCP prompts** → `/docs/ai-context/prompts/` (analysis → implement → storybook → tests → audit)
+   - **AI skills** → `/docs/ai-context/skills/` (operational skill for UI component development)
 
 2. /docs/architecture/**
    - Monorepo architecture

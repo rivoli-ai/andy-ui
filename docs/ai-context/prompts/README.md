@@ -93,6 +93,22 @@ corepack pnpm nx run @omnifex/ui-components:verify:button   # when publishable
 
 ---
 
+## Using a skill for structured sessions
+
+For longer or multi-step sessions, attach the UI component skill before any prompt:
+
+```text
+Read docs/ai-context/skills/ui-component-skill.md
+Follow docs/ai-context/prompts/figma-analysis.md
+
+Figma URL: [URL]
+Component: [name]
+```
+
+The skill encodes doc priority, architecture constraints, the 4-phase workflow, anti-patterns, and DoD in one document. See [`../skills/README.md`](../skills/README.md) for the full catalog and usage guide.
+
+---
+
 ## When to update governance docs
 
 Update [figma-integration.md](../../standards/figma-integration.md) or [component-verification.md](../../standards/component-verification.md) only when rules or verify behavior change — not for every component. Component-level detail belongs in `libs/ui-components/src/lib/<name>/readme.md`.
