@@ -2,7 +2,7 @@ import { html } from "lit";
 import type { Meta, StoryObj } from "@storybook/web-components";
 
 const meta: Meta = {
-  title: "Primitives/Status",
+  title: "Elements/Status",
   component: "andy-status",
   tags: ["autodocs"],
   parameters: {
@@ -28,9 +28,9 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-export const Playground: Story = {};
+export const Overview: Story = {};
 
-export const AllStates: Story = {
+export const States: Story = {
   render: () => html`
     <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
       <andy-status status="healthy">Healthy</andy-status>

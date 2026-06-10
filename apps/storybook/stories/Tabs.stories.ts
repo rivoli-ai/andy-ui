@@ -2,7 +2,7 @@ import { html } from "lit";
 import type { Meta, StoryObj } from "@storybook/web-components";
 
 const meta: Meta = {
-  title: "Navigation/Tabs",
+  title: "Modules/Tabs",
   component: "andy-tabs",
   tags: ["autodocs"],
   parameters: {
@@ -32,7 +32,7 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-export const Playground: Story = {};
+export const Overview: Story = {};
 
 export const Segment: Story = {
   render: () => html`

@@ -2,7 +2,7 @@ import { html } from "lit";
 import type { Meta, StoryObj } from "@storybook/web-components";
 
 const meta: Meta = {
-  title: "Foundations/Overview",
+  title: "Globals/Overview",
   tags: ["autodocs"],
   parameters: {
     docs: {

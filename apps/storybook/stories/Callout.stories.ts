@@ -2,7 +2,7 @@ import { html } from "lit";
 import type { Meta, StoryObj } from "@storybook/web-components";
 
 const meta: Meta = {
-  title: "Feedback/Callout",
+  title: "Modules/Callout",
   component: "andy-callout",
   tags: ["autodocs"],
   parameters: {
@@ -22,9 +22,9 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-export const Playground: Story = {};
+export const Overview: Story = {};
 
-export const AllVariants: Story = {
+export const Types: Story = {
   render: () => html`
     <div style="display:flex;flex-direction:column;gap:12px;max-width:560px">
       <andy-callout variant="info">This adapter speaks MCP over both <code>/mcp</code> and <code>/sse</code>.</andy-callout>

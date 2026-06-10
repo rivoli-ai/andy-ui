@@ -2,7 +2,7 @@ import { html } from "lit";
 import type { Meta, StoryObj } from "@storybook/web-components";
 
 const meta: Meta = {
-  title: "Conversational/Chat",
+  title: "Modules/Chat",
   component: "andy-message",
   tags: ["autodocs"],
   parameters: {
@@ -32,7 +32,7 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-export const Conversation: Story = {};
+export const Overview: Story = {};
 
 export const Sessions: Story = {
   parameters: { docs: { description: { story: "`<andy-session>` — a session-list row." } } },

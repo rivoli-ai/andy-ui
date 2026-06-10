@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from "@storybook/web-components";
 const glyph = svg`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z" /></svg>`;
 
 const meta: Meta = {
-  title: "Primitives/Icon chip",
+  title: "Elements/Icon chip",
   component: "andy-icon-chip",
   tags: ["autodocs"],
   parameters: { docs: { description: { component: "Gradient-tinted square holding an icon (`.au-icon-chip`). Slot in any SVG." } } },
@@ -18,9 +18,9 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-export const Playground: Story = {};
+export const Overview: Story = {};
 
-export const Variants: Story = {
+export const Types: Story = {
   render: () => html`
     <div style="display:flex;gap:12px;align-items:center">
       <andy-icon-chip variant="tinted">${glyph}</andy-icon-chip>

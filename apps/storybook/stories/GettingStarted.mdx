@@ -1,0 +1,89 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Introduction/Getting Started" />
+
+# Getting Started
+
+## Install
+
+```bash
+# React
+npm install @andy-ui/react @andy-ui/tokens
+
+# Angular
+npm install @andy-ui/angular @andy-ui/tokens
+
+# Web components only (plain HTML / any framework)
+npm install @andy-ui/core @andy-ui/tokens
+```
+
+## Import the stylesheet (once)
+
+Every variant relies on the global stylesheet. Import it a single time at your
+app root:
+
+```ts
+import "@andy-ui/tokens/andy-ui.css";
+```
+
+## React
+
+Each export is a real React component, so props, refs, and custom events behave
+the way React developers expect — the `andy-click` DOM event is surfaced as the
+`onAndyClick` prop.
+
+```tsx
+import { Button, Input } from "@andy-ui/react";
+import "@andy-ui/tokens/andy-ui.css";
+
+export function Example() {
+  return (
+    <>
+      <Input label="Repository name" placeholder="devpilot-api" />
+      <Button variant="primary" onAndyClick={() => console.log("saved")}>
+        Save changes
+      </Button>
+    </>
+  );
+}
+```
+
+## Angular
+
+Importing `@andy-ui/angular` registers every `<andy-*>` element as a side effect.
+Add `CUSTOM_ELEMENTS_SCHEMA` to the component/module that renders the tags, and
+import `AndyUiModule` to wire up the form-control directives (`ngModel` /
+reactive forms).
+
+```ts
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { AndyUiModule } from "@andy-ui/angular";
+
+@Component({
+  selector: "app-example",
+  standalone: true,
+  imports: [AndyUiModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  template: `
+    <andy-input label="Repository name" [(ngModel)]="name"></andy-input>
+    <andy-button variant="primary">Save changes</andy-button>
+  `,
+})
+export class ExampleComponent {
+  name = "";
+}
+```
+
+Add the stylesheet either with an `import` at the root or via the `styles` array
+in `angular.json`.
+
+## Plain HTML / any framework
+
+```html
+<link rel="stylesheet" href="/node_modules/@andy-ui/tokens/dist/andy-ui.css" />
+<script type="module">
+  import "@andy-ui/core"; // registers every <andy-*> element
+</script>
+
+<andy-button variant="primary">Save changes</andy-button>
+```

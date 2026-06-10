@@ -2,7 +2,7 @@ import { html } from "lit";
 import type { Meta, StoryObj } from "@storybook/web-components";
 
 const meta: Meta = {
-  title: "Feedback/Empty state",
+  title: "Views/Empty state",
   component: "andy-empty-state",
   tags: ["autodocs"],
   parameters: { docs: { description: { component: "Zero-data placeholder (`.ds-empty`) with an icon, heading, copy, and a slot for an action." } } },
@@ -20,4 +20,4 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-export const Playground: Story = {};
+export const Overview: Story = {};

@@ -2,7 +2,7 @@ import { html } from "lit";
 import type { Meta, StoryObj } from "@storybook/web-components";
 
 const meta: Meta = {
-  title: "Primitives/Stat",
+  title: "Elements/Stat",
   component: "andy-stat",
   tags: ["autodocs"],
   parameters: { docs: { description: { component: "A single metric tile (`.ds-stat`) — a large value over a label." } } },
@@ -16,9 +16,9 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-export const Playground: Story = {};
+export const Overview: Story = {};
 
-export const Row: Story = {
+export const Group: Story = {
   render: () => html`
     <div style="display:flex;gap:12px">
       <andy-stat value="1,284" label="Tool calls today"></andy-stat>

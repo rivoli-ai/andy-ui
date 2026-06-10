@@ -2,7 +2,7 @@ import { html } from "lit";
 import type { Meta, StoryObj } from "@storybook/web-components";
 
 const meta: Meta = {
-  title: "Data/Progress",
+  title: "Modules/Progress",
   component: "andy-progress",
   tags: ["autodocs"],
   parameters: { docs: { description: { component: "Slim progress bar (`.ds-progress`). `value` is 0–100; exposes `role=progressbar` with aria-value attributes." } } },
@@ -15,4 +15,4 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-export const Playground: Story = {};
+export const Overview: Story = {};

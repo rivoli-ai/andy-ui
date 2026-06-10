@@ -1,0 +1,55 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Behaviors/Theming" />
+
+# Theming
+
+Andy-UI ships **light** and **dark** themes. Every token in `@andy-ui/tokens`
+is a CSS custom property that re-resolves based on the `data-theme` attribute on
+the `<html>` element, so theming cascades to every component automatically — no
+per-component configuration.
+
+```html
+<html data-theme="dark">
+  …
+</html>
+```
+
+## Theme API
+
+`@andy-ui/core` (and re-exported from `@andy-ui/react` and `@andy-ui/angular`)
+exposes a small imperative API:
+
+```ts
+import { getTheme, setTheme, toggleTheme, initTheme, type AndyTheme } from "@andy-ui/core";
+
+initTheme();              // apply the persisted (or system) theme on startup
+getTheme();               // -> "light" | "dark"
+setTheme("dark");         // set + persist the theme
+toggleTheme();            // flip light <-> dark
+```
+
+| Function | Description |
+|---|---|
+| `initTheme()` | Applies the persisted choice (falling back to the system preference). Call once at startup. |
+| `getTheme()` | Returns the current `AndyTheme` (`"light"` \| `"dark"`). |
+| `setTheme(theme)` | Sets `<html data-theme>` and persists the choice. |
+| `toggleTheme()` | Switches between light and dark. |
+
+## The `<andy-theme-toggle>` element
+
+For a ready-made control, drop in the toggle element. It drives `<html data-theme>`,
+persists the choice, and fires `andy-theme-change` with the new `AndyTheme` in
+`event.detail`.
+
+```html
+<andy-theme-toggle></andy-theme-toggle>
+```
+
+```ts
+document.querySelector("andy-theme-toggle")
+  ?.addEventListener("andy-theme-change", (e) => console.log(e.detail)); // "light" | "dark"
+```
+
+> The toolbar's **Theme** control at the top of this Storybook does the same
+> thing globally, so every story can be previewed in both themes.

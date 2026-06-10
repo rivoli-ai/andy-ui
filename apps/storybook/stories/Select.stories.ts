@@ -8,7 +8,7 @@ const OPTIONS = [
 ];
 
 const meta: Meta = {
-  title: "Forms/Select",
+  title: "Collections/Form/Select",
   component: "andy-select",
   tags: ["autodocs"],
   parameters: {
@@ -34,4 +34,4 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-export const Playground: Story = {};
+export const Overview: Story = {};

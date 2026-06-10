@@ -2,7 +2,7 @@ import { html } from "lit";
 import type { Meta, StoryObj } from "@storybook/web-components";
 
 const meta: Meta = {
-  title: "Forms/Input",
+  title: "Collections/Form/Input",
   component: "andy-input",
   tags: ["autodocs"],
   parameters: {
@@ -40,7 +40,7 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-export const Playground: Story = {};
+export const Overview: Story = {};
 
 export const States: Story = {
   render: () => html`

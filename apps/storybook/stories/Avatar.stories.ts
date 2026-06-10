@@ -2,7 +2,7 @@ import { html } from "lit";
 import type { Meta, StoryObj } from "@storybook/web-components";
 
 const meta: Meta = {
-  title: "Primitives/Avatar",
+  title: "Elements/Avatar",
   component: "andy-avatar",
   tags: ["autodocs"],
   parameters: { docs: { description: { component: "Initials / icon avatar (`.ds-avatar`)." } } },
@@ -17,9 +17,9 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-export const Playground: Story = {};
+export const Overview: Story = {};
 
-export const Sizes: Story = {
+export const Variations: Story = {
   render: () => html`
     <div style="display:flex;gap:12px;align-items:center">
       <andy-avatar size="sm" round>AY</andy-avatar>

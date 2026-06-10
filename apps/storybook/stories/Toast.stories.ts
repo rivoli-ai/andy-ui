@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/web-components";
 import { toast } from "@andy-ui/core";
 
 const meta: Meta = {
-  title: "Feedback/Toast",
+  title: "Behaviors/Toast",
   tags: ["autodocs"],
   parameters: {
     docs: {
@@ -25,4 +25,4 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-export const Playground: Story = {};
+export const Overview: Story = {};

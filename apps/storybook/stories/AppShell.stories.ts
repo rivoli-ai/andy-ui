@@ -2,7 +2,7 @@ import { html, svg } from "lit";
 import type { Meta, StoryObj } from "@storybook/web-components";
 
 const meta: Meta = {
-  title: "Layout/App shell",
+  title: "Layouts/App shell",
   component: "andy-app-shell",
   tags: ["autodocs"],
   parameters: {
@@ -68,4 +68,4 @@ function icon(path: string) {
   return html`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">${svg`<path d=${path} />`}</svg>`;
 }
 
-export const Workspace: Story = {};
+export const Overview: Story = {};

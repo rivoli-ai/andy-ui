@@ -2,7 +2,7 @@ import { html } from "lit";
 import type { Meta, StoryObj } from "@storybook/web-components";
 
 const meta: Meta = {
-  title: "Primitives/Button",
+  title: "Elements/Button",
   component: "andy-button",
   tags: ["autodocs"],
   parameters: {
@@ -52,9 +52,9 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-export const Playground: Story = {};
+export const Overview: Story = {};
 
-export const Variants: Story = {
+export const Types: Story = {
   parameters: { docs: { description: { story: "Every intent variant." } } },
   render: () => html`
     <div style="display:flex;gap:12px;flex-wrap:wrap">
@@ -68,15 +68,23 @@ export const Variants: Story = {
   `,
 };
 
-export const SizesAndStates: Story = {
-  parameters: { docs: { description: { story: "Sizes plus the disabled and loading states." } } },
+export const States: Story = {
+  parameters: { docs: { description: { story: "The disabled and loading states." } } },
+  render: () => html`
+    <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+      <andy-button disabled>Disabled</andy-button>
+      <andy-button loading>Loading</andy-button>
+    </div>
+  `,
+};
+
+export const Variations: Story = {
+  parameters: { docs: { description: { story: "The three control sizes." } } },
   render: () => html`
     <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
       <andy-button size="sm">Small</andy-button>
       <andy-button size="md">Medium</andy-button>
       <andy-button size="lg">Large</andy-button>
-      <andy-button disabled>Disabled</andy-button>
-      <andy-button loading>Loading</andy-button>
     </div>
   `,
 };

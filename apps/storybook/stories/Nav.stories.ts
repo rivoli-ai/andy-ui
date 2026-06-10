@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from "@storybook/web-components";
 const repoIcon = svg`<svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-7l-2-2H5a2 2 0 00-2 2z" /></svg>`;
 
 const meta: Meta = {
-  title: "Navigation/Nav list",
+  title: "Collections/Nav list",
   component: "andy-nav-item",
   tags: ["autodocs"],
   parameters: {
@@ -28,4 +28,4 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-export const Playground: Story = {};
+export const Overview: Story = {};

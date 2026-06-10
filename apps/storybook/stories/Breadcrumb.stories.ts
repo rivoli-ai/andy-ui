@@ -2,7 +2,7 @@ import { html } from "lit";
 import type { Meta, StoryObj } from "@storybook/web-components";
 
 const meta: Meta = {
-  title: "Navigation/Breadcrumb",
+  title: "Collections/Breadcrumb",
   component: "andy-breadcrumb",
   tags: ["autodocs"],
   parameters: {
@@ -28,4 +28,4 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-export const Playground: Story = {};
+export const Overview: Story = {};

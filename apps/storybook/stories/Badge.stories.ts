@@ -2,7 +2,7 @@ import { html } from "lit";
 import type { Meta, StoryObj } from "@storybook/web-components";
 
 const meta: Meta = {
-  title: "Primitives/Badge",
+  title: "Elements/Badge",
   component: "andy-badge",
   tags: ["autodocs"],
   parameters: {
@@ -23,9 +23,9 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-export const Playground: Story = {};
+export const Overview: Story = {};
 
-export const AllVariants: Story = {
+export const Types: Story = {
   render: () => html`
     <div style="display:flex;gap:8px;flex-wrap:wrap">
       <andy-badge variant="primary">Primary</andy-badge>
