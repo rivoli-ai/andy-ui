@@ -9,7 +9,9 @@ import { AndyElement, define } from "../internal/base.js";
 @customElement("andy-nav-list")
 export class AndyNavList extends AndyElement {
   override render() {
-    return html`<ul class="nav-list">${this.slotTarget()}</ul>`;
+    // role=list (not <ul>) because the list items are custom elements, not
+    // direct <li> children — keeps the list semantics valid for AT.
+    return html`<div class="nav-list" role="list">${this.slotTarget()}</div>`;
   }
 }
 define("andy-nav-list", AndyNavList);
@@ -27,6 +29,12 @@ export class AndyNavItem extends AndyElement {
   /** Stable identifier echoed back in the `andy-select` event detail. */
   @property() key = "";
 
+  override connectedCallback(): void {
+    super.connectedCallback();
+    // The host is the list item (its parent has role=list); no nested <li>.
+    if (!this.hasAttribute("role")) this.setAttribute("role", "listitem");
+  }
+
   private onClick(e: Event) {
     if (!this.href) e.preventDefault();
     this.dispatchEvent(new CustomEvent("andy-select", { detail: this.key, bubbles: true, composed: true }));
@@ -34,12 +42,10 @@ export class AndyNavItem extends AndyElement {
 
   override render() {
     return html`
-      <li>
-        <a class="nav-item ${this.active ? "active" : ""}" href=${this.href || "#"} @click=${this.onClick}>
-          ${this.hasSlot("icon") ? html`<span class="nav-item__icon">${this.slotTarget("icon")}</span>` : nothing}
-          <span class="nav-label">${this.slotTarget()}</span>
-        </a>
-      </li>
+      <a class="nav-item ${this.active ? "active" : ""}" href=${this.href || "#"} @click=${this.onClick}>
+        ${this.hasSlot("icon") ? html`<span class="nav-item__icon">${this.slotTarget("icon")}</span>` : nothing}
+        <span class="nav-label">${this.slotTarget()}</span>
+      </a>
     `;
   }
 }

@@ -96,7 +96,7 @@ export class AndyNavSection extends AndyElement {
     return html`
       <div class="nav-section">
         ${this.heading ? html`<p class="nav-section-title collapsed-hide">${this.heading}</p>` : nothing}
-        <ul class="nav-list">${this.slotTarget()}</ul>
+        <div class="nav-list" role="list">${this.slotTarget()}</div>
       </div>
     `;
   }
