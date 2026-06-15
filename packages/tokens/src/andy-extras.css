@@ -99,6 +99,9 @@
 /* ────────────────────────────────────────────────────────────────────────────
    SWITCH / TOGGLE
    ──────────────────────────────────────────────────────────────────────────── */
+/* Row wrapper used by <andy-switch>: aligns the control and its label. */
+.ds-row { display: inline-flex; align-items: center; gap: var(--space-3); }
+.ds-row--tight { gap: var(--space-2); }
 .ds-switch { position: relative; display: inline-flex; align-items: center; cursor: pointer; }
 .ds-switch input { position: absolute; opacity: 0; width: 0; height: 0; }
 .ds-switch .track {
@@ -114,6 +117,42 @@
 .ds-switch input:checked + .track { background: var(--brand-gradient); }
 .ds-switch input:checked + .track::after { transform: translateX(18px); }
 .ds-switch input:focus-visible + .track { box-shadow: 0 0 0 3px var(--focus-ring-on-primary); }
+
+/* ────────────────────────────────────────────────────────────────────────────
+   THEME TOGGLE  (<andy-theme-toggle>) — icon button, shows the theme to switch TO
+   ──────────────────────────────────────────────────────────────────────────── */
+.ds-theme-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; flex-shrink: 0;
+  border: 1px solid var(--border-light);
+  background: var(--surface-card);
+  border-radius: var(--radius-lg);
+  color: var(--text-secondary); cursor: pointer;
+  transition: transform var(--duration-fast) var(--ease-out),
+              background var(--duration-base) var(--ease-out),
+              border-color var(--duration-base) var(--ease-out),
+              color var(--duration-base) var(--ease-out);
+}
+.ds-theme-toggle { position: relative; overflow: hidden; }
+.ds-theme-toggle:hover { background: var(--surface-hover); border-color: var(--border-default); color: var(--text-primary); }
+.ds-theme-toggle:active { transform: scale(0.96); }
+.ds-theme-toggle svg { width: 18px; height: 18px; display: block; }
+/* Both glyphs stacked; cross-fade + rotate between them on theme change. */
+.ds-theme-toggle .sun,
+.ds-theme-toggle .moon {
+  position: absolute; inset: 0; display: grid; place-items: center;
+  transition: opacity var(--duration-base) var(--ease-out),
+              transform var(--duration-base) var(--ease-out);
+}
+.ds-theme-toggle .moon { opacity: 1; transform: rotate(0) scale(1); }
+.ds-theme-toggle .sun  { opacity: 0; transform: rotate(-90deg) scale(0.4); }
+[data-theme="dark"] .ds-theme-toggle .moon { opacity: 0; transform: rotate(90deg) scale(0.4); }
+[data-theme="dark"] .ds-theme-toggle .sun  { opacity: 1; transform: rotate(0) scale(1); }
+@media (prefers-reduced-motion: reduce) {
+  .ds-theme-toggle:active { transform: none; }
+  .ds-theme-toggle .sun,
+  .ds-theme-toggle .moon { transition: opacity var(--duration-fast) var(--ease-out); transform: none; }
+}
 
 /* ────────────────────────────────────────────────────────────────────────────
    STATUS PILL   (from McpGateway status-badge — uppercase capsule)
@@ -367,6 +406,48 @@
 .ds-think .check svg { width: 12px; height: 12px; }
 .ds-think .label { font-size: var(--fs-sm); font-weight: 600; color: var(--text-primary); }
 .ds-think .phrase { font-size: var(--fs-xs); color: var(--text-tertiary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* ────────────────────────────────────────────────────────────────────────────
+   ACCORDION  (<andy-accordion>) — disclosure with animated height + chevron
+   ──────────────────────────────────────────────────────────────────────────── */
+.ds-accordion {
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  background: var(--surface-card);
+  overflow: hidden;
+}
+.ds-accordion__head {
+  width: 100%; display: flex; align-items: center; justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: transparent; border: 0; cursor: pointer;
+  font-family: var(--font-sans); font-size: var(--fs-sm); font-weight: 600;
+  color: var(--text-primary); text-align: left;
+  transition: background var(--duration-fast) var(--ease-out);
+}
+.ds-accordion__head:hover { background: var(--surface-hover); }
+.ds-accordion__label { min-width: 0; }
+.ds-accordion__chevron {
+  display: grid; place-items: center; flex-shrink: 0;
+  color: var(--text-tertiary);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+.ds-accordion__chevron svg { width: 18px; height: 18px; }
+.ds-accordion.is-open .ds-accordion__chevron { transform: rotate(180deg); }
+/* grid-template-rows 0fr -> 1fr animates height with no fixed max-height. */
+.ds-accordion__panel {
+  display: grid; grid-template-rows: 0fr;
+  transition: grid-template-rows var(--duration-base) var(--ease-out);
+}
+.ds-accordion.is-open .ds-accordion__panel { grid-template-rows: 1fr; }
+.ds-accordion__clip { overflow: hidden; min-height: 0; }
+.ds-accordion__content {
+  padding: 0 var(--space-4) var(--space-4);
+  font-size: var(--fs-sm); color: var(--text-secondary);
+}
+@media (prefers-reduced-motion: reduce) {
+  .ds-accordion__panel, .ds-accordion__chevron { transition: none; }
+}
 
 /* status bar inside agent bubble */
 .ds-msg__status {
