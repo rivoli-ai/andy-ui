@@ -25,6 +25,7 @@ import {
   AndyCallout,
   AndyAvatar,
   AndyProgress,
+  AndyIcon,
   AndyIconChip,
   AndyEmptyState,
   AndyBreadcrumb,
@@ -100,6 +101,7 @@ export const Stat = createComponent({ react: React, tagName: "andy-stat", elemen
 export const Callout = createComponent({ react: React, tagName: "andy-callout", elementClass: AndyCallout });
 export const Avatar = createComponent({ react: React, tagName: "andy-avatar", elementClass: AndyAvatar });
 export const Progress = createComponent({ react: React, tagName: "andy-progress", elementClass: AndyProgress });
+export const Icon = createComponent({ react: React, tagName: "andy-icon", elementClass: AndyIcon });
 export const IconChip = createComponent({ react: React, tagName: "andy-icon-chip", elementClass: AndyIconChip });
 
 export const EmptyState = createComponent({ react: React, tagName: "andy-empty-state", elementClass: AndyEmptyState });

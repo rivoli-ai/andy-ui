@@ -20,6 +20,7 @@ import "./components/stat.js";
 import "./components/callout.js";
 import "./components/avatar.js";
 import "./components/progress.js";
+import "./components/icon.js";
 import "./components/icon-chip.js";
 import "./components/empty-state.js";
 import "./components/breadcrumb.js";
@@ -47,6 +48,7 @@ export * from "./components/stat.js";
 export * from "./components/callout.js";
 export * from "./components/avatar.js";
 export * from "./components/progress.js";
+export * from "./components/icon.js";
 export * from "./components/icon-chip.js";
 export * from "./components/empty-state.js";
 export * from "./components/breadcrumb.js";
@@ -63,3 +65,5 @@ export * from "./components/chat.js";
 // Utilities (toast API is not an element; theme helpers configure <html>).
 export * from "./components/toast.js";
 export { getTheme, setTheme, toggleTheme, initTheme, type AndyTheme } from "./internal/theme.js";
+// Icon set: the glyph map, the list of names, and the name type.
+export { icons, iconNames, type IconName } from "./internal/icons.js";

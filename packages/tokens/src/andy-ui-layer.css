@@ -29,6 +29,14 @@
   background: var(--surface-hover); border-color: var(--border-light); color: var(--text-tertiary);
 }
 
+/* Icon — standalone glyph (<andy-icon>), sized by modifier, colour via currentColor */
+.au-icon { display: inline-flex; flex-shrink: 0; line-height: 0; }
+.au-icon svg { width: 100%; height: 100%; display: block; }
+.au-icon--sm { width: 16px; height: 16px; }
+.au-icon--md { width: 20px; height: 20px; }
+.au-icon--lg { width: 24px; height: 24px; }
+.au-icon--xl { width: 32px; height: 32px; }
+
 /* ────────────────────────────────────────────────────────────────────────────
    AVATAR  (gradient square w/ initials — sidebar user, chat agent, message)
    ──────────────────────────────────────────────────────────────────────────── */
