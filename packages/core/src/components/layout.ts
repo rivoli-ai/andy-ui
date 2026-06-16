@@ -1,17 +1,13 @@
 import { html, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AndyElement, define } from "../internal/base.js";
-import type { IconName } from "../internal/icons.js";
-import "./icon.js";
-import "./icon-chip.js";
-import "./avatar.js";
 
 /**
  * `<andy-app-shell>` — sidebar + main-column application layout.
  *
  * Regions (light-DOM slots):
  * @slot sidebar - The `<andy-sidebar>`.
- * @slot header  - The `<andy-header>` (sticky, top of the main column).
+ * @slot header  - The `<andy-header>` / `<andy-navbar>` (top of the main column).
  * @slot         - The scrolling page content.
  *
  * Listens for `andy-collapse-toggle` from a descendant sidebar and mirrors the
@@ -47,98 +43,6 @@ export class AndyAppShell extends AndyElement {
 define("andy-app-shell", AndyAppShell);
 
 /**
- * `<andy-sidebar>` — collapsible workspace sidebar (`.sidebar`).
- *
- * @slot brand  - Brand mark / wordmark (shown in the sidebar header).
- * @slot        - Nav sections (`<andy-nav-section>` / `<andy-nav-list>`).
- * @slot footer - Footer content (user card, sign-out, …).
- * @fires {CustomEvent<boolean>} andy-collapse-toggle - new collapsed state.
- */
-@customElement("andy-sidebar")
-export class AndySidebar extends AndyElement {
-  @property({ type: Boolean, reflect: true }) collapsed = false;
-  /** Show the collapse toggle button in the header. */
-  @property({ type: Boolean }) collapsible = true;
-
-  private toggle() {
-    this.collapsed = !this.collapsed;
-    this.dispatchEvent(
-      new CustomEvent("andy-collapse-toggle", { detail: this.collapsed, bubbles: true, composed: true })
-    );
-  }
-
-  override render() {
-    return html`
-      <aside class="sidebar ${this.collapsed ? "collapsed" : ""}">
-        <andy-header class="sidebar-header">
-          <div class="sidebar-brand">${this.slotTarget("brand")}</div>
-          ${this.collapsible
-            ? html`<button slot="actions" class="sidebar-collapse-toggle" title="Collapse" aria-label="Collapse sidebar" @click=${this.toggle}>
-                <andy-icon name="chevronsLeft" size="sm"></andy-icon>
-              </button>`
-            : nothing}
-        </andy-header>
-        <nav class="sidebar-nav">${this.slotTarget()}</nav>
-        ${this.hasSlot("footer") ? html`<andy-footer class="sidebar-footer">${this.slotTarget("footer")}</andy-footer>` : nothing}
-      </aside>
-    `;
-  }
-}
-define("andy-sidebar", AndySidebar);
-
-/**
- * `<andy-sidebar-brand>` — logo mark + wordmark for the sidebar `brand` slot.
- *
- * Composed from Andy-UI parts: an `<andy-icon-chip>` for the mark plus the
- * name/tagline (hidden when the sidebar is collapsed).
- * @slot logo - Optional custom logo, used instead of `icon`.
- */
-@customElement("andy-sidebar-brand")
-export class AndySidebarBrand extends AndyElement {
-  @property() name = "";
-  @property() tagline = "";
-  /** Built-in icon name for the mark. Ignored when a `logo` is slotted. */
-  @property({ reflect: true }) icon: IconName | "" = "box";
-
-  override render() {
-    return html`
-      <andy-icon-chip variant="solid" icon=${this.icon || nothing}>${this.slotTarget("logo")}</andy-icon-chip>
-      <span class="sidebar-brand__text collapsed-hide">
-        ${this.name ? html`<span class="sidebar-brand__name">${this.name}</span>` : nothing}
-        ${this.tagline ? html`<span class="sidebar-brand__tagline">${this.tagline}</span>` : nothing}
-      </span>
-    `;
-  }
-}
-define("andy-sidebar-brand", AndySidebarBrand);
-
-/**
- * `<andy-sidebar-user>` — user card for the sidebar `footer` slot.
- *
- * Composed from an `<andy-avatar>` plus name/email (hidden when collapsed).
- */
-@customElement("andy-sidebar-user")
-export class AndySidebarUser extends AndyElement {
-  @property() name = "";
-  @property() email = "";
-  /** Avatar initials (or slot an image into `<andy-avatar>` via the default slot). */
-  @property() avatar = "";
-
-  override render() {
-    return html`
-      <div class="sidebar-user">
-        <andy-avatar>${this.avatar}</andy-avatar>
-        <span class="sidebar-user__meta collapsed-hide">
-          ${this.name ? html`<span class="sidebar-user__name">${this.name}</span>` : nothing}
-          ${this.email ? html`<span class="sidebar-user__email">${this.email}</span>` : nothing}
-        </span>
-      </div>
-    `;
-  }
-}
-define("andy-sidebar-user", AndySidebarUser);
-
-/**
  * `<andy-nav-section>` — titled group of nav items (`.nav-section`).
  * @slot - `<andy-nav-item>` rows (wrapped in a `.nav-list`).
  */
@@ -157,55 +61,9 @@ export class AndyNavSection extends AndyElement {
 }
 define("andy-nav-section", AndyNavSection);
 
-/**
- * `<andy-header>` — sticky app header / topbar (`.header`).
- * @slot         - Title / breadcrumb area (left).
- * @slot actions - Right-aligned actions.
- */
-@customElement("andy-header")
-export class AndyHeader extends AndyElement {
-  override render() {
-    return html`
-      <header class="header">
-        <div class="header-content">
-          <div class="header-title">${this.slotTarget()}</div>
-          <div class="header-actions">${this.slotTarget("actions")}</div>
-        </div>
-      </header>
-    `;
-  }
-}
-define("andy-header", AndyHeader);
-
-/**
- * `<andy-footer>` — generic footer bar (`.au-footer`).
- *
- * A flexible slotted bar (content left, optional actions right). Works as a
- * page/section footer and as the sidebar footer region.
- * @slot         - Main footer content (left).
- * @slot actions - Right-aligned actions.
- */
-@customElement("andy-footer")
-export class AndyFooter extends AndyElement {
-  override render() {
-    return html`
-      <footer class="au-footer">
-        <div class="au-footer__main">${this.slotTarget()}</div>
-        ${this.hasSlot("actions") ? html`<div class="au-footer__actions">${this.slotTarget("actions")}</div>` : nothing}
-      </footer>
-    `;
-  }
-}
-define("andy-footer", AndyFooter);
-
 declare global {
   interface HTMLElementTagNameMap {
     "andy-app-shell": AndyAppShell;
-    "andy-sidebar": AndySidebar;
-    "andy-sidebar-brand": AndySidebarBrand;
-    "andy-sidebar-user": AndySidebarUser;
     "andy-nav-section": AndyNavSection;
-    "andy-header": AndyHeader;
-    "andy-footer": AndyFooter;
   }
 }

@@ -164,6 +164,30 @@
           "name": "*",
           "declaration": {
             "name": "*",
+            "module": "src/components/header.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "src/components/footer.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "module": "src/components/sidebar.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
             "module": "src/components/layout.js"
           }
         },
@@ -1234,6 +1258,98 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/footer.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`<andy-footer>` — generic footer bar (`.au-footer`).\n\nA flexible slotted bar (content left, optional actions right). Works as a\npage/section footer and as the sidebar footer region.",
+          "name": "AndyFooter",
+          "slots": [
+            {
+              "description": "Main footer content (left).",
+              "name": ""
+            },
+            {
+              "description": "Right-aligned actions.",
+              "name": "actions"
+            }
+          ],
+          "members": [],
+          "superclass": {
+            "name": "AndyElement",
+            "module": "/src/internal/base.js"
+          },
+          "tagName": "andy-footer",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "AndyFooter",
+          "declaration": {
+            "name": "AndyFooter",
+            "module": "src/components/footer.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "andy-footer",
+          "declaration": {
+            "name": "AndyFooter",
+            "module": "src/components/footer.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/header.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`<andy-header>` — sticky app header / topbar (`.header`).",
+          "name": "AndyHeader",
+          "slots": [
+            {
+              "description": "Title / breadcrumb area (left).",
+              "name": ""
+            },
+            {
+              "description": "Right-aligned actions.",
+              "name": "actions"
+            }
+          ],
+          "members": [],
+          "superclass": {
+            "name": "AndyElement",
+            "module": "/src/internal/base.js"
+          },
+          "tagName": "andy-header",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "AndyHeader",
+          "declaration": {
+            "name": "AndyHeader",
+            "module": "src/components/header.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "andy-header",
+          "declaration": {
+            "name": "AndyHeader",
+            "module": "src/components/header.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/icon-chip.ts",
       "declarations": [
         {
@@ -1719,7 +1835,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "`<andy-app-shell>` — sidebar + main-column application layout.\r\n\r\nRegions (light-DOM slots):",
+          "description": "`<andy-app-shell>` — sidebar + main-column application layout.\n\nRegions (light-DOM slots):",
           "name": "AndyAppShell",
           "slots": [
             {
@@ -1727,7 +1843,7 @@
               "name": "sidebar"
             },
             {
-              "description": "The `<andy-header>` (sticky, top of the main column).",
+              "description": "The `<andy-header>` / `<andy-navbar>` (top of the main column).",
               "name": "header"
             },
             {
@@ -1762,224 +1878,6 @@
             "module": "/src/internal/base.js"
           },
           "tagName": "andy-app-shell",
-          "customElement": true
-        },
-        {
-          "kind": "class",
-          "description": "`<andy-sidebar>` — collapsible workspace sidebar (`.sidebar`).",
-          "name": "AndySidebar",
-          "slots": [
-            {
-              "description": "Brand mark / wordmark (shown in the sidebar header).",
-              "name": "brand"
-            },
-            {
-              "description": "Nav sections (`<andy-nav-section>` / `<andy-nav-list>`).",
-              "name": ""
-            },
-            {
-              "description": "Footer content (user card, sign-out, …).",
-              "name": "footer"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "collapsed",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "collapsed",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "collapsible",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true",
-              "description": "Show the collapse toggle button in the header.",
-              "attribute": "collapsible"
-            }
-          ],
-          "events": [
-            {
-              "name": "andy-collapse-toggle",
-              "type": {
-                "text": "CustomEvent<boolean>"
-              },
-              "description": "new collapsed state."
-            }
-          ],
-          "attributes": [
-            {
-              "name": "collapsed",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "collapsed"
-            },
-            {
-              "name": "collapsible",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true",
-              "description": "Show the collapse toggle button in the header.",
-              "fieldName": "collapsible"
-            }
-          ],
-          "superclass": {
-            "name": "AndyElement",
-            "module": "/src/internal/base.js"
-          },
-          "tagName": "andy-sidebar",
-          "customElement": true
-        },
-        {
-          "kind": "class",
-          "description": "`<andy-sidebar-brand>` — logo mark + wordmark for the sidebar `brand` slot.\r\n\r\nComposed from Andy-UI parts: an `<andy-icon-chip>` for the mark plus the\r\nname/tagline (hidden when the sidebar is collapsed).",
-          "name": "AndySidebarBrand",
-          "slots": [
-            {
-              "description": "Optional custom logo, used instead of `icon`.",
-              "name": "logo"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "attribute": "name"
-            },
-            {
-              "kind": "field",
-              "name": "tagline",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "attribute": "tagline"
-            },
-            {
-              "kind": "field",
-              "name": "icon",
-              "type": {
-                "text": "IconName | \"\""
-              },
-              "default": "\"box\"",
-              "description": "Built-in icon name for the mark. Ignored when a `logo` is slotted.",
-              "attribute": "icon",
-              "reflects": true
-            }
-          ],
-          "attributes": [
-            {
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "fieldName": "name"
-            },
-            {
-              "name": "tagline",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "fieldName": "tagline"
-            },
-            {
-              "name": "icon",
-              "type": {
-                "text": "IconName | \"\""
-              },
-              "default": "\"box\"",
-              "description": "Built-in icon name for the mark. Ignored when a `logo` is slotted.",
-              "fieldName": "icon"
-            }
-          ],
-          "superclass": {
-            "name": "AndyElement",
-            "module": "/src/internal/base.js"
-          },
-          "tagName": "andy-sidebar-brand",
-          "customElement": true
-        },
-        {
-          "kind": "class",
-          "description": "`<andy-sidebar-user>` — user card for the sidebar `footer` slot.\r\n\r\nComposed from an `<andy-avatar>` plus name/email (hidden when collapsed).",
-          "name": "AndySidebarUser",
-          "members": [
-            {
-              "kind": "field",
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "attribute": "name"
-            },
-            {
-              "kind": "field",
-              "name": "email",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "attribute": "email"
-            },
-            {
-              "kind": "field",
-              "name": "avatar",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "description": "Avatar initials (or slot an image into `<andy-avatar>` via the default slot).",
-              "attribute": "avatar"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "fieldName": "name"
-            },
-            {
-              "name": "email",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "fieldName": "email"
-            },
-            {
-              "name": "avatar",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "description": "Avatar initials (or slot an image into `<andy-avatar>` via the default slot).",
-              "fieldName": "avatar"
-            }
-          ],
-          "superclass": {
-            "name": "AndyElement",
-            "module": "/src/internal/base.js"
-          },
-          "tagName": "andy-sidebar-user",
           "customElement": true
         },
         {
@@ -2019,50 +1917,6 @@
           },
           "tagName": "andy-nav-section",
           "customElement": true
-        },
-        {
-          "kind": "class",
-          "description": "`<andy-header>` — sticky app header / topbar (`.header`).",
-          "name": "AndyHeader",
-          "slots": [
-            {
-              "description": "Title / breadcrumb area (left).",
-              "name": ""
-            },
-            {
-              "description": "Right-aligned actions.",
-              "name": "actions"
-            }
-          ],
-          "members": [],
-          "superclass": {
-            "name": "AndyElement",
-            "module": "/src/internal/base.js"
-          },
-          "tagName": "andy-header",
-          "customElement": true
-        },
-        {
-          "kind": "class",
-          "description": "`<andy-footer>` — generic footer bar (`.au-footer`).\r\n\r\nA flexible slotted bar (content left, optional actions right). Works as a\r\npage/section footer and as the sidebar footer region.",
-          "name": "AndyFooter",
-          "slots": [
-            {
-              "description": "Main footer content (left).",
-              "name": ""
-            },
-            {
-              "description": "Right-aligned actions.",
-              "name": "actions"
-            }
-          ],
-          "members": [],
-          "superclass": {
-            "name": "AndyElement",
-            "module": "/src/internal/base.js"
-          },
-          "tagName": "andy-footer",
-          "customElement": true
         }
       ],
       "exports": [
@@ -2084,54 +1938,6 @@
         },
         {
           "kind": "js",
-          "name": "AndySidebar",
-          "declaration": {
-            "name": "AndySidebar",
-            "module": "src/components/layout.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "andy-sidebar",
-          "declaration": {
-            "name": "AndySidebar",
-            "module": "src/components/layout.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "AndySidebarBrand",
-          "declaration": {
-            "name": "AndySidebarBrand",
-            "module": "src/components/layout.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "andy-sidebar-brand",
-          "declaration": {
-            "name": "AndySidebarBrand",
-            "module": "src/components/layout.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "AndySidebarUser",
-          "declaration": {
-            "name": "AndySidebarUser",
-            "module": "src/components/layout.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "andy-sidebar-user",
-          "declaration": {
-            "name": "AndySidebarUser",
-            "module": "src/components/layout.ts"
-          }
-        },
-        {
-          "kind": "js",
           "name": "AndyNavSection",
           "declaration": {
             "name": "AndyNavSection",
@@ -2143,38 +1949,6 @@
           "name": "andy-nav-section",
           "declaration": {
             "name": "AndyNavSection",
-            "module": "src/components/layout.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "AndyHeader",
-          "declaration": {
-            "name": "AndyHeader",
-            "module": "src/components/layout.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "andy-header",
-          "declaration": {
-            "name": "AndyHeader",
-            "module": "src/components/layout.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "AndyFooter",
-          "declaration": {
-            "name": "AndyFooter",
-            "module": "src/components/layout.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "andy-footer",
-          "declaration": {
-            "name": "AndyFooter",
             "module": "src/components/layout.ts"
           }
         }
@@ -2809,6 +2583,280 @@
           "declaration": {
             "name": "AndySelect",
             "module": "src/components/select.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/sidebar.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`<andy-sidebar>` — collapsible workspace sidebar (`.sidebar`).\n\nComposes an `<andy-header>` (brand + collapse toggle) and an `<andy-footer>`\naround the nav.",
+          "name": "AndySidebar",
+          "slots": [
+            {
+              "description": "Brand mark / wordmark (shown in the sidebar header).",
+              "name": "brand"
+            },
+            {
+              "description": "Nav sections (`<andy-nav-section>` / `<andy-nav-list>`).",
+              "name": ""
+            },
+            {
+              "description": "Footer content (user card, sign-out, …).",
+              "name": "footer"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "collapsed",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "collapsed",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "collapsible",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "description": "Show the collapse toggle button in the header.",
+              "attribute": "collapsible"
+            }
+          ],
+          "events": [
+            {
+              "name": "andy-collapse-toggle",
+              "type": {
+                "text": "CustomEvent<boolean>"
+              },
+              "description": "new collapsed state."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "collapsed",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "collapsed"
+            },
+            {
+              "name": "collapsible",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "description": "Show the collapse toggle button in the header.",
+              "fieldName": "collapsible"
+            }
+          ],
+          "superclass": {
+            "name": "AndyElement",
+            "module": "/src/internal/base.js"
+          },
+          "tagName": "andy-sidebar",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "`<andy-sidebar-brand>` — logo mark + wordmark for the sidebar `brand` slot.\n\nComposed from Andy-UI parts: an `<andy-icon-chip>` for the mark plus the\nname/tagline (hidden when the sidebar is collapsed).",
+          "name": "AndySidebarBrand",
+          "slots": [
+            {
+              "description": "Optional custom logo, used instead of `icon`.",
+              "name": "logo"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "name"
+            },
+            {
+              "kind": "field",
+              "name": "tagline",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "tagline"
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "type": {
+                "text": "IconName | \"\""
+              },
+              "default": "\"box\"",
+              "description": "Built-in icon name for the mark. Ignored when a `logo` is slotted.",
+              "attribute": "icon",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "name"
+            },
+            {
+              "name": "tagline",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "tagline"
+            },
+            {
+              "name": "icon",
+              "type": {
+                "text": "IconName | \"\""
+              },
+              "default": "\"box\"",
+              "description": "Built-in icon name for the mark. Ignored when a `logo` is slotted.",
+              "fieldName": "icon"
+            }
+          ],
+          "superclass": {
+            "name": "AndyElement",
+            "module": "/src/internal/base.js"
+          },
+          "tagName": "andy-sidebar-brand",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "`<andy-sidebar-user>` — user card for the sidebar `footer` slot.\n\nComposed from an `<andy-avatar>` plus name/email (hidden when collapsed).",
+          "name": "AndySidebarUser",
+          "members": [
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "name"
+            },
+            {
+              "kind": "field",
+              "name": "email",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "email"
+            },
+            {
+              "kind": "field",
+              "name": "avatar",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "description": "Avatar initials (or slot an image into `<andy-avatar>` via the default slot).",
+              "attribute": "avatar"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "name"
+            },
+            {
+              "name": "email",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "email"
+            },
+            {
+              "name": "avatar",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "description": "Avatar initials (or slot an image into `<andy-avatar>` via the default slot).",
+              "fieldName": "avatar"
+            }
+          ],
+          "superclass": {
+            "name": "AndyElement",
+            "module": "/src/internal/base.js"
+          },
+          "tagName": "andy-sidebar-user",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "AndySidebar",
+          "declaration": {
+            "name": "AndySidebar",
+            "module": "src/components/sidebar.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "andy-sidebar",
+          "declaration": {
+            "name": "AndySidebar",
+            "module": "src/components/sidebar.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "AndySidebarBrand",
+          "declaration": {
+            "name": "AndySidebarBrand",
+            "module": "src/components/sidebar.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "andy-sidebar-brand",
+          "declaration": {
+            "name": "AndySidebarBrand",
+            "module": "src/components/sidebar.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "AndySidebarUser",
+          "declaration": {
+            "name": "AndySidebarUser",
+            "module": "src/components/sidebar.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "andy-sidebar-user",
+          "declaration": {
+            "name": "AndySidebarUser",
+            "module": "src/components/sidebar.ts"
           }
         }
       ]
