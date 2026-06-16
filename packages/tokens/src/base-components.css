@@ -323,6 +323,10 @@
 .sidebar.collapsed .sidebar-header { padding: 0.75rem 0.5rem; }
 .sidebar.collapsed .sidebar-header__top { flex-direction: column; align-items: center; gap: 0.5rem; }
 
+/* Brand / user wrapper elements are transparent so their inner parts
+   (icon-chip, avatar, text) lay out directly in the brand / footer flex. */
+andy-sidebar-brand { display: contents; }
+andy-sidebar-user { display: block; }
 .sidebar-brand { display: flex; align-items: center; gap: 0.875rem; min-width: 0; }
 .sidebar.collapsed .sidebar-brand { justify-content: center; }
 .sidebar-brand__mark {
@@ -419,10 +423,14 @@
    web-component wrapper (which sits between the <ul> and its <li>). */
 .sidebar.collapsed .nav-list > li,
 .sidebar.collapsed .nav-list > andy-nav-item { display: flex; justify-content: center; width: 100%; }
-/* Collapse hides all text: brand wordmark, section headings, and nav labels. */
+/* Collapse hides brand wordmark and section headings outright. */
 .sidebar.collapsed .collapsed-hide,
-.sidebar.collapsed .nav-label,
 .sidebar.collapsed .nav-section-title { display: none; }
+/* Nav labels are visually hidden but kept as each link's accessible name. */
+.sidebar.collapsed .nav-label {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
 .sidebar.collapsed .nav-item {
   justify-content: center; width: 100%; max-width: 2.875rem;
   height: 2.875rem; min-height: 2.875rem; padding: 0;

@@ -1,6 +1,10 @@
 import { html, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AndyElement, define } from "../internal/base.js";
+import type { IconName } from "../internal/icons.js";
+import "./icon.js";
+import "./icon-chip.js";
+import "./avatar.js";
 
 /**
  * `<andy-app-shell>` — sidebar + main-column application layout.
@@ -71,7 +75,7 @@ export class AndySidebar extends AndyElement {
             <div class="sidebar-brand">${this.slotTarget("brand")}</div>
             ${this.collapsible
               ? html`<button class="sidebar-collapse-toggle" title="Collapse" aria-label="Collapse sidebar" @click=${this.toggle}>
-                  <svg class="toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 19l-7-7 7-7M19 19l-7-7 7-7" /></svg>
+                  <andy-icon name="chevronsLeft" size="sm"></andy-icon>
                 </button>`
               : nothing}
           </div>
@@ -83,6 +87,58 @@ export class AndySidebar extends AndyElement {
   }
 }
 define("andy-sidebar", AndySidebar);
+
+/**
+ * `<andy-sidebar-brand>` — logo mark + wordmark for the sidebar `brand` slot.
+ *
+ * Composed from Andy-UI parts: an `<andy-icon-chip>` for the mark plus the
+ * name/tagline (hidden when the sidebar is collapsed).
+ * @slot logo - Optional custom logo, used instead of `icon`.
+ */
+@customElement("andy-sidebar-brand")
+export class AndySidebarBrand extends AndyElement {
+  @property() name = "";
+  @property() tagline = "";
+  /** Built-in icon name for the mark. Ignored when a `logo` is slotted. */
+  @property({ reflect: true }) icon: IconName | "" = "box";
+
+  override render() {
+    return html`
+      <andy-icon-chip variant="solid" icon=${this.icon || nothing}>${this.slotTarget("logo")}</andy-icon-chip>
+      <span class="sidebar-brand__text collapsed-hide">
+        ${this.name ? html`<span class="sidebar-brand__name">${this.name}</span>` : nothing}
+        ${this.tagline ? html`<span class="sidebar-brand__tagline">${this.tagline}</span>` : nothing}
+      </span>
+    `;
+  }
+}
+define("andy-sidebar-brand", AndySidebarBrand);
+
+/**
+ * `<andy-sidebar-user>` — user card for the sidebar `footer` slot.
+ *
+ * Composed from an `<andy-avatar>` plus name/email (hidden when collapsed).
+ */
+@customElement("andy-sidebar-user")
+export class AndySidebarUser extends AndyElement {
+  @property() name = "";
+  @property() email = "";
+  /** Avatar initials (or slot an image into `<andy-avatar>` via the default slot). */
+  @property() avatar = "";
+
+  override render() {
+    return html`
+      <div class="sidebar-user">
+        <andy-avatar>${this.avatar}</andy-avatar>
+        <span class="sidebar-user__meta collapsed-hide">
+          ${this.name ? html`<span class="sidebar-user__name">${this.name}</span>` : nothing}
+          ${this.email ? html`<span class="sidebar-user__email">${this.email}</span>` : nothing}
+        </span>
+      </div>
+    `;
+  }
+}
+define("andy-sidebar-user", AndySidebarUser);
 
 /**
  * `<andy-nav-section>` — titled group of nav items (`.nav-section`).
@@ -127,6 +183,8 @@ declare global {
   interface HTMLElementTagNameMap {
     "andy-app-shell": AndyAppShell;
     "andy-sidebar": AndySidebar;
+    "andy-sidebar-brand": AndySidebarBrand;
+    "andy-sidebar-user": AndySidebarUser;
     "andy-nav-section": AndyNavSection;
     "andy-header": AndyHeader;
   }
