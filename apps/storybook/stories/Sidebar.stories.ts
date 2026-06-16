@@ -22,7 +22,7 @@ const meta: Meta = {
   render: (a) => html`
     <div style="transform: translateZ(0); position: relative; width: 280px; height: 560px">
       <andy-sidebar ?collapsed=${a.collapsed} ?collapsible=${a.collapsible}>
-        <andy-sidebar-brand slot="brand" name="Andy-UI" tagline="Workspace" icon="box"></andy-sidebar-brand>
+        <andy-header slot="brand" name="Andy-UI" tagline="Workspace" icon="box"></andy-header>
 
         <andy-nav-section heading="Build">
           <andy-nav-item key="agents" active><andy-icon slot="icon" name="grid"></andy-icon>Agents</andy-nav-item>
@@ -33,7 +33,7 @@ const meta: Meta = {
           <andy-nav-item key="keys"><andy-icon slot="icon" name="key"></andy-icon>API Keys</andy-nav-item>
         </andy-nav-section>
 
-        <andy-sidebar-user slot="footer" name="Andy" email="andy@andy-ui.dev" avatar="AY"></andy-sidebar-user>
+        <andy-footer slot="footer" name="Andy" email="andy@andy-ui.dev" avatar="AY"></andy-footer>
       </andy-sidebar>
     </div>
   `,

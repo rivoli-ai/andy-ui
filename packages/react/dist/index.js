@@ -10,7 +10,7 @@
  */
 import * as React from "react";
 import { createComponent } from "@lit/react";
-import { AndyButton, AndyBadge, AndyStatus, AndyVersionPill, AndyInput, AndySelect, AndySearchInput, AndySwitch, AndyCard, AndySkillCard, AndyStat, AndyCallout, AndyAvatar, AndyProgress, AndyIcon, AndyIconChip, AndyEmptyState, AndyBreadcrumb, AndyNavList, AndyNavItem, AndyNavbar, AndyAppShell, AndySidebar, AndySidebarBrand, AndySidebarUser, AndyNavSection, AndyHeader, AndyFooter, AndyModal, AndyTabs, AndyAccordion, AndyThemeToggle, AndyKeyBox, AndyTable, AndyChat, AndyMessage, AndyTyping, AndySession, } from "@andy-ui/core";
+import { AndyButton, AndyBadge, AndyStatus, AndyVersionPill, AndyInput, AndySelect, AndySearchInput, AndySwitch, AndyCard, AndySkillCard, AndyStat, AndyCallout, AndyAvatar, AndyProgress, AndyIcon, AndyIconChip, AndyEmptyState, AndyBreadcrumb, AndyNavList, AndyNavItem, AndyNavbar, AndyAppShell, AndySidebar, AndyNavSection, AndyHeader, AndyFooter, AndyModal, AndyTabs, AndyAccordion, AndyThemeToggle, AndyKeyBox, AndyTable, AndyChat, AndyMessage, AndyTyping, AndySession, } from "@andy-ui/core";
 export const Button = createComponent({
     react: React,
     tagName: "andy-button",
@@ -76,8 +76,6 @@ export const Sidebar = createComponent({
     elementClass: AndySidebar,
     events: { onAndyCollapseToggle: "andy-collapse-toggle" },
 });
-export const SidebarBrand = createComponent({ react: React, tagName: "andy-sidebar-brand", elementClass: AndySidebarBrand });
-export const SidebarUser = createComponent({ react: React, tagName: "andy-sidebar-user", elementClass: AndySidebarUser });
 export const NavSection = createComponent({ react: React, tagName: "andy-nav-section", elementClass: AndyNavSection });
 export const Navbar = createComponent({
     react: React,

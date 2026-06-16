@@ -1,10 +1,18 @@
 import { AndyElement } from "../internal/base.js";
+import type { IconName } from "../internal/icons.js";
+import "./icon-chip.js";
 /**
- * `<andy-header>` — sticky app header / topbar (`.header`).
- * @slot         - Title / breadcrumb area (left).
- * @slot actions - Right-aligned actions.
+ * `<andy-header>` — brand header: a logo mark (`<andy-icon-chip>`) plus a name
+ * and tagline. Designed for the `<andy-sidebar>` `brand` slot; the text hides
+ * when the sidebar is collapsed.
+ *
+ * @slot logo - Optional custom logo, used instead of `icon`.
  */
 export declare class AndyHeader extends AndyElement {
+    name: string;
+    tagline: string;
+    /** Built-in icon name for the mark. Ignored when a `logo` is slotted. */
+    icon: IconName | "";
     render(): import("lit").TemplateResult<1>;
 }
 declare global {

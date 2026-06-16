@@ -1,23 +1,29 @@
 import { html, nothing } from "lit";
-import { customElement } from "lit/decorators.js";
+import { customElement, property } from "lit/decorators.js";
 import { AndyElement, define } from "../internal/base.js";
+import "./avatar.js";
 
 /**
- * `<andy-footer>` — generic footer bar (`.au-footer`).
- *
- * A flexible slotted bar (content left, optional actions right). Works as a
- * page/section footer and as the sidebar footer region.
- * @slot         - Main footer content (left).
- * @slot actions - Right-aligned actions.
+ * `<andy-footer>` — user card: an `<andy-avatar>` plus a name and email.
+ * Designed for the `<andy-sidebar>` `footer` slot; the text hides when the
+ * sidebar is collapsed.
  */
 @customElement("andy-footer")
 export class AndyFooter extends AndyElement {
+  @property() name = "";
+  @property() email = "";
+  /** Avatar initials (or slot an image into `<andy-avatar>` via `avatar` slot). */
+  @property() avatar = "";
+
   override render() {
     return html`
-      <footer class="au-footer">
-        <div class="au-footer__main">${this.slotTarget()}</div>
-        ${this.hasSlot("actions") ? html`<div class="au-footer__actions">${this.slotTarget("actions")}</div>` : nothing}
-      </footer>
+      <div class="sidebar-user">
+        <andy-avatar>${this.avatar}${this.slotTarget("avatar")}</andy-avatar>
+        <span class="sidebar-user__meta collapsed-hide">
+          ${this.name ? html`<span class="sidebar-user__name">${this.name}</span>` : nothing}
+          ${this.email ? html`<span class="sidebar-user__email">${this.email}</span>` : nothing}
+        </span>
+      </div>
     `;
   }
 }

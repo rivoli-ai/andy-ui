@@ -1,13 +1,15 @@
 import { AndyElement } from "../internal/base.js";
+import "./avatar.js";
 /**
- * `<andy-footer>` — generic footer bar (`.au-footer`).
- *
- * A flexible slotted bar (content left, optional actions right). Works as a
- * page/section footer and as the sidebar footer region.
- * @slot         - Main footer content (left).
- * @slot actions - Right-aligned actions.
+ * `<andy-footer>` — user card: an `<andy-avatar>` plus a name and email.
+ * Designed for the `<andy-sidebar>` `footer` slot; the text hides when the
+ * sidebar is collapsed.
  */
 export declare class AndyFooter extends AndyElement {
+    name: string;
+    email: string;
+    /** Avatar initials (or slot an image into `<andy-avatar>` via `avatar` slot). */
+    avatar: string;
     render(): import("lit").TemplateResult<1>;
 }
 declare global {

@@ -322,16 +322,12 @@
 .sidebar-header__top { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; }
 .sidebar.collapsed .sidebar-header { padding: 0.75rem 0.5rem; }
 .sidebar.collapsed .sidebar-header__top { flex-direction: column; align-items: center; gap: 0.5rem; }
-/* The header region is an <andy-header>; render it flat (not the app topbar). */
-.sidebar-header .header { position: static; height: auto; background: none; backdrop-filter: none; border: 0; }
-.sidebar-header .header-content { padding: 0; height: auto; gap: 0.75rem; }
-.sidebar.collapsed .sidebar-header .header-content { flex-direction: column; align-items: center; gap: 0.5rem; }
 
-/* Brand / user wrapper elements are transparent so their inner parts
-   (icon-chip, avatar, text) lay out directly in the brand / footer flex. */
-andy-sidebar-brand { display: contents; }
-andy-sidebar-user { display: block; }
-.sidebar-brand { display: flex; align-items: center; gap: 0.875rem; min-width: 0; }
+/* <andy-header> (brand) and <andy-footer> (user card) are transparent wrappers
+   so their inner .sidebar-brand / .sidebar-user lay out in the sidebar flex. */
+andy-header { display: contents; }
+andy-footer { display: contents; }
+.sidebar-brand { display: flex; align-items: center; gap: 0.875rem; min-width: 0; flex: 1; }
 .sidebar.collapsed .sidebar-brand { justify-content: center; }
 .sidebar-brand__mark {
   flex-shrink: 0; width: 2.5rem; height: 2.5rem;
@@ -460,8 +456,6 @@ andy-sidebar-user { display: block; }
 
 .sidebar-footer { flex-shrink: 0; padding: 0.875rem 0.625rem; border-top: 1px solid var(--sidebar-border); }
 .sidebar.collapsed .sidebar-footer { padding: 0.625rem 0.25rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
-/* The footer region is an <andy-footer>; render it flat inside the sidebar. */
-.sidebar-footer .au-footer { padding: 0; border: 0; }
 
 .sidebar-user {
   display: flex; align-items: center; gap: 0.75rem;

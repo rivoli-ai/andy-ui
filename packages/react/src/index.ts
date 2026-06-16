@@ -34,8 +34,6 @@ import {
   AndyNavbar,
   AndyAppShell,
   AndySidebar,
-  AndySidebarBrand,
-  AndySidebarUser,
   AndyNavSection,
   AndyHeader,
   AndyFooter,
@@ -132,8 +130,6 @@ export const Sidebar = createComponent({
   elementClass: AndySidebar,
   events: { onAndyCollapseToggle: "andy-collapse-toggle" as EventName<CustomEvent<boolean>> },
 });
-export const SidebarBrand = createComponent({ react: React, tagName: "andy-sidebar-brand", elementClass: AndySidebarBrand });
-export const SidebarUser = createComponent({ react: React, tagName: "andy-sidebar-user", elementClass: AndySidebarUser });
 export const NavSection = createComponent({ react: React, tagName: "andy-nav-section", elementClass: AndyNavSection });
 export const Navbar = createComponent({
   react: React,
