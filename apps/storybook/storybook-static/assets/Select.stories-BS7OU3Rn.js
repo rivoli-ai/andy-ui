@@ -1,5 +1,0 @@
-import{b as r}from"./lit-element-CHqfs0qX.js";const s=[{value:"all",label:"All namespaces"},{value:"core",label:"platform-core"},{value:"data",label:"data-pipeline"}],n={title:"Forms/Select",component:"andy-select",tags:["autodocs"],parameters:{docs:{description:{component:"Styled native `<select>` (`.ds-select`). Provide choices via the `options` property (`{ value, label }[]`). Fires `andy-change` with the selected value in `event.detail`."}}},argTypes:{label:{control:"text",table:{category:"Props"}},value:{control:"text",table:{category:"Props"}},options:{control:"object",table:{category:"Props"}}},args:{label:"Namespace",value:"all",options:s},render:a=>r`
-    <div style="max-width:360px">
-      <andy-select label=${a.label} .value=${a.value} .options=${a.options}></andy-select>
-    </div>
-  `},e={};var t,o,l;e.parameters={...e.parameters,docs:{...(t=e.parameters)==null?void 0:t.docs,source:{originalSource:"{}",...(l=(o=e.parameters)==null?void 0:o.docs)==null?void 0:l.source}}};const p=["Playground"];export{e as Playground,p as __namedExportsOrder,n as default};

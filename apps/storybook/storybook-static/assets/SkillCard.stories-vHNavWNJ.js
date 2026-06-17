@@ -1,5 +1,0 @@
-import{b as s}from"./lit-element-CHqfs0qX.js";const n={title:"Primitives/Skill card",component:"andy-skill-card",tags:["autodocs"],parameters:{docs:{description:{component:"Link-style card with icon, title, description and a slug + version meta row (`.ds-skill-card`)."}}},argTypes:{heading:{control:"text",table:{category:"Props"}},description:{control:"text",table:{category:"Props"}},slug:{control:"text",table:{category:"Props"}},version:{control:"text",table:{category:"Props"}},href:{control:"text",table:{category:"Props"}}},args:{heading:"PDF Extractor",description:"Pull text, tables and metadata from PDFs.",slug:"pdf-extract",version:"v2.1.0",href:"#"},render:r=>s`
-    <div style="max-width:300px">
-      <andy-skill-card heading=${r.heading} description=${r.description} slug=${r.slug} version=${r.version} href=${r.href}></andy-skill-card>
-    </div>
-  `},e={};var t,o,a;e.parameters={...e.parameters,docs:{...(t=e.parameters)==null?void 0:t.docs,source:{originalSource:"{}",...(a=(o=e.parameters)==null?void 0:o.docs)==null?void 0:a.source}}};const c=["Playground"];export{e as Playground,c as __namedExportsOrder,n as default};
