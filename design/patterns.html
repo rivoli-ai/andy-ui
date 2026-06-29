@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Andy-UI · Domain components</title>
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base-components.css">
+<link rel="stylesheet" href="css/andy-ui.css">
+<link rel="stylesheet" href="css/docs.css">
+</head>
+<body>
+<header class="doc-nav" data-doc-nav></header>
+
+<main class="doc-main">
+  <section class="doc-hero">
+    <div class="doc-hero__eyebrow">Domain components</div>
+    <h1>The product surface, unified</h1>
+    <p>The components that carry meaning across the four products — agents, chat, skill packages, MCP adapters,
+       API keys and repositories. Each was refactored from its source app onto one canonical shape, built entirely
+       from the Andy-UI tokens.</p>
+  </section>
+
+  <!-- AGENT CARD -->
+  <section class="doc-section" id="agents">
+    <div class="doc-section__head"><span class="num">01</span><h2>Agent card</h2><span class="num">· Agentic</span></div>
+    <p class="doc-section__lead">The richest card in the system: identity, type/status, a labeled LLM config row (provider · model · state),
+       a 4-up stat grid, tags and an action footer. The original Tailwind utility version is re-expressed with
+       <code class="inline">au-card</code>, <code class="inline">au-config</code> and <code class="inline">au-statgrid</code>.</p>
+    <div class="doc-grid doc-grid--2">
+      <!-- Agent A -->
+      <article class="au-card au-card--interactive">
+        <div class="au-card__top">
+          <div class="au-card__head">
+            <span class="au-icon-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.75 17 9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"/></svg></span>
+            <div style="min-width:0;"><h3 class="au-card__title">Release Orchestrator</h3><p class="au-card__desc">Coordinates multi-repo releases, drafts changelogs and opens the deploy PR.</p></div>
+          </div>
+          <div class="au-card__badges"><span class="dp-badge primary">Workflow</span><span class="au-state au-state--active">Active</span></div>
+        </div>
+        <div class="au-config">
+          <span class="au-config__label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v1m6.36 1.64-.7.7M21 12h-1M4 12H3m3.34-5.66-.7-.7m2.82 9.9a5 5 0 1 1 7.07 0l-.54.55A3.37 3.37 0 0 0 14 18.47V19a2 2 0 1 1-4 0v-.53a3.37 3.37 0 0 0-.99-2.39z"/></svg>Main LLM</span>
+          <div class="au-config__chips"><span class="au-chip au-chip--brand">OpenAI</span><span class="au-chip au-chip--brand">gpt-4o</span><span class="au-state au-state--active">Active</span></div>
+        </div>
+        <div class="au-config">
+          <span class="au-config__label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Embedding · RAG</span>
+          <div class="au-config__chips"><span class="au-chip au-chip--violet">Azure</span><span class="au-chip au-chip--violet">text-embed-3</span><span class="au-status au-status--success"><span class="au-status__dot"></span>12 docs</span></div>
+        </div>
+        <div class="au-statgrid">
+          <div class="au-stat"><span class="au-stat__dot" style="background:var(--info-500)"></span><span class="au-stat__label">Prompts</span><span class="au-stat__val">6</span></div>
+          <div class="au-stat"><span class="au-stat__dot" style="background:var(--success-500)"></span><span class="au-stat__label">Tools</span><span class="au-stat__val">9</span></div>
+          <div class="au-stat"><span class="au-stat__dot" style="background:var(--warning-500)"></span><span class="au-stat__label">Runs</span><span class="au-stat__val">418</span></div>
+          <div class="au-stat"><span class="au-stat__dot" style="background:var(--brand-secondary)"></span><span class="au-stat__label">Docs</span><span class="au-stat__val">12</span></div>
+        </div>
+        <div class="au-card__footer">
+          <span class="au-card__meta">Updated 2h ago</span>
+          <div class="au-card__actions">
+            <button class="au-iconbtn" title="Chat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg></button>
+            <button class="au-iconbtn" title="Edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+            <button class="au-iconbtn au-iconbtn--danger" title="Delete"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>
+          </div>
+        </div>
+      </article>
+      <!-- Agent B -->
+      <article class="au-card au-card--interactive">
+        <div class="au-card__top">
+          <div class="au-card__head">
+            <span class="au-icon-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.75 17 9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"/></svg></span>
+            <div style="min-width:0;"><h3 class="au-card__title">Support Triage</h3><p class="au-card__desc">Classifies inbound tickets, drafts a first reply and routes to the right queue.</p></div>
+          </div>
+          <div class="au-card__badges"><span class="dp-badge secondary">Assistant</span><span class="au-state au-state--disabled">Inactive</span></div>
+        </div>
+        <div class="au-config">
+          <span class="au-config__label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v1m6.36 1.64-.7.7M21 12h-1M4 12H3m3.34-5.66-.7-.7m2.82 9.9a5 5 0 1 1 7.07 0l-.54.55A3.37 3.37 0 0 0 14 18.47V19a2 2 0 1 1-4 0v-.53a3.37 3.37 0 0 0-.99-2.39z"/></svg>Main LLM</span>
+          <div class="au-config__chips"><span class="au-chip au-chip--brand">Anthropic</span><span class="au-chip au-chip--brand">claude-sonnet</span><span class="au-state au-state--disabled">Paused</span></div>
+        </div>
+        <div class="au-statgrid">
+          <div class="au-stat"><span class="au-stat__dot" style="background:var(--info-500)"></span><span class="au-stat__label">Prompts</span><span class="au-stat__val">3</span></div>
+          <div class="au-stat"><span class="au-stat__dot" style="background:var(--success-500)"></span><span class="au-stat__label">Tools</span><span class="au-stat__val">4</span></div>
+          <div class="au-stat"><span class="au-stat__dot" style="background:var(--warning-500)"></span><span class="au-stat__label">Runs</span><span class="au-stat__val">52</span></div>
+          <div class="au-stat"><span class="au-stat__dot" style="background:var(--brand-secondary)"></span><span class="au-stat__label">Docs</span><span class="au-stat__val">0</span></div>
+        </div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span class="au-chip">support</span><span class="au-chip">triage</span><span class="au-chip">+2</span>
+        </div>
+        <div class="au-card__footer">
+          <span class="au-card__meta">Updated 5d ago</span>
+          <div class="au-card__actions">
+            <button class="au-iconbtn" title="Chat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg></button>
+            <button class="au-iconbtn" title="Duplicate"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+            <button class="au-iconbtn au-iconbtn--danger" title="Delete"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- CHAT -->
+  <section class="doc-section" id="chat">
+    <div class="doc-section__head"><span class="num">02</span><h2>Chat</h2><span class="num">· Agentic</span></div>
+    <p class="doc-section__lead">Message bubbles (user gradient / agent card), a collapsible thinking section, streaming indicator,
+       tool-execution cards and the session-history item — every chat surface, on tokens.</p>
+    <div class="doc-grid doc-grid--2">
+      <div class="doc-demo" style="background:var(--surface-ground);">
+        <div class="doc-caption">Conversation</div>
+        <div class="au-chat">
+          <div class="au-msg au-msg--user">
+            <span class="au-avatar sm">YO</span>
+            <div class="au-msg__bubble"><div class="au-msg__name">You</div>Summarise the failing checks on PR #482 and suggest a fix.<div class="au-msg__time">14:02</div></div>
+          </div>
+          <div class="au-msg au-msg--agent">
+            <span class="au-avatar sm au-avatar--soft"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v1m6.36 1.64-.7.7M21 12h-1M4 12H3m3.34-5.66-.7-.7m2.82 9.9a5 5 0 1 1 7.07 0l-.54.55A3.37 3.37 0 0 0 14 18.47V19a2 2 0 1 1-4 0v-.53a3.37 3.37 0 0 0-.99-2.39z"/></svg></span>
+            <div class="au-msg__bubble">
+              <div class="au-msg__name">Release Orchestrator</div>
+              <div class="au-think"><span class="au-think__icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span><span class="au-think__title">Thinking</span><span class="au-think__hint">Inspected 3 failing jobs · lint, types, e2e</span></div>
+              Two checks fail on type errors in <code class="inline">auth.ts</code>; the e2e timeout is a flake. Pin the type and re-run e2e.
+              <div class="au-msg__statusbar"><span class="au-status au-status--success"><span class="au-status__dot"></span>Done</span><span class="au-msg__chars">182 chars</span></div>
+            </div>
+          </div>
+          <div class="au-msg au-msg--agent">
+            <span class="au-avatar sm au-avatar--soft"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v1m6.36 1.64-.7.7M21 12h-1M4 12H3m3.34-5.66-.7-.7m2.82 9.9a5 5 0 1 1 7.07 0l-.54.55A3.37 3.37 0 0 0 14 18.47V19a2 2 0 1 1-4 0v-.53a3.37 3.37 0 0 0-.99-2.39z"/></svg></span>
+            <div class="au-msg__bubble" style="color:var(--text-secondary);"><div class="au-msg__name" style="color:var(--text-primary);">Release Orchestrator</div><span class="au-typing"><span></span><span></span><span></span></span> <span style="color:var(--brand-primary);font-size:12px;font-weight:600;">Streaming…</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="doc-row doc-row--col">
+        <div class="doc-demo">
+          <div class="doc-caption">Tool execution</div>
+          <div class="au-tool">
+            <div class="au-tool__head" data-collapse="tool-body"><svg class="lead" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4l-6 6a1.4 1.4 0 0 0 2 2l6-6a4 4 0 0 0 5.4-5.4l-2.3 2.3-1.4-1.4z"/></svg><span class="au-tool__name">github.get_checks</span><span class="au-tool__status"><span class="au-state au-state--healthy"><span class="au-state__dot"></span>200</span></span></div>
+            <div class="au-tool__body" id="tool-body">{ "pr": 482, "failing": ["lint", "types"], "flaky": ["e2e"] }</div>
+          </div>
+        </div>
+        <div class="doc-demo">
+          <div class="doc-caption">Session history items</div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div class="au-session is-active"><span class="au-session__dot"></span><div style="min-width:0;flex:1;"><div class="au-session__name">Release Orchestrator</div><div class="au-session__meta">2m ago · 14 messages</div></div></div>
+            <div class="au-session"><span class="au-session__dot"></span><div style="min-width:0;flex:1;"><div class="au-session__name">Support Triage</div><div class="au-session__meta">Yesterday · 6 messages</div></div></div>
+            <div class="au-session"><span class="au-session__dot"></span><div style="min-width:0;flex:1;"><div class="au-session__name">Docs Writer</div><div class="au-session__meta">3d ago · 22 messages</div></div></div>
+          </div>
+        </div>
+        <div class="doc-demo">
+          <div class="doc-caption">Composer</div>
+          <div class="au-composer">
+            <button class="au-iconbtn au-iconbtn--lg" title="Attach"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05 12.25 20.24a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg></button>
+            <textarea rows="1" placeholder="Type your message… (Enter to send)"></textarea>
+            <button class="btn btn-primary btn-sm" style="height:40px;">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="doc-section" id="skills">
+    <div class="doc-section__head"><span class="num">03</span><h2>Skill packages</h2><span class="num">· AndySkills</span></div>
+    <p class="doc-section__lead">The registry's package browser: namespace group headers and skill cards (file icon, namespace eyebrow,
+       slug code + version pill). Grid and list share one data model.</p>
+    <div class="au-group" style="margin-bottom:16px;">
+      <span class="au-group__dot" style="background:hsl(255,58%,58%);color:hsl(255,58%,58%);"></span>
+      <h3 class="au-group__title">Platform</h3><span class="au-group__sep">·</span>
+      <span class="au-group__slug">platform</span><span class="au-group__sep">·</span>
+      <span class="au-group__meta">Created Jan 2025 · andy</span>
+      <span class="au-group__count">3</span>
+    </div>
+    <div class="doc-grid doc-grid--3">
+      <a class="au-skill" href="#">
+        <span class="au-skill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
+        <div class="au-skill__body"><h3 class="au-skill__title">PDF Extractor</h3><p class="au-skill__desc">Pull text, tables and metadata from PDF documents.</p><div class="au-skill__meta"><code class="au-skill__slug">pdf-extract</code><span class="au-skill__ver">v2.1.0</span></div></div>
+      </a>
+      <a class="au-skill" href="#">
+        <span class="au-skill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
+        <div class="au-skill__body"><h3 class="au-skill__title">Web Fetch</h3><p class="au-skill__desc">Fetch and clean a URL into readable markdown.</p><div class="au-skill__meta"><code class="au-skill__slug">web-fetch</code><span class="au-skill__ver">v1.4.2</span></div></div>
+      </a>
+      <a class="au-skill" href="#">
+        <span class="au-skill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
+        <div class="au-skill__body"><p class="au-skill__ns">Platform</p><h3 class="au-skill__title">SQL Runner</h3><p class="au-skill__desc">Run parameterised read-only queries against a warehouse.</p><div class="au-skill__meta"><code class="au-skill__slug">sql-runner</code><span class="au-skill__ver">v0.9.0</span></div></div>
+      </a>
+    </div>
+    <div class="doc-sub">List view · shared data table</div>
+    <div class="au-table-wrap">
+      <table class="au-table">
+        <thead><tr><th>Skill</th><th>Slug</th><th>Namespace</th><th>Created</th><th>Latest</th><th class="cell-actions">Actions</th></tr></thead>
+        <tbody>
+          <tr><td class="cell-title">PDF Extractor</td><td><code>pdf-extract</code></td><td>platform</td><td>Jan 12, 2025</td><td><span class="au-skill__ver">v2.1.0</span></td><td class="cell-actions"><span style="display:inline-flex;gap:4px;justify-content:flex-end;"><button class="au-iconbtn" title="View"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button><button class="au-iconbtn au-iconbtn--danger" title="Delete"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/></svg></button></span></td></tr>
+          <tr><td class="cell-title">Web Fetch</td><td><code>web-fetch</code></td><td>platform</td><td>Feb 03, 2025</td><td><span class="au-skill__ver">v1.4.2</span></td><td class="cell-actions"><span style="display:inline-flex;gap:4px;justify-content:flex-end;"><button class="au-iconbtn" title="View"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button><button class="au-iconbtn au-iconbtn--danger" title="Delete"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/></svg></button></span></td></tr>
+          <tr><td class="cell-title">SQL Runner</td><td><code>sql-runner</code></td><td>platform</td><td>Feb 20, 2025</td><td><span class="au-skill__ver">v0.9.0</span></td><td class="cell-actions"><span style="display:inline-flex;gap:4px;justify-content:flex-end;"><button class="au-iconbtn" title="View"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button><button class="au-iconbtn au-iconbtn--danger" title="Delete"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/></svg></button></span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ADAPTERS -->
+  <section class="doc-section" id="adapters">
+    <div class="doc-section__head"><span class="num">04</span><h2>MCP adapters</h2><span class="num">· McpGateway</span></div>
+    <p class="doc-section__lead">Adapter cards carry a health corner accent, type/enabled chips, the endpoint URL with a link glyph and a
+       split View / Edit footer. Health drives the border tint.</p>
+    <div class="doc-grid doc-grid--3">
+      <article class="au-card au-card--healthy">
+        <div class="au-card__corner au-card__corner--healthy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <div class="au-card__top"><div class="au-card__badges" style="justify-content:flex-start;"><span class="au-chip au-chip--brand">StreamableHttp</span><span class="au-state au-state--enabled">Enabled</span></div></div>
+        <div><h3 class="au-card__title">github-mcp</h3><div class="doc-row" style="gap:5px;color:var(--text-tertiary);font-size:12px;font-family:var(--font-mono);margin-top:4px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 1 0-7l1-1a5 5 0 0 1 7 7l-1 1"/><path d="M14 11a5 5 0 0 1 0 7l-1 1a5 5 0 0 1-7-7l1-1"/></svg>mcp.internal/github</div><p class="au-card__desc" style="margin-top:6px;">Routes GitHub repo, PR and issue tools.</p></div>
+        <div class="au-card__split"><button class="au-action primary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>View</button><button class="au-action secondary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>Edit</button></div>
+      </article>
+      <article class="au-card au-card--unhealthy">
+        <div class="au-card__corner au-card__corner--unhealthy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4"/><circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/></svg></div>
+        <div class="au-card__top"><div class="au-card__badges" style="justify-content:flex-start;"><span class="au-chip au-chip--brand">Sse</span><span class="au-state au-state--enabled">Enabled</span></div></div>
+        <div><h3 class="au-card__title">jira-mcp</h3><div class="doc-row" style="gap:5px;color:var(--text-tertiary);font-size:12px;font-family:var(--font-mono);margin-top:4px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 1 0-7l1-1a5 5 0 0 1 7 7l-1 1"/><path d="M14 11a5 5 0 0 1 0 7l-1 1a5 5 0 0 1-7-7l1-1"/></svg>mcp.internal/jira</div><p class="au-card__desc" style="margin-top:6px;">Health check failed — last response 504.</p></div>
+        <div class="au-card__split"><button class="au-action primary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>View</button><button class="au-action secondary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>Edit</button></div>
+      </article>
+      <article class="au-card">
+        <div class="au-card__top"><div class="au-card__badges" style="justify-content:flex-start;"><span class="au-chip au-chip--brand">StreamableHttp</span><span class="au-state au-state--disabled">Disabled</span></div></div>
+        <div><h3 class="au-card__title">slack-mcp</h3><div class="doc-row" style="gap:5px;color:var(--text-tertiary);font-size:12px;font-family:var(--font-mono);margin-top:4px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 1 0-7l1-1a5 5 0 0 1 7 7l-1 1"/><path d="M14 11a5 5 0 0 1 0 7l-1 1a5 5 0 0 1-7-7l1-1"/></svg>mcp.internal/slack</div><p class="au-card__desc" style="margin-top:6px;">Paused while credentials rotate.</p></div>
+        <div class="au-card__split"><button class="au-action primary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>View</button><button class="au-action secondary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>Edit</button></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- API KEYS -->
+  <section class="doc-section" id="keys">
+    <div class="doc-section__head"><span class="num">05</span><h2>API keys</h2><span class="num">· McpGateway</span></div>
+    <p class="doc-section__lead">The key table masks values by default with reveal + copy affordances, lifecycle state pills and a revoke action.
+       Below it, the "key generated" callout that shows the plaintext exactly once.</p>
+    <div class="au-table-wrap">
+      <table class="au-table">
+        <thead><tr><th>Name</th><th>Key</th><th>Created</th><th>Last used</th><th>Status</th><th class="cell-actions">Actions</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="cell-title">zapier-prod</td>
+            <td data-keycell><span class="au-keycell"><code data-mask="mcp_••••••••••••3f9a" data-full="mcp_7k2d9f4a1c8e3f9a">mcp_••••••••••••3f9a</code><button class="au-iconbtn" data-reveal title="Reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button><button class="au-iconbtn" data-copy="mcp_7k2d9f4a1c8e3f9a" title="Copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button></span></td>
+            <td>Jan 8, 2025</td><td>2h ago</td><td><span class="au-state au-state--active">Active</span></td>
+            <td class="cell-actions"><button class="au-action danger small">Revoke</button></td>
+          </tr>
+          <tr>
+            <td class="cell-title">ci-runner</td>
+            <td data-keycell><span class="au-keycell"><code data-mask="mcp_••••••••••••a17b" data-full="mcp_9p1x4v7m2q5a17b">mcp_••••••••••••a17b</code><button class="au-iconbtn" data-reveal title="Reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button><button class="au-iconbtn" data-copy="mcp_9p1x4v7m2q5a17b" title="Copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button></span></td>
+            <td>Dec 2, 2024</td><td>5d ago</td><td><span class="au-state au-state--active">Active</span></td>
+            <td class="cell-actions"><button class="au-action danger small">Revoke</button></td>
+          </tr>
+          <tr style="opacity:0.6;">
+            <td class="cell-title">old-webhook</td>
+            <td data-keycell><span class="au-keycell"><code data-mask="mcp_••••••••••••0000" data-full="mcp_revoked">mcp_••••••••••••0000</code></span></td>
+            <td>Aug 19, 2024</td><td>—</td><td><span class="au-state au-state--revoked">Revoked</span></td>
+            <td class="cell-actions"><span style="color:var(--text-muted);">—</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="doc-demo" style="margin-top:16px;">
+      <div class="doc-caption">Key generated · shown once</div>
+      <div style="display:flex;flex-direction:column;gap:14px;max-width:560px;">
+        <div class="au-callout au-callout--warning"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg><div class="au-callout__body"><strong>Copy this key now.</strong> You can re-display it later from this page, but copying now keeps the workflow tidy.</div></div>
+        <div class="au-codebox"><code>mcp_7k2d9f4a1c8e3f9a2b6d0e5c</code><button class="au-action secondary small" data-copy="mcp_7k2d9f4a1c8e3f9a2b6d0e5c" data-copy-text data-label-default="Copy" data-label-copied="Copied">Copy</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REPOS & MODELS -->
+  <section class="doc-section" id="repos">
+    <div class="doc-section__head"><span class="num">06</span><h2>Repositories &amp; provider rows</h2><span class="num">· DevPilot</span></div>
+    <p class="doc-section__lead">The original reference card (provider + branch chips, visibility, split actions) and the settings provider
+       row — both already on tokens, shown here for completeness.</p>
+    <div class="doc-grid doc-grid--2">
+      <article class="au-card au-card--interactive">
+        <div class="au-card__top">
+          <div class="au-card__badges" style="justify-content:flex-start;"><span class="au-chip au-chip--github"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.1-1.47-1.1-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>GitHub</span><span class="au-chip au-chip--mono">main</span><span class="au-status" style="margin-left:auto;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span></div>
+        <div><h3 class="au-card__title">devpilot-api</h3><p class="au-card__desc">Core REST + streaming API for the DevPilot workspace.</p></div>
+        <div class="au-card__split"><button class="au-action primary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.75 17 9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"/></svg>Open workspace</button><button class="au-action secondary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>Backlog</button></div>
+      </article>
+      <div class="au-panel">
+        <div class="au-panel__header"><h3>Source control providers</h3><p>Connected services that DevPilot can sync repositories from.</p></div>
+        <div class="au-panel__body" style="display:flex;flex-direction:column;gap:10px;">
+          <div class="au-row"><span class="au-row__icon" style="background:#24292e;border-color:#24292e;color:#fff;"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.1-1.47-1.1-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg></span><div class="au-row__meta"><strong>GitHub</strong><span>Connected · 28 repositories</span></div><span class="au-status au-status--success"><span class="au-status__dot"></span>OK</span></div>
+          <div class="au-row"><span class="au-row__icon" style="background:#0078d4;border-color:#0078d4;color:#fff;"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 12 9 3l8 2 4 7-9 9z"/></svg></span><div class="au-row__meta"><strong>Azure DevOps</strong><span>Connected · 11 repositories</span></div><span class="au-status au-status--success"><span class="au-status__dot"></span>OK</span></div>
+          <div class="au-row"><span class="au-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></span><div class="au-row__meta"><strong>Local</strong><span>3 repositories</span></div><label class="au-switch"><input type="checkbox" checked><span class="au-switch__track"></span><span class="au-switch__thumb"></span></label></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="js/shell.js"></script>
+</body>
+</html>

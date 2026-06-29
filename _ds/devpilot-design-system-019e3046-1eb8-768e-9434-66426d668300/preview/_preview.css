@@ -1,0 +1,29 @@
+/* Shared baseline for every preview card.
+   Cards include this AFTER ../colors_and_type.css so all tokens are available. */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  background: var(--surface-ground);
+  padding: 20px;
+}
+.card {
+  /* Each preview is a single "card" container that fills the iframe */
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.card-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.swatch {
+  border-radius: 12px;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-xs);
+}
+.mono { font-family: var(--font-mono); }
+.muted { color: var(--text-tertiary); }

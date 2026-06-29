@@ -1,0 +1,84 @@
+name: Deploy Pages
+
+# Publishes three static sites to GitHub Pages under one deployment:
+#   /          -> Storybook
+#   /react/    -> React example app
+#   /angular/  -> Angular example app
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+# Allow GITHUB_TOKEN to publish to GitHub Pages.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One Pages deploy at a time; cancel superseded runs.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+# Repo path on Pages is /andy-ui, so each app is built under that subpath.
+env:
+  BASE: /andy-ui
+
+jobs:
+  build:
+    name: Build sites
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22 # pnpm@11.5.2 requires Node >= 22.13
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # Builds all packages (core/tokens/react/angular) + Storybook + examples.
+      - name: Build everything
+        run: pnpm build
+
+      # Rebuild the example apps under their Pages subpaths.
+      - name: Rebuild React example with base path
+        run: PUBLIC_BASE=${{ env.BASE }}/react/ pnpm --filter @andy-ui/example-react exec vite build
+
+      - name: Rebuild Angular example with base href
+        run: pnpm --filter @andy-ui/example-angular exec ng build --base-href ${{ env.BASE }}/angular/
+
+      - name: Assemble site
+        run: |
+          rm -rf public
+          mkdir -p public/react public/angular
+          cp -r apps/storybook/storybook-static/. public/
+          cp -r examples/react-app/dist/. public/react/
+          cp -r examples/angular-app/dist/browser/. public/angular/
+          touch public/.nojekyll
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

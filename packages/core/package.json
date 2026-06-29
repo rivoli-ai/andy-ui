@@ -1,0 +1,51 @@
+{
+  "name": "@andy-ui/core",
+  "version": "0.1.0",
+  "description": "Andy-UI web components — framework-agnostic custom elements built with Lit.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": [
+    "**/*.js"
+  ],
+  "publishConfig": { "access": "public" },
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./components/*": {
+      "types": "./dist/components/*.d.ts",
+      "default": "./dist/components/*.js"
+    },
+    "./custom-elements.json": "./dist/custom-elements.json"
+  },
+  "scripts": {
+    "build": "vite build && tsc --emitDeclarationOnly && pnpm analyze",
+    "analyze": "cem analyze || true",
+    "dev": "vite build --watch",
+    "clean": "rm -rf dist"
+  },
+  "peerDependencies": {
+    "@andy-ui/tokens": "workspace:^"
+  },
+  "peerDependenciesMeta": {
+    "@andy-ui/tokens": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "lit": "^3.2.1"
+  },
+  "devDependencies": {
+    "@custom-elements-manifest/analyzer": "^0.10.4",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.7"
+  },
+  "customElements": "dist/custom-elements.json"
+}

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Andy-UI · Showcase</title>
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base-components.css">
+<link rel="stylesheet" href="css/andy-ui.css">
+<link rel="stylesheet" href="css/docs.css">
+<style>
+  /* Scope the workspace shell into a contained frame (source sidebar/header are position:fixed) */
+  .app-frame {
+    position: relative; height: 780px; max-height: 82vh;
+    display: grid; grid-template-columns: var(--sidebar-width) 1fr;
+    border: 1px solid var(--border-default); border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl); overflow: hidden; background: var(--surface-ground);
+    transition: grid-template-columns var(--duration-base) var(--ease-out);
+  }
+  .app-frame.is-collapsed { grid-template-columns: var(--sidebar-width-collapsed) 1fr; }
+  .app-frame .sidebar { position: relative; inset: auto; width: auto; height: 100%; z-index: 1; }
+  .app-frame.is-collapsed .sidebar { }
+  .app-col { display: flex; flex-direction: column; min-width: 0; height: 100%; }
+  .app-frame .header { position: sticky; }
+  .app-scroll { flex: 1; overflow-y: auto; padding: var(--space-6); }
+  .app-screen { display: none; }
+  .app-screen.is-active { display: block; }
+  .screen-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 20px; flex-wrap: wrap; }
+  .collapsed-hide { transition: opacity .15s; }
+  .app-frame.is-collapsed .collapsed-hide { opacity: 0; pointer-events: none; }
+  @media (max-width: 760px) { .app-frame { grid-template-columns: 1fr; } .app-frame .sidebar { display: none; } }
+</style>
+</head>
+<body>
+<header class="doc-nav" data-doc-nav></header>
+
+<main class="doc-main">
+  <section class="doc-hero">
+    <div class="doc-hero__eyebrow">Showcase</div>
+    <h1>Composed workspace</h1>
+    <p>Everything assembled into a live shell — the sidebar, glass header, and four real screens built only from
+       Andy-UI components. Click the nav to switch screens, collapse the sidebar, open the modal, fire a toast.</p>
+  </section>
+
+  <div class="app-frame" id="frame">
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-header__top">
+          <div class="sidebar-brand">
+            <span class="sidebar-brand__mark"><svg class="logo-icon" viewBox="0 0 24 24" fill="none"><path d="M12 3 3.5 7.2 12 11.4l8.5-4.2L12 3Z" fill="currentColor" opacity=".95"/><path d="M3.5 12 12 16.2 20.5 12" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" opacity=".75"/><path d="M3.5 16.6 12 20.8l8.5-4.2" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" opacity=".5"/></svg></span>
+            <span class="sidebar-brand__text collapsed-hide"><span class="sidebar-brand__name">Andy-UI</span><span class="sidebar-brand__tagline">Workspace</span></span>
+          </div>
+          <button class="sidebar-collapse-toggle" id="collapseBtn" title="Collapse"><svg class="toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 19l-7-7 7-7M19 19l-7-7 7-7"/></svg></button>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <p class="nav-section-title collapsed-hide">Build</p>
+          <ul class="nav-list">
+            <li><a class="nav-item active" data-screen="agents"><span class="nav-item__icon"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.75 17 9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"/></svg></span><span class="nav-label">Agents</span></a></li>
+            <li><a class="nav-item" data-screen="skills"><span class="nav-item__icon"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span><span class="nav-label">Skills</span></a></li>
+          </ul>
+        </div>
+        <div class="nav-section" style="margin-top:18px;">
+          <p class="nav-section-title collapsed-hide">Connect</p>
+          <ul class="nav-list">
+            <li><a class="nav-item" data-screen="adapters"><span class="nav-item__icon"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="nav-label">MCP Adapters</span></a></li>
+            <li><a class="nav-item" data-screen="keys"><span class="nav-item__icon"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.78 7.78 5.5 5.5 0 0 1 7.78-7.78zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3"/></svg></span><span class="nav-label">API Keys</span></a></li>
+          </ul>
+        </div>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <span class="sidebar-user__avatar">AY</span>
+          <span class="sidebar-user__meta collapsed-hide"><span class="sidebar-user__name">Andy</span><span class="sidebar-user__email">andy@andy-ui.dev</span></span>
+        </div>
+        <button class="logout-button"><svg class="logout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg><span class="collapsed-hide">Sign out</span></button>
+      </div>
+    </aside>
+
+    <!-- MAIN COLUMN -->
+    <div class="app-col">
+      <header class="header">
+        <div class="header-content">
+          <div class="header-title"><div class="dp-breadcrumb"><a>workspace</a><span class="sep">/</span><span class="leaf" id="crumb">agents</span></div></div>
+          <div class="header-actions">
+            <div class="header-sandbox">
+              <button class="header-sandbox-trigger"><span class="header-sandbox-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M9 3v18M3 9h6"/></svg></span><span class="header-sandbox-label">sandbox-01</span><span class="header-sandbox-chev"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+            </div>
+            <button class="theme-toggle" onclick="AndyUI.toggleTheme()" title="Toggle theme">
+              <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+              <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <div class="app-scroll">
+        <!-- AGENTS SCREEN -->
+        <section class="app-screen is-active" data-screen-panel="agents" data-screen-label="Agents">
+          <div class="screen-head">
+            <div class="au-page-heading"><span class="au-icon-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.75 17 9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"/></svg></span><div class="au-page-heading__text"><h1>AI Agents</h1><p>Manage intelligent agents and automate your tasks.</p></div></div>
+            <button class="btn btn-primary btn-md" data-open-modal="m-new"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>New agent</button>
+          </div>
+          <div class="au-toolbar" style="margin-bottom:20px;">
+            <div class="au-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><input placeholder="Search agents…"></div>
+            <select class="au-select"><option>All types</option><option>Workflow</option><option>Assistant</option></select>
+            <div class="au-segment" data-segment><button class="au-segment__btn au-segment__btn--icon is-active" data-seg="grid"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6zM14 6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2V6zM4 16a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2zM14 16a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2v-2z"/></svg></button><button class="au-segment__btn au-segment__btn--icon" data-seg="list"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button></div>
+            <div class="au-toolbar__stats"><span>3 agents</span></div>
+          </div>
+          <div class="doc-grid doc-grid--cards" id="agentGrid"></div>
+        </section>
+
+        <!-- SKILLS SCREEN -->
+        <section class="app-screen" data-screen-panel="skills" data-screen-label="Skills">
+          <div class="screen-head">
+            <div class="au-page-heading"><span class="au-icon-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span><div class="au-page-heading__text"><h1>Skills</h1><p>Publish reusable skill packages to namespaces.</p></div></div>
+            <button class="btn btn-primary btn-md"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>New skill</button>
+          </div>
+          <div class="au-group" style="margin-bottom:16px;"><span class="au-group__dot" style="background:hsl(255,58%,58%);color:hsl(255,58%,58%);"></span><h3 class="au-group__title">Platform</h3><span class="au-group__sep">·</span><span class="au-group__slug">platform</span><span class="au-group__count">3</span></div>
+          <div class="doc-grid doc-grid--3" id="skillGrid"></div>
+        </section>
+
+        <!-- ADAPTERS SCREEN -->
+        <section class="app-screen" data-screen-panel="adapters" data-screen-label="MCP Adapters">
+          <div class="screen-head">
+            <div class="au-page-heading"><span class="au-icon-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><div class="au-page-heading__text"><h1>MCP Adapters</h1><p>Manage and monitor your MCP adapters.</p></div></div>
+            <button class="btn btn-primary btn-md"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>New adapter</button>
+          </div>
+          <div class="doc-grid doc-grid--3" id="adapterGrid"></div>
+        </section>
+
+        <!-- KEYS SCREEN -->
+        <section class="app-screen" data-screen-panel="keys" data-screen-label="API Keys">
+          <div class="screen-head">
+            <div class="au-page-heading"><span class="au-icon-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.78 7.78 5.5 5.5 0 0 1 7.78-7.78zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3"/></svg></span><div class="au-page-heading__text"><h1>API keys</h1><p>Authenticate MCP clients that can't speak OAuth2.</p></div></div>
+            <button class="btn btn-primary btn-md" onclick="AndyUI.toast('success','API key generated','Copy it now — shown once')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>Generate key</button>
+          </div>
+          <div class="au-table-wrap">
+            <table class="au-table">
+              <thead><tr><th>Name</th><th>Key</th><th>Created</th><th>Last used</th><th>Status</th><th class="cell-actions">Actions</th></tr></thead>
+              <tbody>
+                <tr><td class="cell-title">zapier-prod</td><td data-keycell><span class="au-keycell"><code data-mask="mcp_••••••••3f9a" data-full="mcp_7k2d9f4a3f9a">mcp_••••••••3f9a</code><button class="au-iconbtn" data-reveal><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button><button class="au-iconbtn" data-copy="mcp_7k2d9f4a3f9a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button></span></td><td>Jan 8, 2025</td><td>2h ago</td><td><span class="au-state au-state--active">Active</span></td><td class="cell-actions"><button class="au-action danger small">Revoke</button></td></tr>
+                <tr><td class="cell-title">ci-runner</td><td data-keycell><span class="au-keycell"><code data-mask="mcp_••••••••a17b" data-full="mcp_9p1x4v7ma17b">mcp_••••••••a17b</code><button class="au-iconbtn" data-reveal><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button><button class="au-iconbtn" data-copy="mcp_9p1x4v7ma17b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button></span></td><td>Dec 2, 2024</td><td>5d ago</td><td><span class="au-state au-state--active">Active</span></td><td class="cell-actions"><button class="au-action danger small">Revoke</button></td></tr>
+                <tr style="opacity:.6;"><td class="cell-title">old-webhook</td><td data-keycell><span class="au-keycell"><code data-mask="mcp_••••••••0000" data-full="mcp_revoked">mcp_••••••••0000</code></span></td><td>Aug 19, 2024</td><td>—</td><td><span class="au-state au-state--revoked">Revoked</span></td><td class="cell-actions"><span style="color:var(--text-muted);">—</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <p style="margin-top:24px;text-align:center;color:var(--text-muted);font-size:13px;">Every pixel above is an Andy-UI component. Toggle the theme to re-resolve the whole shell.</p>
+</main>
+
+<!-- New agent modal -->
+<div class="modal-overlay" id="m-new" data-modal style="display:none;">
+  <div class="modal-content">
+    <div class="modal-header"><h3>New agent</h3><button class="modal-close" data-close-modal><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+    <div class="modal-body">
+      <div class="form-group"><label>Name <span class="required">*</span></label><input placeholder="e.g. Release Orchestrator"></div>
+      <div class="form-group"><label>Type</label><input value="Workflow"></div>
+    </div>
+    <div class="modal-footer"><button class="btn-secondary" data-close-modal>Cancel</button><button class="btn-primary" data-close-modal onclick="AndyUI.toast('success','Agent created')">Create agent</button></div>
+  </div>
+</div>
+
+<script src="js/shell.js"></script>
+<script>
+(function () {
+  // Build agent cards
+  var agents = [
+    { name:'Release Orchestrator', desc:'Coordinates multi-repo releases and opens the deploy PR.', type:'Workflow', state:'active', stateLabel:'Active', prov:'OpenAI', model:'gpt-4o', stats:[6,9,418,12] },
+    { name:'Support Triage', desc:'Classifies inbound tickets and drafts a first reply.', type:'Assistant', state:'disabled', stateLabel:'Inactive', prov:'Anthropic', model:'claude-sonnet', stats:[3,4,52,0] },
+    { name:'Docs Writer', desc:'Turns merged PRs into changelog and doc updates.', type:'Workflow', state:'active', stateLabel:'Active', prov:'Azure', model:'gpt-4o-mini', stats:[5,2,141,8] }
+  ];
+  var dots = ['var(--info-500)','var(--success-500)','var(--warning-500)','var(--brand-secondary)'];
+  var labels = ['Prompts','Tools','Runs','Docs'];
+  document.getElementById('agentGrid').innerHTML = agents.map(function (a) {
+    var stats = a.stats.map(function (v,i){ return '<div class="au-stat"><span class="au-stat__dot" style="background:'+dots[i]+'"></span><span class="au-stat__label">'+labels[i]+'</span><span class="au-stat__val">'+v+'</span></div>'; }).join('');
+    return '<article class="au-card au-card--interactive">'+
+      '<div class="au-card__top"><div class="au-card__head"><span class="au-icon-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.75 17 9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"/></svg></span><div style="min-width:0;"><h3 class="au-card__title">'+a.name+'</h3><p class="au-card__desc">'+a.desc+'</p></div></div>'+
+      '<div class="au-card__badges"><span class="dp-badge '+(a.type==='Workflow'?'primary':'secondary')+'">'+a.type+'</span><span class="au-state au-state--'+a.state+'">'+a.stateLabel+'</span></div></div>'+
+      '<div class="au-config"><span class="au-config__label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v1m6.36 1.64-.7.7M21 12h-1M4 12H3m3.34-5.66-.7-.7m2.82 9.9a5 5 0 1 1 7.07 0l-.54.55A3.37 3.37 0 0 0 14 18.47V19a2 2 0 1 1-4 0v-.53a3.37 3.37 0 0 0-.99-2.39z"/></svg>Main LLM</span><div class="au-config__chips"><span class="au-chip au-chip--brand">'+a.prov+'</span><span class="au-chip au-chip--brand">'+a.model+'</span></div></div>'+
+      '<div class="au-statgrid">'+stats+'</div>'+
+      '<div class="au-card__footer"><span class="au-card__meta">Updated recently</span><div class="au-card__actions"><button class="au-iconbtn" title="Chat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8A8.5 8.5 0 0 1 12.5 3 8.5 8.5 0 0 1 21 11.5z"/></svg></button><button class="au-iconbtn" title="Edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button><button class="au-iconbtn au-iconbtn--danger" title="Delete"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/></svg></button></div></div></article>';
+  }).join('');
+
+  // Skills
+  var skills = [['PDF Extractor','Pull text, tables and metadata from PDFs.','pdf-extract','v2.1.0'],['Web Fetch','Fetch and clean a URL into markdown.','web-fetch','v1.4.2'],['SQL Runner','Run read-only parameterised queries.','sql-runner','v0.9.0']];
+  document.getElementById('skillGrid').innerHTML = skills.map(function (s) {
+    return '<a class="au-skill" href="javascript:void(0)"><span class="au-skill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span><div class="au-skill__body"><h3 class="au-skill__title">'+s[0]+'</h3><p class="au-skill__desc">'+s[1]+'</p><div class="au-skill__meta"><code class="au-skill__slug">'+s[2]+'</code><span class="au-skill__ver">'+s[3]+'</span></div></div></a>';
+  }).join('');
+
+  // Adapters
+  var adapters = [
+    ['github-mcp','mcp.internal/github','StreamableHttp','healthy','Enabled','enabled','Routes GitHub repo, PR and issue tools.'],
+    ['jira-mcp','mcp.internal/jira','Sse','unhealthy','Enabled','enabled','Health check failed — last response 504.'],
+    ['slack-mcp','mcp.internal/slack','StreamableHttp',null,'Disabled','disabled','Paused while credentials rotate.']
+  ];
+  document.getElementById('adapterGrid').innerHTML = adapters.map(function (a) {
+    var corner = a[3]==='healthy' ? '<div class="au-card__corner au-card__corner--healthy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>'
+      : a[3]==='unhealthy' ? '<div class="au-card__corner au-card__corner--unhealthy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4"/><circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/></svg></div>' : '';
+    var cls = a[3] ? ' au-card--'+a[3] : '';
+    return '<article class="au-card'+cls+'">'+corner+
+      '<div class="au-card__top"><div class="au-card__badges" style="justify-content:flex-start;"><span class="au-chip au-chip--brand">'+a[2]+'</span><span class="au-state au-state--'+a[5]+'">'+a[4]+'</span></div></div>'+
+      '<div><h3 class="au-card__title">'+a[0]+'</h3><div style="display:flex;align-items:center;gap:5px;color:var(--text-tertiary);font-size:12px;font-family:var(--font-mono);margin-top:4px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 1 0-7l1-1a5 5 0 0 1 7 7l-1 1"/><path d="M14 11a5 5 0 0 1 0 7l-1 1a5 5 0 0 1-7-7l1-1"/></svg>'+a[1]+'</div><p class="au-card__desc" style="margin-top:6px;">'+a[6]+'</p></div>'+
+      '<div class="au-card__split"><button class="au-action primary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>View</button><button class="au-action secondary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>Edit</button></div></article>';
+  }).join('');
+
+  // Screen switching
+  var frame = document.getElementById('frame');
+  document.querySelectorAll('.nav-item[data-screen]').forEach(function (item) {
+    item.addEventListener('click', function () {
+      var key = item.getAttribute('data-screen');
+      document.querySelectorAll('.nav-item[data-screen]').forEach(function (n) { n.classList.toggle('active', n === item); });
+      document.querySelectorAll('[data-screen-panel]').forEach(function (p) { p.classList.toggle('is-active', p.getAttribute('data-screen-panel') === key); });
+      document.getElementById('crumb').textContent = key === 'keys' ? 'api-keys' : key;
+    });
+  });
+
+  // Collapse
+  document.getElementById('collapseBtn').addEventListener('click', function () {
+    frame.classList.toggle('is-collapsed');
+    document.getElementById('sidebar').classList.toggle('collapsed');
+  });
+})();
+</script>
+</body>
+</html>

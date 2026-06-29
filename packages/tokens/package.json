@@ -1,0 +1,23 @@
+{
+  "name": "@andy-ui/tokens",
+  "version": "0.1.0",
+  "description": "Andy-UI design tokens and component stylesheet (framework-agnostic CSS).",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": ["*.css"],
+  "publishConfig": { "access": "public" },
+  "files": ["dist", "src"],
+  "exports": {
+    "./andy-ui.css": "./dist/andy-ui.css",
+    "./tokens.css": "./dist/tokens.css",
+    "./base-components.css": "./dist/base-components.css",
+    "./andy-ui-layer.css": "./dist/andy-ui-layer.css",
+    "./andy-extras.css": "./dist/andy-extras.css",
+    "./andy-shell.css": "./dist/andy-shell.css",
+    "./src/*": "./src/*"
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "clean": "rm -rf dist"
+  }
+}

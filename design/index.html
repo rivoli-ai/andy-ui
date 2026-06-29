@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Andy-UI — Unified Design System</title>
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/andy-extras.css">
+<link rel="stylesheet" href="css/docs.css">
+</head>
+<body>
+
+<header class="ds-topbar">
+  <a class="ds-brand" href="index.html">
+    <svg class="ds-brand__mark" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs><linearGradient id="bm-top" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse"><stop stop-color="#6366f1"/><stop offset=".5" stop-color="#8b5cf6"/><stop offset="1" stop-color="#a855f7"/></linearGradient></defs>
+      <rect width="32" height="32" rx="8" fill="url(#bm-top)"/>
+      <g fill="#fff"><path d="M16 6L7 11L16 16L25 11L16 6Z"/><path d="M7 21L16 26L25 21V16L16 21L7 16V21Z" opacity="0.88"/></g>
+    </svg>
+    <span><span class="ds-brand__name">Andy-UI</span><span class="ds-brand__tag">Design System</span></span>
+  </a>
+  <nav class="ds-topnav">
+    <a href="index.html" class="active">Overview</a>
+    <a href="foundations.html">Foundations</a>
+    <a href="components.html">Components</a>
+    <a href="showcase.html">Showcase</a>
+  </nav>
+  <div class="ds-topbar__right">
+    <button class="ds-theme-toggle" data-theme-toggle aria-label="Toggle theme">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+
+<main class="ds-page" data-screen-label="Overview">
+
+  <section class="ds-pagehead" style="margin-bottom: var(--space-12)">
+    <p class="t-eyebrow">Slate &amp; indigo · light + dark</p>
+    <h1>One vocabulary for<br>four workspace apps.</h1>
+    <p>Andy-UI consolidates the components scattered across <strong>DevPilot</strong>, <strong>Agentic</strong>, <strong>AndySkills</strong>, and <strong>McpGateway</strong> into a single, theme-aware system. Every primitive below is refactored to one canonical form, built on the DevPilot token set — so a button, a table, or a status pill looks and behaves identically no matter which app renders it.</p>
+  </section>
+
+  <section class="ds-grid-3" style="margin-bottom: var(--space-12)">
+    <div class="ds-stat"><span class="ds-stat__value">4 → 1</span><span class="ds-stat__label">Apps unified</span></div>
+    <div class="ds-stat"><span class="ds-stat__value">32</span><span class="ds-stat__label">Components</span></div>
+    <div class="ds-stat"><span class="ds-stat__value">2</span><span class="ds-stat__label">Themes</span></div>
+    <div class="ds-stat"><span class="ds-stat__value">8-step</span><span class="ds-stat__label">Type &amp; space scale</span></div>
+  </section>
+
+  <div class="ds-cardgrid">
+    <a class="ds-navcard" href="foundations.html">
+      <div class="ds-icon-chip soft"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="6.5" cy="11.5" r="2.5"/><circle cx="17.5" cy="13.5" r="2.5"/><path d="M3 21v-2a4 4 0 0 1 4-4"/></svg></div>
+      <h3>Foundations</h3>
+      <p>Color, type, spacing, radius, shadow and motion — the tokens every component resolves through.</p>
+      <span class="arrow">Explore tokens →</span>
+    </a>
+    <a class="ds-navcard" href="components.html">
+      <div class="ds-icon-chip soft"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+      <h3>Components</h3>
+      <p>The full interactive catalog — buttons, fields, badges, tables, modals, chat, and every domain piece.</p>
+      <span class="arrow">Browse catalog →</span>
+    </a>
+    <a class="ds-navcard" href="showcase.html">
+      <div class="ds-icon-chip soft"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+      <h3>Showcase</h3>
+      <p>Components composed into real screens inside the workspace shell — repos, skills, chat, and gateway.</p>
+      <span class="arrow">See it assembled →</span>
+    </a>
+  </div>
+
+  <section class="ds-section">
+    <div class="ds-section__head"><h2>What got unified</h2></div>
+    <p class="ds-section__lead">Each app contributed something. Andy-UI keeps the best canonical form of each and drops the duplicates — one button system, one table, one toast, one status language.</p>
+    <div class="ds-grid-2">
+      <div class="dp-card p-md">
+        <div class="ds-row ds-row--tight" style="margin-bottom:var(--space-3)"><span class="dp-badge primary">DevPilot</span><span class="ds-muted">core primitives</span></div>
+        <p class="t-body-sm" style="margin:0">Buttons, cards, inputs, badges, the sidebar / header / breadcrumb shell, data grid, and modal footer language — the backbone everything else inherits.</p>
+      </div>
+      <div class="dp-card p-md">
+        <div class="ds-row ds-row--tight" style="margin-bottom:var(--space-3)"><span class="dp-badge secondary">Agentic</span><span class="ds-muted">conversational</span></div>
+        <p class="t-body-sm" style="margin:0">Chat bubbles, thinking accordion, streaming indicator, session list, tool-execution summary with usage meters, and tool chips.</p>
+      </div>
+      <div class="dp-card p-md">
+        <div class="ds-row ds-row--tight" style="margin-bottom:var(--space-3)"><span class="dp-badge info">AndySkills</span><span class="ds-muted">registry</span></div>
+        <p class="t-body-sm" style="margin:0">Skill cards, sortable data tables with row actions, the filter toolbar, segmented grid/list toggle, namespace group headers, and empty states.</p>
+      </div>
+      <div class="dp-card p-md">
+        <div class="ds-row ds-row--tight" style="margin-bottom:var(--space-3)"><span class="dp-badge success">McpGateway</span><span class="ds-muted">infrastructure</span></div>
+        <p class="t-body-sm" style="margin:0">Status pills, callouts, the page-heading + icon-chip pattern, secret/key reveal &amp; copy boxes, and key-management tables.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="ds-foot">
+    <span>Andy-UI</span><span class="dot"></span><span>Built on the DevPilot token set</span><span class="dot"></span><span>Light + Dark</span>
+  </footer>
+</main>
+
+<script src="css/andy-ui.js"></script>
+</body>
+</html>

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Andy-UI — Components</title>
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/andy-extras.css">
+<link rel="stylesheet" href="css/docs.css">
+</head>
+<body>
+
+<header class="ds-topbar">
+  <a class="ds-brand" href="index.html">
+    <svg class="ds-brand__mark" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs><linearGradient id="bm-c" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse"><stop stop-color="#6366f1"/><stop offset=".5" stop-color="#8b5cf6"/><stop offset="1" stop-color="#a855f7"/></linearGradient></defs>
+      <rect width="32" height="32" rx="8" fill="url(#bm-c)"/>
+      <g fill="#fff"><path d="M16 6L7 11L16 16L25 11L16 6Z"/><path d="M7 21L16 26L25 21V16L16 21L7 16V21Z" opacity="0.88"/></g>
+    </svg>
+    <span><span class="ds-brand__name">Andy-UI</span><span class="ds-brand__tag">Design System</span></span>
+  </a>
+  <nav class="ds-topnav">
+    <a href="index.html">Overview</a>
+    <a href="foundations.html">Foundations</a>
+    <a href="components.html" class="active">Components</a>
+    <a href="showcase.html">Showcase</a>
+  </nav>
+  <div class="ds-topbar__right">
+    <button class="ds-theme-toggle" data-theme-toggle aria-label="Toggle theme">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+
+<main class="ds-page ds-page--wide" data-screen-label="Components">
+  <div class="ds-pagehead">
+    <p class="t-eyebrow">Catalog</p>
+    <h1>Components</h1>
+    <p>Every primitive, refactored to one canonical form. Hover, click, toggle, copy — these are live. Each block notes which app it originated from.</p>
+  </div>
+
+  <!-- ░░░ BUTTONS ░░░ -->
+  <section class="ds-section">
+    <div class="ds-section__head"><h2>Buttons</h2><span class="src">.btn-* · sm/md/lg</span></div>
+    <div class="ds-spec">
+      <div class="ds-spec__title"><h3>Variants</h3><span class="from">DevPilot</span></div>
+      <div class="ds-demo">
+        <button class="btn btn-md btn-primary">Save changes</button>
+        <button class="btn btn-md btn-secondary">Cancel</button>
+        <button class="btn btn-md btn-success">Generate backlog</button>
+        <button class="btn btn-md btn-warning">Review</button>
+        <button class="btn btn-md btn-error">Delete</button>
+        <button class="btn btn-md btn-ghost">Dismiss</button>
+      </div>
+    </div>
+    <div class="ds-spec">
+      <div class="ds-spec__title"><h3>Sizes &amp; states</h3></div>
+      <div class="ds-demo">
+        <button class="btn btn-sm btn-primary">Small · 36</button>
+        <button class="btn btn-md btn-primary">Medium · 44</button>
+        <button class="btn btn-lg btn-primary">Large · 52</button>
+        <button class="btn btn-md btn-primary" disabled>Disabled</button>
+        <button class="btn btn-md btn-primary"><span class="btn-spinner"></span> Loading</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░░ FORM CONTROLS ░░░ -->
+  <section class="ds-section">
+    <div class="ds-section__head"><h2>Form controls</h2><span class="src">.dp-field · .ds-select · .ds-switch</span></div>
+    <div class="ds-grid-2">
+      <div class="ds-spec">
+        <div class="ds-spec__title"><h3>Inputs</h3><span class="from">DevPilot</span></div>
+        <div class="ds-demo ds-demo--col">
+          <div class="dp-field"><label class="label">Repository name <span class="req">*</span></label><input class="dp-input" placeholder="devpilot-api"></div>
+          <div class="dp-field"><label class="label">Focused</label><input class="dp-input is-focused" value="src/index.ts"></div>
+          <div class="dp-field"><label class="label">With error</label><input class="dp-input is-error" value="not-a-url"><span class="error-msg">Must be a valid URL</span></div>
+          <div class="dp-field"><label class="label">Disabled</label><input class="dp-input" value="locked" disabled></div>
+        </div>
+      </div>
+      <div class="ds-spec">
+        <div class="ds-spec__title"><h3>Select · switch · search</h3><span class="from">AndySkills</span></div>
+        <div class="ds-demo ds-demo--col">
+          <div class="dp-field"><label class="label">Namespace</label>
+            <select class="ds-select"><option>All namespaces</option><option>platform-core</option><option>data-pipeline</option></select>
+          </div>
+          <div class="search-input-wrapper" style="max-width:none">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input class="search-input" placeholder="Search skills…">
+          </div>
+          <label class="ds-row ds-row--tight" style="cursor:pointer"><span class="ds-switch"><input type="checkbox" checked><span class="track"></span></span><span class="t-label">Group by namespace</span></label>
+          <label class="ds-row ds-row--tight" style="cursor:pointer"><span class="ds-switch"><input type="checkbox"><span class="track"></span></span><span class="t-label">Show archived</span></label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░░ BADGES & STATUS ░░░ -->
+  <section class="ds-section">
+    <div class="ds-section__head"><h2>Badges &amp; status</h2><span class="src">.dp-badge · .ds-status · .ds-ver-pill</span></div>
+    <div class="ds-grid-2">
+      <div class="ds-spec">
+        <div class="ds-spec__title"><h3>Badges</h3><span class="from">DevPilot</span></div>
+        <div class="ds-demo">
+          <span class="dp-badge primary">Primary</span>
+          <span class="dp-badge secondary">Secondary</span>
+          <span class="dp-badge success">Success</span>
+          <span class="dp-badge warning">Warning</span>
+          <span class="dp-badge error">Error</span>
+          <span class="dp-badge info">Info</span>
+        </div>
+      </div>
+      <div class="ds-spec">
+        <div class="ds-spec__title"><h3>Status pills</h3><span class="from">McpGateway</span></div>
+        <div class="ds-demo">
+          <span class="ds-status healthy"><span class="dot"></span>Healthy</span>
+          <span class="ds-status error"><span class="dot"></span>Unhealthy</span>
+          <span class="ds-status disabled"><span class="dot"></span>Disabled</span>
+          <span class="ds-status unknown"><span class="dot"></span>Unknown</span>
+          <span class="ds-ver-pill">v2.4.1</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░░ CARDS ░░░ -->
+  <section class="ds-section">
+    <div class="ds-section__head"><h2>Cards</h2><span class="src">.dp-card · .ds-skill-card · .ds-stat</span></div>
+    <div class="ds-grid-3">
+      <div class="dp-card hoverable p-md">
+        <span class="t-eyebrow">Hoverable</span>
+        <h3 class="t-h3" style="margin:6px 0">Lift + glow</h3>
+        <p class="t-body-sm" style="margin:0">Hover me — border bumps, shadow stacks with the brand glow, and the card lifts 2px.</p>
+      </div>
+      <a class="ds-skill-card" href="#" onclick="return false">
+        <div class="ds-skill-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+        <div>
+          <h3 class="ds-skill-card__title">pdf-extractor</h3>
+          <p class="ds-skill-card__desc">Pulls structured tables out of PDF invoices.</p>
+        </div>
+        <div class="ds-skill-card__meta"><code class="ds-skill-card__slug">pdf-extractor</code><span class="ds-ver-pill">1.3.0</span></div>
+      </a>
+      <div class="ds-col">
+        <div class="ds-stat"><span class="ds-stat__value">1,284</span><span class="ds-stat__label">Tool calls today</span></div>
+        <div class="ds-stat"><span class="ds-stat__value">98.2%</span><span class="ds-stat__label">Success rate</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░░ NAVIGATION ░░░ -->
+  <section class="ds-section">
+    <div class="ds-section__head"><h2>Navigation</h2><span class="src">.nav-item · .header · .dp-breadcrumb</span></div>
+    <div class="ds-spec">
+      <div class="ds-spec__title"><h3>Sidebar nav items</h3><span class="from">DevPilot</span></div>
+      <div class="ds-demo ds-demo--ground" style="max-width:300px">
+        <ul class="nav-list" style="width:100%">
+          <li><a class="nav-item active"><span class="nav-item__icon"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-7l-2-2H5a2 2 0 00-2 2z"/></svg></span><span class="nav-label">Repositories</span></a></li>
+          <li><a class="nav-item"><span class="nav-item__icon"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg></span><span class="nav-label">Chat</span></a></li>
+          <li><a class="nav-item"><span class="nav-item__icon"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9V9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></span><span class="nav-label">Settings</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ds-grid-2">
+      <div class="ds-spec">
+        <div class="ds-spec__title"><h3>Breadcrumb</h3><span class="from">DevPilot</span></div>
+        <div class="ds-demo"><nav class="dp-breadcrumb"><a>repos</a><span class="sep">/</span><a>devpilot-api</a><span class="sep">/</span><span class="mid">src</span><span class="sep">/</span><span class="leaf">index.ts</span></nav></div>
+      </div>
+      <div class="ds-spec">
+        <div class="ds-spec__title"><h3>Provider tabs</h3><span class="from">DevPilot</span></div>
+        <div class="ds-demo">
+          <div class="provider-tabs" data-seg="prov">
+            <button class="provider-tab active">GitHub <span class="tab-count">12</span></button>
+            <button class="provider-tab">Azure <span class="tab-count">5</span></button>
+            <button class="provider-tab">Local <span class="tab-count">3</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░░ DATA TABLE ░░░ -->
+  <section class="ds-section">
+    <div class="ds-section__head"><h2>Data tables</h2><span class="src">.ds-table · segmented view</span></div>
+    <p class="ds-section__lead">One canonical table unifies the AndySkills registry grid and the McpGateway key list. Toggle grid / list, hover rows, use the row actions.</p>
+    <div class="ds-row" style="margin-bottom:var(--space-4);justify-content:space-between">
+      <div class="ds-segment" data-seg="skview">
+        <button class="ds-segment-btn active" data-target="list"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>List</button>
+        <button class="ds-segment-btn" data-target="grid"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg>Grid</button>
+      </div>
+      <span class="ds-muted">6 skills · 2 namespaces</span>
+    </div>
+
+    <div data-panel-group="skview" data-panel="list">
+      <div class="ds-table-panel">
+        <table class="ds-table">
+          <thead><tr><th>Skill</th><th>Slug</th><th>Created</th><th>Latest</th><th style="text-align:right">Actions</th></tr></thead>
+          <tbody>
+            <tr><td class="cell-strong">PDF extractor</td><td class="cell-mono">pdf-extractor</td><td>Apr 12, 2026</td><td><span class="ds-ver-pill">1.3.0</span></td>
+              <td><div class="row-actions">
+                <button class="ds-icon-btn" title="View"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+                <button class="ds-icon-btn" title="Edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+                <button class="ds-icon-btn danger" title="Delete"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg></button>
+              </div></td></tr>
+            <tr><td class="cell-strong">Slack notifier</td><td class="cell-mono">slack-notify</td><td>Apr 9, 2026</td><td><span class="ds-ver-pill">0.8.2</span></td>
+              <td><div class="row-actions">
+                <button class="ds-icon-btn" title="View"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+                <button class="ds-icon-btn" title="Edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+                <button class="ds-icon-btn danger" title="Delete"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg></button>
+              </div></td></tr>
+            <tr><td class="cell-strong">SQL runner</td><td class="cell-mono">sql-runner</td><td>Mar 30, 2026</td><td><span class="ds-ver-pill">2.0.0</span></td>
+              <td><div class="row-actions">
+                <button class="ds-icon-btn" title="View"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+                <button class="ds-icon-btn" title="Edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+                <button class="ds-icon-btn danger" title="Delete"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg></button>
+              </div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div data-panel-group="skview" data-panel="grid" hidden>
+      <div class="ds-grid-3">
+        <a class="ds-skill-card" href="#" onclick="return false"><div class="ds-skill-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div><h3 class="ds-skill-card__title">PDF extractor</h3><p class="ds-skill-card__desc">Structured tables from invoices.</p></div><div class="ds-skill-card__meta"><code class="ds-skill-card__slug">pdf-extractor</code><span class="ds-ver-pill">1.3.0</span></div></a>
+        <a class="ds-skill-card" href="#" onclick="return false"><div class="ds-skill-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div><h3 class="ds-skill-card__title">Slack notifier</h3><p class="ds-skill-card__desc">Posts run results to a channel.</p></div><div class="ds-skill-card__meta"><code class="ds-skill-card__slug">slack-notify</code><span class="ds-ver-pill">0.8.2</span></div></a>
+        <a class="ds-skill-card" href="#" onclick="return false"><div class="ds-skill-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div><h3 class="ds-skill-card__title">SQL runner</h3><p class="ds-skill-card__desc">Parameterized read queries.</p></div><div class="ds-skill-card__meta"><code class="ds-skill-card__slug">sql-runner</code><span class="ds-ver-pill">2.0.0</span></div></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░░ FEEDBACK: MODAL / TOAST / CALLOUT ░░░ -->
+  <section class="ds-section">
+    <div class="ds-section__head"><h2>Feedback</h2><span class="src">modal · toast · callout</span></div>
+    <div class="ds-grid-2">
+      <div class="ds-spec">
+        <div class="ds-spec__title"><h3>Modals &amp; toasts</h3><span class="from">DevPilot · Agentic</span></div>
+        <div class="ds-demo">
+          <button class="btn btn-md btn-secondary" data-open-modal="demo-modal">Open dialog</button>
+          <button class="btn btn-md btn-secondary" data-toast="success" data-toast-msg="Settings saved">Success toast</button>
+          <button class="btn btn-md btn-secondary" data-toast="error" data-toast-msg="Connection failed — check your token and retry">Error toast</button>
+          <button class="btn btn-md btn-secondary" data-toast="warning" data-toast-msg="Your API key expires in 3 days">Warning toast</button>
+        </div>
+      </div>
+      <div class="ds-spec">
+        <div class="ds-spec__title"><h3>Callouts</h3><span class="from">McpGateway</span></div>
+        <div class="ds-demo ds-demo--col">
+          <div class="ds-callout warning"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><div><strong>Copy this key now.</strong> You can re-display it later, but copying now keeps the workflow tidy.</div></div>
+          <div class="ds-callout info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg><div>This adapter speaks MCP over both <span class="ds-code-inline">/mcp</span> and <span class="ds-code-inline">/sse</span>.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░░ SECRETS / KEYS ░░░ -->
+  <section class="ds-section">
+    <div class="ds-section__head"><h2>Secrets &amp; keys</h2><span class="src">.ds-key-box · reveal · copy</span></div>
+    <div class="ds-spec">
+      <div class="ds-spec__title"><h3>API key row</h3><span class="from">McpGateway</span></div>
+      <div class="ds-demo ds-demo--col">
+        <div class="ds-key-box" data-key-cell>
+          <code data-masked>mcp_live_••••••••••••••••••••3f9a</code>
+          <code data-plain hidden>mcp_live_8d2c41a7be9043f5af2c0e7b3f9a</code>
+          <button class="ds-icon-btn" data-reveal title="Reveal / hide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+          <button class="ds-key-copy" data-copy="mcp_live_8d2c41a7be9043f5af2c0e7b3f9a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg><span data-copy-label>Copy</span></button>
+        </div>
+        <div class="ds-code-block"><span class="tok-com"># Pass the key on every request</span><br>curl -H <span class="tok-str">"X-MCP-Key: mcp_live_…3f9a"</span> \<br>&nbsp;&nbsp;https://gateway.andy.dev/adapters/<span class="tok-key">github</span>/mcp</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░░ CONVERSATIONAL ░░░ -->
+  <section class="ds-section">
+    <div class="ds-section__head"><h2>Conversational</h2><span class="src">.ds-chat · .ds-toolsum · .ds-session</span></div>
+    <div class="ds-grid-2">
+      <div class="ds-spec">
+        <div class="ds-spec__title"><h3>Chat messages</h3><span class="from">Agentic</span></div>
+        <div class="ds-demo ds-demo--ground ds-demo--col">
+          <div class="ds-chat">
+            <div class="ds-msg user">
+              <div class="ds-avatar sm round">JD</div>
+              <div class="ds-msg__bubble"><p class="ds-msg__name">You</p><p class="ds-msg__text">Summarize the failing tests in the API repo.</p><div class="ds-msg__time">14:02</div></div>
+            </div>
+            <div class="ds-msg agent">
+              <div class="ds-avatar sm round">AI</div>
+              <div class="ds-msg__bubble">
+                <p class="ds-msg__name">DevPilot Agent</p>
+                <div class="ds-think" data-accordion><span class="check"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span><span class="label">Reasoning</span><span class="phrase">Scanned 3 test files, grouped by suite…</span></div>
+                <p class="ds-msg__text">Three suites fail — all in <span class="ds-code-inline">auth.spec.ts</span>. The token refresh mock returns 401 after the clock advance.</p>
+                <div class="ds-msg__status"><span class="ok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Done</span><span class="chars">182 chars</span></div>
+              </div>
+            </div>
+            <div class="ds-msg agent">
+              <div class="ds-avatar sm round">AI</div>
+              <div class="ds-msg__bubble"><p class="ds-msg__name">DevPilot Agent</p><p class="ds-msg__text"><span class="ds-typing"><span></span><span></span><span></span></span> &nbsp;Streaming…</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ds-col">
+        <div class="ds-spec">
+          <div class="ds-spec__title"><h3>Tool-execution summary</h3><span class="from">Agentic</span></div>
+          <div class="ds-demo ds-demo--col" style="padding:var(--space-5)">
+            <div class="ds-toolsum">
+              <div class="ds-toolsum__row" style="margin-bottom:var(--space-3)">
+                <div class="ds-row ds-row--tight"><div class="ds-avatar sm" style="width:24px;height:24px"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" style="width:13px;height:13px"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2"/></svg></div><div><strong style="font-size:var(--fs-sm)">Tools (24)</strong><div class="ds-muted" style="font-size:11px">22 success · 2 failed</div></div></div>
+                <span class="ds-muted" style="font-size:11px">3 tools</span>
+              </div>
+              <div class="ds-col" style="gap:8px">
+                <div class="ds-toolsum__tool"><span class="nm">read_file</span><span class="ct">12×</span><div class="ds-progress"><span style="width:80%"></span></div></div>
+                <div class="ds-toolsum__tool"><span class="nm">grep</span><span class="ct">8×</span><div class="ds-progress"><span style="width:55%"></span></div></div>
+                <div class="ds-toolsum__tool"><span class="nm">run_tests</span><span class="ct">4×</span><div class="ds-progress"><span style="width:30%"></span></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ds-spec">
+          <div class="ds-spec__title"><h3>Session list</h3><span class="from">Agentic</span></div>
+          <div class="ds-demo ds-demo--ground ds-demo--col" style="padding:var(--space-4)">
+            <div class="ds-session active"><span class="live"></span><div><div class="ds-session__name">API refactor</div><div class="ds-session__desc">Migrate auth to refresh tokens</div><div class="ds-session__meta">2m ago · 18 messages</div></div></div>
+            <div class="ds-session"><span class="live"></span><div><div class="ds-session__name">Docs cleanup</div><div class="ds-session__meta">1h ago · 6 messages</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░░ EMPTY STATE ░░░ -->
+  <section class="ds-section">
+    <div class="ds-section__head"><h2>Empty states</h2><span class="src">.ds-empty</span></div>
+    <div class="ds-demo ds-demo--center">
+      <div class="ds-empty">
+        <div class="ds-empty__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 11-7.778 7.778 5.5 5.5 0 017.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg></div>
+        <p class="ds-empty__title">No API keys yet</p>
+        <p class="ds-empty__copy">Generate a key to let an MCP client connect without OAuth2.</p>
+        <button class="btn btn-md btn-primary" style="margin-top:var(--space-3)">Generate first key</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="ds-foot"><span>Andy-UI</span><span class="dot"></span><a href="showcase.html" style="color:var(--brand-primary);text-decoration:none">See it assembled →</a></footer>
+</main>
+
+<!-- Demo modal -->
+<div class="modal-overlay" data-modal id="demo-modal" hidden style="position:fixed">
+  <div class="modal-content" role="dialog" aria-modal="true">
+    <div class="modal-header"><h3>Delete this repository?</h3><button class="modal-close" data-close-modal><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
+    <div class="modal-body"><p class="modal-description">This removes <strong>devpilot-api</strong> and its backlog. This cannot be undone.</p></div>
+    <div class="modal-footer"><button class="btn-secondary" data-close-modal>Cancel</button><button class="btn-primary" data-close-modal>Delete</button></div>
+  </div>
+</div>
+
+<script src="css/andy-ui.js"></script>
+</body>
+</html>

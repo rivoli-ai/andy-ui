@@ -1,0 +1,43 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Introduction/Overview" />
+
+# Andy-UI
+
+A **framework-agnostic** design system. Components are authored once as
+[Lit](https://lit.dev) web components and styled by a single global stylesheet,
+then consumed from **React**, **Angular**, or plain **HTML**.
+
+## Packages
+
+| Package | Description |
+|---|---|
+| `@andy-ui/tokens` | Design tokens + all component CSS (one stylesheet). |
+| `@andy-ui/core` | The `<andy-*>` web components + `toast` / theme helpers. |
+| `@andy-ui/react` | React bindings (via `@lit/react`). |
+| `@andy-ui/angular` | Angular form-control directives + `ToastService`. |
+
+## Architecture
+
+The components render in the **light DOM** and rely entirely on the global
+`@andy-ui/tokens` stylesheet — global classes plus CSS custom properties driven
+by `<html data-theme>`. This keeps one source of truth for styling and lets the
+same components theme and cascade naturally in any framework. The React and
+Angular packages are **thin bindings, not re-implementations**.
+
+## How this Storybook is organised
+
+The sidebar follows a structural taxonomy (inspired by Semantic UI) — components
+are grouped by *what they are*:
+
+- **Globals** — design tokens (colours, type, spacing).
+- **Elements** — single, indivisible UI atoms (Button, Badge, Avatar…).
+- **Collections** — groups of elements working together (Form, Table, Nav…).
+- **Views** — components that present content (Card, Skill card, Empty state).
+- **Modules** — JS-driven, stateful components (Modal, Accordion, Tabs…).
+- **Behaviors** — non-visual, imperative APIs (Theming, Toast).
+- **Layouts** — page-level composition (App shell).
+
+Each component page is ordered **Overview → Types → States → Variations**.
+
+Head to **Introduction › Getting Started** to install and use it in your app.
